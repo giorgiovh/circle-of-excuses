@@ -1,0 +1,40 @@
+{
+  "excuses": [
+    {
+      "id": 1,
+      "name": "#proteins-tho",
+      "description": "We need to eat meat to get proteins",
+      "response": "You can get your proteins from plants"
+    },
+    {
+      "id": 2,
+      "name": "#lions-tho",
+      "description": "Lions eat gazelles",
+      "response": "Lions eat other animals for survival. We don't do it for survival"
+    },
+    {
+      "id": 3,
+      "name": "#taste-tho",
+      "description": "I like the taste of meat too much",
+      "response": "Taste is not worth the suffering of animals"
+    },
+    {
+      "id": 4,
+      "name": "#nature-tho",
+      "description": "It's natural to eat meat",
+      "response": "Just because something is natural does not mean it's moral"
+    },
+    {
+      "id": 5,
+      "name": "#culture-tho",
+      "description": "It's part of my culture",
+      "response": "Just because something is part of your culture does not mean it's moral"
+    },
+    {
+      "id": 6,
+      "name": "#health-tho",
+      "description": "I need meat to be healthy",
+      "response": "You can get all the nutrients you need from plants. A study done by the Harvard School of Public Health found that a vegan diet is associated with a 34% lower risk of death from heart disease, a 50% lower risk of death from cancer, and a 76% lower risk of death from diabetes"
+    }
+  ]
+}
