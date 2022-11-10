@@ -1,10 +1,16 @@
 import React from 'react'
+import useFetch from '../hooks/useFetch'
 
 export default function Home() {
+  const { data: excuses, isPending, error } = useFetch('http://localhost:3000/excuses')
+
   return (
     <div className='home'>
       <h2>Home</h2>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum, officiis numquam hic odio deleniti, quo tenetur fugiat maiores ducimus labore consequuntur dolor aliquam in vero explicabo beatae. Incidunt, quidem quis!</p>
+
+      { excuses && excuses.map(excuse => (
+        <div>{excuse.name}</div>
+      ))}
     </div>
   )
 }

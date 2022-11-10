@@ -5,10 +5,8 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 
 function App() {
-  console.log(new AbortController());
   return (
     <div className="App">
-      Hello
       <BrowserRouter>
         <nav>
           <h1>Circle of Excuses</h1>
