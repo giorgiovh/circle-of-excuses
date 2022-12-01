@@ -2,39 +2,79 @@
   "excuses": [
     {
       "id": 1,
-      "name": "#proteins-tho",
-      "description": "We need to eat meat to get proteins",
-      "response": "You can get your proteins from plants"
+      "name": "#protein-tho",
+      "description": "We need to eat meat to get protein",
+      "response": "You can get your protein from plants",
+      "socratic-response": "Do you think we can get protein from other sources besides animals? What are some of those sources? Since we have the option to get protein from a source that does not cause suffering and another source that causes sufferin, which option do you think we should choose?"
     },
     {
       "id": 2,
       "name": "#lions-tho",
       "description": "Lions eat gazelles",
-      "response": "Lions eat other animals for survival. We don't do it for survival"
+      "response": "Lions eat other animals for survival. We don't do it for survival",
+      "socratic-response": "Do you think lions need to eat other animals to survive? Do you think we need to eat animals to survive? Do you think we can live healthy lives without eating animals? If we don't need to eat animals to live a healthy life, why do you think we eat them? Do you think pleasure, tradition, and convenience are justify the suffering we inflict on animals?"
     },
     {
       "id": 3,
       "name": "#taste-tho",
       "description": "I like the taste of meat too much",
-      "response": "Taste is not worth the suffering of animals"
+      "response": "Taste is not worth the suffering of animals",
+      "socratic-response": "Do you think taste justifies the suffering you inflict on animals?"
     },
     {
       "id": 4,
       "name": "#nature-tho",
       "description": "It's natural to eat meat",
-      "response": "Just because something is natural does not mean it's moral"
+      "response": "Just because something is natural does not mean it's moral",
+      "socratic-response": "Do you think we should base our morality on what is natural?"
     },
     {
       "id": 5,
       "name": "#culture-tho",
       "description": "It's part of my culture",
-      "response": "Just because something is part of your culture does not mean it's moral"
+      "response": "Just because something is part of your culture does not mean it's moral",
+      "socratic-response": "Do you think culture justifies the suffering you inflict on animals?"
     },
     {
       "id": 6,
       "name": "#health-tho",
       "description": "I need meat to be healthy",
-      "response": "You can get all the nutrients you need from plants. A study done by the Harvard School of Public Health found that a vegan diet is associated with a 34% lower risk of death from heart disease, a 50% lower risk of death from cancer, and a 76% lower risk of death from diabetes"
+      "response": "A study done by the American Dietetic Association concluded that the most healthy diet is a plant based diet. You can get all the nutrients you need from plants. A study done by the Harvard School of Public Health found that a plant based diet is associated with a 34% lower risk of death from heart disease, a 50% lower risk of death from cancer, and a 76% lower risk of death from diabetes",
+      "socratic-response": "Do you think we can live healthy lives without eating animal flesh, milk, eggs, honey, and other animal products?"
+    },
+    {
+      "id": 7,
+      "name": "#halal-tho",
+      "description": "With halal meat, the animal doesn't feel pain",
+      "response": "Halal meat is not painless. A study done in New Zealand in 2009, which used an EEG (brainwave) method, shows that slaughter without stunning causes pain (Gibson et al, 2009 ab). Also, the animal still suffers from fear and stress their whole lives before they are slaughtered. They are fully conscious when they are killed.",
+      "socratic-response": "Let's say that halal meat is painless. Do you think that just because their death is 'painless' it justifies making them suffer from fear and stress their whole lives before they are slaughtered?"
+    },
+    {
+      "id": 8,
+      "name": "#kosher-tho",
+      "description": "With kosher meat, the animal doesn't feel pain",
+      "response": "Kosher meat is not painless. The animal is still killed in the same way",
+      "socratic-response": "Let's say that kosher meat is painless. Do you think that just because their death is 'painless' it justifies making them suffer from fear and stress their whole lives before they are slaughtered?"
+    },
+    {
+      "id": 9,
+      "name": "#why-dont-you-liberate-animals-tho",
+      "description": "Veganism is about reducing animal suffering as much as it's practically possible. Liberating animals and getting arrested is not a practical thing to do. It's not about being perfect. The only way to cause zero suffering is by killing yourself.",
+      "socratic-response": "Is that a practical thing to do?"
+    },
+    {
+      "id": 10,
+      "name": "#convenience-tho",
+      "description": "It's hard to be vegan",
+      "response": "It's harder for the animals to live a life full of suffering than it is for you to be vegan",
+      "socratic-response": "Who is it harder for? You or the animals in factory farms?"
+    },
+    {
+      "id": 11,
+      "name": "#history-tho",
+      "description": "Humans have been eating animals for thousands of years",
+      "response": "It used to be necessary for humans to survive. Now, it's not necessary anymore. We have other options. Just because humans have been doing something for a long time does not justify doing it in today's society",
+      "socratic-response": "It used to be necessary. Now, it's not. Just because humans have been doing this for thousands of years, do you think that justifies, doing it in today's society?"
     }
   ]
 }
