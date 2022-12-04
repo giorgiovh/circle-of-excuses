@@ -1,7 +1,12 @@
 import './Excuse.css';
 
-export default function Excuse() {
+export default function Excuse( { name, description, response, socraticResponse } ) {
   return (
-    <div>Excuse</div>
+    <div className='excuse'>
+      {name === "#nature-tho" ? <img alt="Paul Bashir and Frank Tufano" src={require('./../images/nature-tho.png')} /> : <h2>{name}</h2>}
+      <p>{description}</p>
+      <p><strong>Response:</strong> {response}</p>
+      <p><strong>Socratic Response:</strong> {socraticResponse}</p>
+    </div>
   )
 }

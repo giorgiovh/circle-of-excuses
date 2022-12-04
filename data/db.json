@@ -5,118 +5,119 @@
       "name": "#protein-tho",
       "description": "We need to eat meat to get protein",
       "response": "You can get your protein from plants",
-      "socratic-response": "Do you think we can get protein from other sources besides animals? What are some of those sources? Since we have the option to get protein from a source that does not cause suffering and another source that causes sufferin, which option do you think we should choose?"
+      "socraticResponse": "Do you think we can get protein from other sources besides animals? What are some of those sources? Since we have the option to get protein from a source that does not cause suffering and another source that causes sufferin, which option do you think we should choose?"
     },
     {
       "id": 2,
       "name": "#lions-tho",
       "description": "Lions eat gazelles",
       "response": "Lions eat other animals for survival. We don't do it for survival",
-      "socratic-response": "Do you think lions need to eat other animals to survive? Do you think we need to eat animals to survive? Do you think we can live healthy lives without eating animals? If we don't need to eat animals to live a healthy life, why do you think we eat them? Do you think pleasure, tradition, and convenience are justify the suffering we inflict on animals? Why do you only copy that one behavior lions do? Lionesses sometimes eat their cubs when they're ill, lions kill other's cubs when they take over territory, and smell each other's ass."
+      "socraticResponse": "Do you think lions need to eat other animals to survive? Do you think we need to eat animals to survive? Do you think we can live healthy lives without eating animals? If we don't need to eat animals to live a healthy life, why do you think we eat them? Do you think pleasure, tradition, and convenience are justify the suffering we inflict on animals? Why do you only copy that one behavior lions do? Lionesses sometimes eat their cubs when they're ill, lions kill other's cubs when they take over territory, and smell each other's ass."
     },
     {
       "id": 3,
       "name": "#taste-tho",
       "description": "I like the taste of meat too much",
       "response": "Taste is not worth the suffering of animals",
-      "socratic-response": "Do you think taste justifies the suffering you inflict on animals?"
+      "socraticResponse": "Do you think taste justifies the suffering you inflict on animals?"
     },
     {
       "id": 4,
       "name": "#nature-tho",
       "description": "It's natural to eat meat",
       "response": "Appeal to nature. Just because something is natural does not mean it's moral",
-      "socratic-response": "Do you think we should base our morality on nature?"
+      "socraticResponse": "Do you think we should base our morality on nature?"
     },
     {
       "id": 5,
       "name": "#culture-tho",
       "description": "It's part of my culture",
       "response": "Just because something is part of your culture does not mean it's moral",
-      "socratic-response": "Do you think culture justifies the suffering you inflict on animals?"
+      "socraticResponse": "Do you think culture justifies the suffering you inflict on animals?"
     },
     {
       "id": 6,
       "name": "#health-tho",
       "description": "I need meat to be healthy",
       "response": "A study done by the American Dietetic Association concluded that the most healthy diet is a plant based diet. You can get all the nutrients you need from plants. A study done by the Harvard School of Public Health found that a plant based diet is associated with a 34% lower risk of death from heart disease, a 50% lower risk of death from cancer, and a 76% lower risk of death from diabetes",
-      "socratic-response": "Do you think we can live healthy lives without eating animal flesh, milk, eggs, honey, and other animal products?"
+      "socraticResponse": "Do you think we can live healthy lives without eating animal flesh, milk, eggs, honey, and other animal products?"
     },
     {
       "id": 7,
       "name": "#halal-tho",
       "description": "With halal meat, the animal doesn't feel pain",
       "response": "Halal meat is not painless. A study done in New Zealand in 2009, which used an EEG (brainwave) method, shows that slaughter without stunning causes pain (Gibson et al, 2009 ab). Also, the animal still suffers from fear and stress their whole lives before they are slaughtered. They are fully conscious when they are killed.",
-      "socratic-response": "Let's say that halal meat is painless. Do you think that just because their death is 'painless' it justifies making them suffer from fear and stress their whole lives before they are slaughtered?"
+      "socraticResponse": "Let's say that halal meat is painless. Do you think that just because their death is 'painless' it justifies making them suffer from fear and stress their whole lives before they are slaughtered?"
     },
     {
       "id": 8,
       "name": "#kosher-tho",
       "description": "With kosher meat, the animal doesn't feel pain",
       "response": "Kosher meat is not painless. The animal is still killed in the same way",
-      "socratic-response": "Let's say that kosher meat is painless. Do you think that just because their death is 'painless' it justifies making them suffer from fear and stress their whole lives before they are slaughtered?"
+      "socraticResponse": "Let's say that kosher meat is painless. Do you think that just because their death is 'painless' it justifies making them suffer from fear and stress their whole lives before they are slaughtered?"
     },
     {
       "id": 9,
       "name": "#why-dont-you-liberate-animals-tho",
+      "response": "Liberating animals is not a practical thing to do. Eating a plant based diet is.",
       "description": "Veganism is about reducing animal suffering as much as it's practically possible. Liberating animals and getting arrested is not a practical thing to do. It's not about being perfect. The only way to cause zero suffering is by killing yourself.",
-      "socratic-response": "Is that a practical thing to do?"
+      "socraticResponse": "Is that a practical thing to do?"
     },
     {
       "id": 10,
       "name": "#convenience-tho",
       "description": "It's hard to be vegan",
       "response": "It's harder for the animals to live a life full of suffering than it is for you to be vegan",
-      "socratic-response": "Who is it harder for? You or the animals in factory farms and slaughterhouses?"
+      "socraticResponse": "Who is it harder for? You or the animals in factory farms and slaughterhouses?"
     },
     {
       "id": 11,
       "name": "#history-tho",
       "description": "Humans have been eating animals for thousands of years",
       "response": "It used to be necessary for humans to survive. Now, it's not necessary anymore. We have other options. Just because humans have been doing something for a long time does not justify doing it in today's society",
-      "socratic-response": "It used to be necessary. Now, it's not. Just because humans have been doing this for thousands of years, do you think that justifies, doing it in today's society?"
+      "socraticResponse": "It used to be necessary. Now, it's not. Just because humans have been doing this for thousands of years, do you think that justifies, doing it in today's society?"
     },
     {
       "id": 12,
       "name": "#humans-are-animals-tho",
       "description": "Humans are animals too",
       "response": "We are not animals. We are human beings. We have the ability to think and reason. We have the ability to make moral decisions. We have the ability to choose not to cause suffering. We have the ability to choose not to eat animals",
-      "socratic-response": "Do you think we are animals? Do you think we have the ability to think and reason? Do you think we have the ability to make moral decisions? Do you think we have the ability to choose not to cause suffering? Do you think we have the ability to choose not to eat animals?"
+      "socraticResponse": "Do you think we are animals? Do you think we have the ability to think and reason? Do you think we have the ability to make moral decisions? Do you think we have the ability to choose not to cause suffering? Do you think we have the ability to choose not to eat animals?"
     },
     {
       "id": 13,
       "name": "#hipocrisy-tho",
       "description": "You're a hypocrite. You bought an iPhone which was made by child labor",
       "response": "Appeal to hipocrisy. Just because I did something wrong doesn't mean my point is invalid",
-      "socratic-response": "Just because I did something wrong, does that mean my point is invalid?"
+      "socraticResponse": "Just because I did something wrong, does that mean my point is invalid?"
     },
     {
       "id": 14,
       "name": "#your-activism-is-not-effective-tho",
       "description": "Your activism is not effective. You can't turn everyone vegan",
       "response": "Appeal to futilism. Just because there is not perfect solution that will solve all the problems, doesn't mean we shouldn't try to solve the problems",
-      "socratic-response": "What about you though? I'm not talking to everyone else righ now. I'm talking to you. Are you against animal abuse? Just because there is no perfect solution, do you think that means we should do nothing to solve the problem?"
+      "socraticResponse": "What about you though? I'm not talking to everyone else righ now. I'm talking to you. Are you against animal abuse? Just because there is no perfect solution, do you think that means we should do nothing to solve the problem?"
     },
     {
       "id": 15,
       "name": "#tradition-tho",
       "description": "This is an important tradition for me",
       "response": "Just because something is part of your tradition does not mean it's moral",
-      "socratic-response": "Do you think that tradition justifies the suffering you inflict on animals?"
+      "socraticResponse": "Do you think that tradition justifies the suffering you inflict on animals?"
     },
     {
       "id": 16,
       "name": "#culture-tho",
       "description": "This is an important part of my culture",
       "response": "Just because something is part of your culture does not mean it's moral",
-      "socratic-response": "Do you think that culture justifies the suffering you inflict on animals?"
+      "socraticResponse": "Do you think that culture justifies the suffering you inflict on animals?"
     },
     {
       "id": 17,
       "name": "#religion-tho",
       "description": "God put animals here for us to eat",
       "response": "Appeal to religion. Just because something is in the bible does not mean it's moral",
-      "socratic-response": "If god put animals here for us to eat, why do you think he gave them the ability to feel pain and suffer?"
+      "socraticResponse": "If god put animals here for us to eat, why do you think he gave them the ability to feel pain and suffer?"
     }
   ]
 }
