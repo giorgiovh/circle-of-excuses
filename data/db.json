@@ -12,7 +12,7 @@
       "name": "#lions-tho",
       "description": "Lions eat gazelles",
       "response": "Lions eat other animals for survival. We don't do it for survival",
-      "socratic-response": "Do you think lions need to eat other animals to survive? Do you think we need to eat animals to survive? Do you think we can live healthy lives without eating animals? If we don't need to eat animals to live a healthy life, why do you think we eat them? Do you think pleasure, tradition, and convenience are justify the suffering we inflict on animals?"
+      "socratic-response": "Do you think lions need to eat other animals to survive? Do you think we need to eat animals to survive? Do you think we can live healthy lives without eating animals? If we don't need to eat animals to live a healthy life, why do you think we eat them? Do you think pleasure, tradition, and convenience are justify the suffering we inflict on animals? Why do you only copy that one behavior lions do? Lionesses sometimes eat their cubs when they're ill, lions kill other's cubs when they take over territory, and smell each other's ass."
     },
     {
       "id": 3,
@@ -25,8 +25,8 @@
       "id": 4,
       "name": "#nature-tho",
       "description": "It's natural to eat meat",
-      "response": "Just because something is natural does not mean it's moral",
-      "socratic-response": "Do you think we should base our morality on what is natural?"
+      "response": "Appeal to nature. Just because something is natural does not mean it's moral",
+      "socratic-response": "Do you think we should base our morality on nature?"
     },
     {
       "id": 5,
@@ -67,7 +67,7 @@
       "name": "#convenience-tho",
       "description": "It's hard to be vegan",
       "response": "It's harder for the animals to live a life full of suffering than it is for you to be vegan",
-      "socratic-response": "Who is it harder for? You or the animals in factory farms?"
+      "socratic-response": "Who is it harder for? You or the animals in factory farms and slaughterhouses?"
     },
     {
       "id": 11,
@@ -75,6 +75,48 @@
       "description": "Humans have been eating animals for thousands of years",
       "response": "It used to be necessary for humans to survive. Now, it's not necessary anymore. We have other options. Just because humans have been doing something for a long time does not justify doing it in today's society",
       "socratic-response": "It used to be necessary. Now, it's not. Just because humans have been doing this for thousands of years, do you think that justifies, doing it in today's society?"
+    },
+    {
+      "id": 12,
+      "name": "#humans-are-animals-tho",
+      "description": "Humans are animals too",
+      "response": "We are not animals. We are human beings. We have the ability to think and reason. We have the ability to make moral decisions. We have the ability to choose not to cause suffering. We have the ability to choose not to eat animals",
+      "socratic-response": "Do you think we are animals? Do you think we have the ability to think and reason? Do you think we have the ability to make moral decisions? Do you think we have the ability to choose not to cause suffering? Do you think we have the ability to choose not to eat animals?"
+    },
+    {
+      "id": 13,
+      "name": "#hipocrisy-tho",
+      "description": "You're a hypocrite. You bought an iPhone which was made by child labor",
+      "response": "Appeal to hipocrisy. Just because I did something wrong doesn't mean my point is invalid",
+      "socratic-response": "Just because I did something wrong, does that mean my point is invalid?"
+    },
+    {
+      "id": 14,
+      "name": "#your-activism-is-not-effective-tho",
+      "description": "Your activism is not effective. You can't turn everyone vegan",
+      "response": "Appeal to futilism. Just because there is not perfect solution that will solve all the problems, doesn't mean we shouldn't try to solve the problems",
+      "socratic-response": "What about you though? I'm not talking to everyone else righ now. I'm talking to you. Are you against animal abuse? Just because there is no perfect solution, do you think that means we should do nothing to solve the problem?"
+    },
+    {
+      "id": 15,
+      "name": "#tradition-tho",
+      "description": "This is an important tradition for me",
+      "response": "Just because something is part of your tradition does not mean it's moral",
+      "socratic-response": "Do you think that tradition justifies the suffering you inflict on animals?"
+    },
+    {
+      "id": 16,
+      "name": "#culture-tho",
+      "description": "This is an important part of my culture",
+      "response": "Just because something is part of your culture does not mean it's moral",
+      "socratic-response": "Do you think that culture justifies the suffering you inflict on animals?"
+    },
+    {
+      "id": 17,
+      "name": "#religion-tho",
+      "description": "God put animals here for us to eat",
+      "response": "Appeal to religion. Just because something is in the bible does not mean it's moral",
+      "socratic-response": "If god put animals here for us to eat, why do you think he gave them the ability to feel pain and suffer?"
     }
   ]
 }
