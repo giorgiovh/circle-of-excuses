@@ -17,7 +17,7 @@ export default function Home() {
       <button onClick={() => generateRandomExcuseId()}>Spin the wheel!</button>
       {isPending && <div>Loading...</div>}
       {error && <div>{error}</div>}
-      {excuses && excuse && <Excuse name={excuse.name} description={excuse.description} response={excuse.response} socraticResponse={excuse.socraticResponse}/>}
+      {excuse && <Excuse name={excuse.name} description={excuse.description} response={excuse.response} socraticResponse={excuse.socraticResponse}/>}
     </div>
   )
 }
