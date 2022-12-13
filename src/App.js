@@ -8,14 +8,8 @@ import SearchAppBar from './components/SearchAppBar';
 function App() {
   return (
     <div className="App">
-      <SearchAppBar />
       <BrowserRouter>
-        <nav>
-          <NavLink exact to="/">Home</NavLink>
-          <NavLink to="/about">About</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
-        </nav>
-
+        <SearchAppBar />
         <div className="pages">
           <Routes>
             <Route exact path='/' element={<Home/>} />

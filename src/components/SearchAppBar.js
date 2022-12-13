@@ -1,4 +1,5 @@
-import * as React from 'react';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -54,11 +55,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+  
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -85,9 +89,10 @@ export default function SearchAppBar() {
             MenuListProps={{
               'aria-labelledby': 'basic-button',
             }}
-          >
-            <MenuItem onClick={handleClose}>About</MenuItem>
-            <MenuItem onClick={handleClose}>Contact</MenuItem>
+          > 
+            <MenuItem component={NavLink} exact to="/" onClick={handleClose}>Home</MenuItem>
+            <MenuItem component={NavLink} to="/about" onClick={handleClose}>About</MenuItem>
+            <MenuItem component={NavLink} to="/contact" onClick={handleClose}>Contact</MenuItem>
           </Menu>
           <Typography
             variant="h6"
