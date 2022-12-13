@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import useFetch from '../hooks/useFetch'
+import { useState } from 'react';
+import useFetch from '../hooks/useFetch';
+import Button from '@mui/material/Button';
 
 import Excuse from '../components/Excuse'
 
@@ -14,7 +15,7 @@ export default function Home() {
 
   return (
     <div className='home'>
-      <button onClick={() => generateRandomExcuseId()}>Spin the wheel!</button>
+      <Button variant="contained" onClick={() => generateRandomExcuseId()}>Spin the wheel!</Button>
       {isPending && <div>Loading...</div>}
       {error && <div>{error}</div>}
       {excuse && <Excuse name={excuse.name} description={excuse.description} response={excuse.response} socraticResponse={excuse.socraticResponse}/>}

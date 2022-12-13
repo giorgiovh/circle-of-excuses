@@ -81,8 +81,8 @@
       "id": 12,
       "name": "#humans-are-animals-tho",
       "description": "Humans are animals too",
-      "response": "We are not animals. We are human beings. We have the ability to think and reason. We have the ability to make moral decisions. We have the ability to choose not to cause suffering. We have the ability to choose not to eat animals",
-      "socraticResponse": "Do you think we are animals? Do you think we have the ability to think and reason? Do you think we have the ability to make moral decisions? Do you think we have the ability to choose not to cause suffering? Do you think we have the ability to choose not to eat animals?"
+      "response": "We have the ability to think and reason. We have the ability to make moral decisions. We have the ability to choose not to cause suffering. We have the ability to choose not to eat animals",
+      "socraticResponse": "Do you think we have the ability to think and reason? Do you think we have the ability to make moral decisions? Do you think we have the ability to choose not to cause suffering? Do you think we have the ability to choose not to eat animals?"
     },
     {
       "id": 13,
@@ -118,6 +118,76 @@
       "description": "God put animals here for us to eat",
       "response": "Appeal to religion. Just because something is in the bible does not mean it's moral",
       "socraticResponse": "If god put animals here for us to eat, why do you think he gave them the ability to feel pain and suffer?"
+    },
+    {
+      "id": 18,
+      "name": "#other-issues-tho",
+      "description": "There are other issues that are more important",
+      "response": "You can care about other issues and still not eat animals",
+      "socraticResponse": "Do you think that just because there are other issues, it justifies the suffering you inflict on animals? Do you think we can care about other issues and still not eat animals?"
+    },
+    {
+      "id": 19,
+      "name": "#canine-teeth-tho",
+      "description": "Humans have canine teeth. We are meant to eat meat",
+      "response": "Humans have: 1) small dull canine teeth, 2) short, soft fingernails, and 3) long and skinny intestines. All true carnivores have: 1) large canine teeth that are capable of tearing flesh without the help of knives and forks, 2) sharp claws, and 3) short and thick intestines meant to digest meat. We can eat meat, but we don't need to",
+      "socraticResponse": "Do you think that we can live a healthy life without eating meat? If meat is not necessary for us to live healthy, do you think that justifies the suffering you inflict on animals?"
+    },
+    {
+      "id": 20,
+      "name": "#priveleged-issue-tho",
+      "description": "This is a priveleged issue to care about",
+      "response": "You can care about other issues and still not eat animals",
+      "socraticResponse": "Do you think that just because there are other issues, it justifies the suffering you inflict on animals? Do you think we can care about other issues and still not eat animals?"
+    },
+    {
+      "id": 21,
+      "name": "#expensive-tho",
+      "description": "Veganism is expensive",
+      "response": "If you eat whole foods, it's cheaper to be vegan than it is to eat meat. The cheapest foods at the supermarket are vegan, like potatoes, rice, beans, and bananas. If you eat junk food, it's more expensive to be vegan than it is to eat meat. The only reason why processed vegan foods are more expensive than processed meat foods is because the meat industry is heavily subsidized by the government. If the government stopped subsidizing the meat industry, processed vegan foods would be cheaper than processed meat foods",
+      "socraticResponse": "Do you think that plant-based whole-foods such as rice, beans, and potatoes is more expensive than meat? Do you think that that the reason why processed vegan foods are more expensive than processed meat foods is because the meat industry is heavily subsidized by the government? Do you think that if the government stopped subsidizing the meat industry, processed vegan foods would be cheaper than processed meat foods?"
+    },
+    {
+      "id": 22,
+      "name": "#humane-killing-tho",
+      "description": "We kill animals humanely",
+      "response": "Humane means showing compassion or benevolence. You can't humanely kill someone who does not want to die. Also, they not only suffer when they are killed. They suffer their entire lives",
+      "socraticResponse": "What's your definition of the word 'humane'? Do you think that it's possible to humanely kill someone who does not want to die?"
+    },
+    {
+      "id": 23,
+      "name": "#jobs-tho",
+      "description": "If people stop eating animals, many people will lose their jobs.",
+      "response": "People can get other jobs. Animals only have one life.",
+      "socraticResponse": "Do you think people can get other jobs? Do you agree that animals only have one life? Do you think that because this is people's jobs it justifies causing immense suffering to animals?"
+    },
+    {
+      "id": 24,
+      "name": "#it's-hard-tho",
+      "description": "It's hard to change my diet",
+      "response": "It's harder for the animals to live a life full of suffering than it is for you to be vegan",
+      "socraticResponse": "Who is it harder for? You or the animals in factory farms and slaughterhouses?"
+    },
+    {
+      "id": 25,
+      "name": "#I'm-vegetarian-tho",
+      "description": "I'm vegetarian so I'm on your side",
+      "response": "I don't promote vegetarianism because vegetarians still cause immense suffering to animals",
+      "socraticResponse": "Do you think vegetarians cause animals to suffer by paying for animal products like dairy, eggs, and honey?"
+    },
+    {
+      "id": 26,
+      "name": "#what-will-happen-to-the-animals-tho",
+      "description": "If everyone went vegan, what would happen to the animals in factory farms?",
+      "response": "The world won't go vegan overnight so this is a non-issue. The transition to veganism will be a gradual process so less and less animals will be bred for food each year. The remaining animals will be given to sanctuaries where they will live out the rest of their lives in peace",
+      "socraticResponse": "Do you think that the world will go vegan overnight?"
+    },
+    {
+      "id": 27,
+      "name": "#been-eating-less-meat-tho",
+      "description": "I've been eating less meat",
+      "response": "That's not good enough. You're still hurting animals. With any other injustice, you would not say 'I've been doing less of it'. You would say 'I've stopped doing it",
+      "socraticResponse": "Would you say the same thing about any other injustice? Would you do less of it or would you just stop doing it?"
     }
   ]
 }
