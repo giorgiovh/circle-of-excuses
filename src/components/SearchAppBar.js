@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -56,6 +56,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function SearchAppBar() {
   const [anchorEl, setAnchorEl] = useState(null);
+  const[term, setTerm] = useState('');
 
   const open = Boolean(anchorEl);
 
@@ -68,6 +69,14 @@ export default function SearchAppBar() {
   };
 
   const pathname = useLocation().pathname;
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    navigate(`/search?q=${term}`)
+  }
   
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -92,7 +101,7 @@ export default function SearchAppBar() {
               'aria-labelledby': 'basic-button',
             }}
           > 
-            <MenuItem component={NavLink} exact to="/" onClick={handleClose} selected={pathname === "/"}>Home</MenuItem>
+            <MenuItem component={NavLink} to="/" onClick={handleClose} selected={pathname === "/"}>Home</MenuItem>
             <MenuItem component={NavLink} to="/about" onClick={handleClose} selected={pathname === "/about"}>About</MenuItem>
             <MenuItem component={NavLink} to="/contact" onClick={handleClose} selected={pathname === "/contact"}>Contact</MenuItem>
           </Menu>
@@ -108,10 +117,15 @@ export default function SearchAppBar() {
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
+            <div className="searchbar">
+              <form onSubmit={handleSubmit}>
+                <StyledInputBase
+                  placeholder="Search…"
+                  inputProps={{ 'aria-label': 'search' }}
+                  onChange={(e) => setTerm(e.target.value)}
+                />
+              </form>
+            </div>
           </Search>
         </Toolbar>
       </AppBar>
