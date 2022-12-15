@@ -11,7 +11,7 @@ export default function ExcuseList({ excuses }) {
   return (
     <div className='excuse-list'>
       {excuses.map(excuse => (
-        <Excuse excuse={excuse}/>
+        <Excuse name={excuse.name} description={excuse.description} response={excuse.response} socraticResponse={excuse.socraticResponse}/>
       ))}
     </div>
   )

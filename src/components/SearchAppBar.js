@@ -73,9 +73,8 @@ export default function SearchAppBar() {
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-
-    navigate(`/search?q=${term}`)
+    e.preventDefault();
+    navigate(`/search?q=${term}`);
   }
   
   return (
