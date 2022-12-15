@@ -75,6 +75,7 @@ export default function SearchAppBar() {
   const handleSubmit = (e) => {
     e.preventDefault();
     navigate(`/search?q=${term}`);
+    setTerm('');
   }
   
   return (
@@ -122,6 +123,7 @@ export default function SearchAppBar() {
                   placeholder="Search…"
                   inputProps={{ 'aria-label': 'search' }}
                   onChange={(e) => setTerm(e.target.value)}
+                  value={term}
                 />
               </form>
             </div>
