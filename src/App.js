@@ -1,9 +1,10 @@
 import './App.css';
 import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
-import Contact from './pages/Contact';
+import Home from './pages/home/Home';
+import About from './pages/about/About';
+import Contact from './pages/contact/Contact';
 import SearchAppBar from './components/SearchAppBar';
+import Search from './pages/search/Search';
 
 function App() {
   return (

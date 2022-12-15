@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -66,6 +66,8 @@ export default function SearchAppBar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const pathname = useLocation().pathname;
   
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -90,9 +92,9 @@ export default function SearchAppBar() {
               'aria-labelledby': 'basic-button',
             }}
           > 
-            <MenuItem component={NavLink} exact to="/" onClick={handleClose}>Home</MenuItem>
-            <MenuItem component={NavLink} to="/about" onClick={handleClose}>About</MenuItem>
-            <MenuItem component={NavLink} to="/contact" onClick={handleClose}>Contact</MenuItem>
+            <MenuItem component={NavLink} exact to="/" onClick={handleClose} selected={pathname === "/"}>Home</MenuItem>
+            <MenuItem component={NavLink} to="/about" onClick={handleClose} selected={pathname === "/about"}>About</MenuItem>
+            <MenuItem component={NavLink} to="/contact" onClick={handleClose} selected={pathname === "/contact"}>Contact</MenuItem>
           </Menu>
           <Typography
             variant="h6"

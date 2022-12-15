@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import useFetch from '../hooks/useFetch';
+import useFetch from '../../hooks/useFetch';
 import Button from '@mui/material/Button';
 
-import Excuse from '../components/Excuse'
+import Excuse from '../../components/Excuse'
 
 export default function Home() {
   const { data: excuses, isPending, error } = useFetch('http://localhost:3000/excuses')
