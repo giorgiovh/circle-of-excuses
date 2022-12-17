@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useFetch } from '../../hooks/useFetch';
 import { useNavigate } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 import './Create.css'
 
@@ -30,44 +32,47 @@ export default function Create() {
       <h2 className="page-title">Add a New Excuse</h2>
 
       <form onSubmit={handleSubmit}>
-        <label>
-          <span>Excuse:</span>
-          <input 
-            type="text"
-            onChange={(e) => {setName(e.target.value)}}
-            value={name}
-            required
-          />
-        </label>
+        <TextField 
+          id="outlined-basic" 
+          label="Excuse" 
+          variant="outlined"
+          type="text"
+          onChange={(e) => {setName(e.target.value)}}
+          value={name}
+          required 
+        />
 
-        <label>
-          <span>Description:</span>
-          <textarea 
-            onChange={(e) => setDescription(e.target.value)}
-            value={description}
-            required
-          />
-        </label>
+        <TextField 
+          id="outlined-basic" 
+          label="Description" 
+          variant="outlined"
+          type="text"
+          onChange={(e) => setDescription(e.target.value)}
+          value={description}
+          required 
+        />
 
-        <label>
-          <span>Response:</span>
-          <textarea 
-            onChange={(e) => setResponse(e.target.value)}
-            value={response}
-            required
-          />
-        </label>
+        <TextField 
+          id="outlined-basic" 
+          label="Response" 
+          variant="outlined"
+          type="text"
+          onChange={(e) => setResponse(e.target.value)}
+          value={response}
+          required 
+        />
 
-        <label>
-          <span>Socratic Response:</span>
-          <textarea 
-            onChange={(e) => setSocraticResponse(e.target.value)}
-            value={socraticResponse}
-            required
-          />
-        </label>
+        <TextField 
+          id="outlined-basic" 
+          label="Socratic Response" 
+          variant="outlined"
+          type="text"
+          onChange={(e) => setSocraticResponse(e.target.value)}
+          value={socraticResponse}
+          required 
+        />
 
-        <button className="btn">submit</button>
+        <Button variant="contained" type='submit'>Submit</Button>
       </form>
     </div>
   )
