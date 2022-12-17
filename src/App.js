@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Home from './pages/home/Home';
 import About from './pages/about/About';
+import Create from './pages/create/Create';
 import Contact from './pages/contact/Contact';
 import Search from './pages/search/Search';
 
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route exact path='/' element={<Home/>} />
             <Route path='/about' element={<div><About/></div>} />
+            <Route path='/create' element={<div><Create/></div>} /> 
             <Route path='/contact' element={<div><Contact/></div>} />
             <Route path='/search' element={<div><Search /></div>} />
           </Routes>

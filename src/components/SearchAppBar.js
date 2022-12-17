@@ -103,6 +103,7 @@ export default function SearchAppBar() {
           > 
             <MenuItem component={NavLink} to="/" onClick={handleClose} selected={pathname === "/"}>Home</MenuItem>
             <MenuItem component={NavLink} to="/about" onClick={handleClose} selected={pathname === "/about"}>About</MenuItem>
+            <MenuItem component={NavLink} to="/create" onClick={handleClose} selected={pathname === "/create"}>Create</MenuItem>
             <MenuItem component={NavLink} to="/contact" onClick={handleClose} selected={pathname === "/contact"}>Contact</MenuItem>
           </Menu>
           <Typography

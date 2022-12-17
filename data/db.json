@@ -188,6 +188,13 @@
       "description": "I've been eating less meat",
       "response": "That's not good enough. You're still hurting animals. With any other injustice, you would not say 'I've been doing less of it'. You would say 'I've stopped doing it",
       "socraticResponse": "Would you say the same thing about any other injustice? Would you do less of it or would you just stop doing it?"
+    },
+    {
+      "name": "#jesus-tho",
+      "description": "Jesus ate meat tho",
+      "response": "Jesus didn't have the options we have",
+      "socraticResponse": "Do you agree Jesus didn't have the options we have?",
+      "id": 28
     }
   ]
 }

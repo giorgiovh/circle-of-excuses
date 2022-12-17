@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import useFetch from '../../hooks/useFetch';
+import { useFetch } from '../../hooks/useFetch';
 import Button from '@mui/material/Button';
 
 import Excuse from '../../components/Excuse'

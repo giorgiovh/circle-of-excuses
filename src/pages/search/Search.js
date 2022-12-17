@@ -1,4 +1,4 @@
-import useFetch from '../../hooks/useFetch';
+import { useFetch } from '../../hooks/useFetch';
 import { useLocation } from 'react-router-dom';
 
 import ExcuseList from '../../components/ExcuseList'
