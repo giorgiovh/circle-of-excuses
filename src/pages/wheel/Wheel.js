@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useFetch } from '../../hooks/useFetch';
 import Button from '@mui/material/Button';
 
-import Excuse from '../../components/Excuse'
+import Excuse from '../excuse/Excuse'
 
 import './Wheel.css';
 

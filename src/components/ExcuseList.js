@@ -1,4 +1,4 @@
-import Excuse from './Excuse'
+import ImgMediaCard from './ImgMediaCard';
 
 export default function ExcuseList({ excuses }) {
 
@@ -9,7 +9,7 @@ export default function ExcuseList({ excuses }) {
   return (
     <div>
       {excuses.map(excuse => (
-        <Excuse key={excuse.id} id={excuse.id} name={excuse.name} description={excuse.description} response={excuse.response} socraticResponse={excuse.socraticResponse}/>
+        <ImgMediaCard id={excuse.id} name={excuse.name} description={excuse.description} response={excuse.response} socraticResponse={excuse.socraticResponse} />
       ))}
     </div>
   )

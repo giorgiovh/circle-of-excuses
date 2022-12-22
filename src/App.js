@@ -6,6 +6,7 @@ import About from './pages/about/About';
 import Create from './pages/create/Create';
 import Wheel from './pages/wheel/Wheel';
 import Search from './pages/search/Search';
+import Excuse from './pages/excuse/Excuse';
 
 import SearchAppBar from './components/SearchAppBar';
 
@@ -21,7 +22,7 @@ function App() {
             <Route path='/wheel' element={<div><Wheel/></div>} />
             <Route path='/about' element={<div><About/></div>} />
             <Route path='/search' element={<div><Search /></div>} />
-            <Route path='/excuses/:id' element={<div><About /></div>} />
+            <Route path='/excuses/:id' element={<div><Excuse /></div>} />
           </Routes>
         </div>
       </BrowserRouter>
