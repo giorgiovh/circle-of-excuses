@@ -1,7 +1,5 @@
 import Excuse from './Excuse'
 
-import './ExcuseList.css'
-
 export default function ExcuseList({ excuses }) {
 
   if (excuses.length === 0) {
@@ -9,9 +7,9 @@ export default function ExcuseList({ excuses }) {
   }
 
   return (
-    <div className='excuse-list'>
+    <div>
       {excuses.map(excuse => (
-        <Excuse name={excuse.name} description={excuse.description} response={excuse.response} socraticResponse={excuse.socraticResponse}/>
+        <Excuse key={excuse.id} name={excuse.name} description={excuse.description} response={excuse.response} socraticResponse={excuse.socraticResponse}/>
       ))}
     </div>
   )
