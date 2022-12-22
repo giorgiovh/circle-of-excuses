@@ -1,6 +1,7 @@
 import { useFetch } from '../../hooks/useFetch';
 
 import Excuse from '../../components/Excuse'
+import ExcuseList from '../../components/ExcuseList';
 
 import './Home.css';
 
@@ -11,11 +12,7 @@ export default function Home() {
     <div className='home'>
       {isPending && <div>Loading...</div>}
       {error && <div>{error}</div>}
-      {excuses && excuses.map(
-        excuse => (
-          <Excuse name={excuse.name} description={excuse.description} response={excuse.response} socraticResponse={excuse.socraticResponse}/>
-        )
-      )}
+      {excuses && <ExcuseList excuses={excuses} />}
     </div>
   )
 }
