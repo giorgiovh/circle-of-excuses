@@ -1,13 +1,9 @@
 import ImgMediaCard from './ImgMediaCard';
 
-export default function Excuse( { name, description, response, socraticResponse } ) {
+export default function Excuse( { id, name, description, response, socraticResponse } ) {
   return (
     <div className='excuse'>
-      <ImgMediaCard name={name} description={description} response={response} socraticResponse={socraticResponse} />
-      {/* {name === "#nature-tho" ? <img alt="Paul Bashir and Frank Tufano" src={require('./../images/nature-tho.png')} /> : <h2>{name}</h2>}
-      <p><strong>Excuse: </strong>{description}</p>
-      <p><strong>Response: </strong>{response}</p>
-      <p><strong>Socratic Response: </strong>{socraticResponse}</p> */}
+      <ImgMediaCard id={id} name={name} description={description} response={response} socraticResponse={socraticResponse} />
     </div>
   )
 }

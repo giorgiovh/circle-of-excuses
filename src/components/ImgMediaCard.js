@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -8,11 +10,13 @@ import Typography from '@mui/material/Typography';
 
 import { addHashtagAndTho, addUnderscores } from '../utils/utils';
 
-export default function ImgMediaCard({ name, description, response, socraticResponse }) {
+export default function ImgMediaCard({ id, name, description, response, socraticResponse }) {
   const [imageSource, setImageSource] = useState('');
 
   const nameWithHashtagAndTho = addHashtagAndTho(name);
   const nameWithUnderscores = addUnderscores(name);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     // the below try-catch block is to handle the case where the image file does not exist
@@ -39,12 +43,12 @@ export default function ImgMediaCard({ name, description, response, socraticResp
           {nameWithHashtagAndTho}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {description}
+          {description.length > 100 ? description.substring(0, 100) + '...' : description}
         </Typography>
       </CardContent>
       <CardActions>
         <Button size="small">Share</Button>
-        <Button size="small">See Excuse</Button>
+        <Button size="small" onClick={() => navigate(`/excuses/${id}`)}>See Excuse</Button>
       </CardActions>
     </Card>
   );
