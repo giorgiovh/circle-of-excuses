@@ -1,6 +1,4 @@
 import { useFetch } from '../../hooks/useFetch';
-
-import Excuse from '../excuse/Excuse'
 import ExcuseList from '../../components/ExcuseList';
 
 import './Home.css';

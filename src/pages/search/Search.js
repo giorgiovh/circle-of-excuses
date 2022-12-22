@@ -14,9 +14,9 @@ export default function Search() {
 
   return (
     <div>
-      <h2 className="page-title">Excuses including "{query}"</h2>
-      {error && <p className='error'>{error}</p>}
-      {isPending && <p className='loading'>Loading...</p>}
+      <h2>Excuses including "{query}"</h2>
+      {error && <p>{error}</p>}
+      {isPending && <p>Loading...</p>}
       {data && <ExcuseList excuses={data}/>}
     </div>
   )

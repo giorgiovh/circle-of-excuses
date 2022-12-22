@@ -28,8 +28,8 @@ export default function Create() {
   }, [data])
 
   return (
-    <div className="create">
-      <h2 className="page-title">Add a New Excuse</h2>
+    <div>
+      <h2>Add a New Excuse</h2>
 
       <form onSubmit={handleSubmit}>
         <TextField 

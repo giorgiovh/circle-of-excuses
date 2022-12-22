@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { useFetch } from '../../hooks/useFetch';
 import Button from '@mui/material/Button';
 
-import Excuse from '../excuse/Excuse'
+import ExcuseDetails from '../../components/ExcuseDetails';
 
 import './Wheel.css';
 
-export default function Home() {
+export default function Wheel() {
   const { data: excuses, isPending, error } = useFetch('http://localhost:3000/excuses')
   const [excuse, setExcuse] = useState(null)
 
@@ -16,7 +16,7 @@ export default function Home() {
   }
 
   return (
-    <div className='home'>
+    <div>
       <Button 
         variant="contained" 
         onClick={() => generateRandomExcuseId()}
@@ -24,9 +24,9 @@ export default function Home() {
       >
         Spin the wheel!
       </Button>
-      {isPending && <div>Loading...</div>}
-      {error && <div>{error}</div>}
-      {excuse && <Excuse name={excuse.name} description={excuse.description} response={excuse.response} socraticResponse={excuse.socraticResponse}/>}
+      {error && <p>{error}</p>}
+      {isPending && <p>Loading...</p>}
+      {excuse && <ExcuseDetails name={excuse.name} description={excuse.description} response={excuse.response} socraticResponse={excuse.socraticResponse}/>}
     </div>
   )
 }

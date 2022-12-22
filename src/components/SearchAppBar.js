@@ -120,7 +120,7 @@ export default function SearchAppBar() {
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
-            <div className="searchbar">
+            <div>
               <form onSubmit={handleSubmit}>
                 <StyledInputBase
                   placeholder="Search…"
