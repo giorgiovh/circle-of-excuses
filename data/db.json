@@ -1,6 +1,27 @@
 {
   "excuses": [
     {
+      "id": 1,
+      "name": "protein",
+      "description": "We need to eat meat to get protein",
+      "response": "You can get your protein from plants",
+      "socraticResponse": "Do you think we can get protein from other sources besides animals? What are some of those sources? Since we have the option to get protein from a source that does not cause suffering and another source that causes sufferin, which option do you think we should choose?"
+    },
+    {
+      "id": 2,
+      "name": "lions",
+      "description": "Lions eat gazelles",
+      "response": "Lions eat other animals for survival. We don't do it for survival",
+      "socraticResponse": "Do you think lions need to eat other animals to survive? Do you think we need to eat animals to survive? Do you think we can live healthy lives without eating animals? If we don't need to eat animals to live a healthy life, why do you think we eat them? Do you think pleasure, tradition, and convenience are justify the suffering we inflict on animals? Why do you only copy that one behavior lions do? Lionesses sometimes eat their cubs when they're ill and lions kill other's cubs when they take over territory."
+    },
+    {
+      "id": 3,
+      "name": "taste",
+      "description": "I like the taste of meat too much",
+      "response": "Taste is not worth the suffering of animals",
+      "socraticResponse": "Do you think taste justifies the suffering you inflict on animals?"
+    },
+    {
       "id": 4,
       "name": "nature",
       "description": "It's natural to eat meat",
@@ -8,11 +29,200 @@
       "socraticResponse": "Do you think we should base our morality on nature?"
     },
     {
+      "id": 5,
+      "name": "culture",
+      "description": "It's part of my culture",
+      "response": "Just because something is part of your culture does not mean it's moral",
+      "socraticResponse": "Do you think culture justifies the suffering you inflict on animals?"
+    },
+    {
+      "id": 6,
+      "name": "health",
+      "description": "I need meat to be healthy",
+      "response": "A study done by the American Dietetic Association concluded that the most healthy diet is a plant based diet. You can get all the nutrients you need from plants. A study done by the Harvard School of Public Health found that a plant based diet is associated with a 34% lower risk of death from heart disease, a 50% lower risk of death from cancer, and a 76% lower risk of death from diabetes",
+      "socraticResponse": "Do you think we can live healthy lives without eating animal flesh, milk, eggs, honey, and other animal products?"
+    },
+    {
+      "id": 7,
+      "name": "halal",
+      "description": "With halal meat, the animal doesn't feel pain",
+      "response": "Halal meat is not painless. A study done in New Zealand in 2009, which used an EEG (brainwave) method, shows that slaughter without stunning causes pain (Gibson et al, 2009 ab). Also, the animal still suffers from fear and stress their whole lives before they are slaughtered. They are fully conscious when they are killed.",
+      "socraticResponse": "Let's say that halal meat is painless. Do you think that just because their death is 'painless' it justifies making them suffer from fear and stress their whole lives before they are slaughtered?"
+    },
+    {
+      "id": 8,
+      "name": "kosher",
+      "description": "With kosher meat, the animal doesn't feel pain",
+      "response": "Kosher meat is not painless. The animal is still killed in the same way",
+      "socraticResponse": "Let's say that kosher meat is painless. Do you think that just because their death is 'painless' it justifies making them suffer from fear and stress their whole lives before they are slaughtered?"
+    },
+    {
+      "id": 9,
+      "name": "why dont you liberate animals",
+      "response": "Liberating animals is not a practical thing to do. Eating a plant based diet is.",
+      "description": "Veganism is about reducing animal suffering as much as it's practically possible. Liberating animals and getting arrested is not a practical thing to do. It's not about being perfect. The only way to cause zero suffering is by killing yourself.",
+      "socraticResponse": "Is that a practical thing to do?"
+    },
+    {
+      "id": 10,
+      "name": "convenience",
+      "description": "It's hard to be vegan",
+      "response": "It's harder for the animals to live a life full of suffering than it is for you to be vegan",
+      "socraticResponse": "Who is it harder for? You or the animals in factory farms and slaughterhouses?"
+    },
+    {
+      "id": 11,
+      "name": "history",
+      "description": "Humans have been eating animals for thousands of years",
+      "response": "It used to be necessary for humans to survive. Now, it's not necessary anymore. We have other options. Just because humans have been doing something for a long time does not justify doing it in today's society",
+      "socraticResponse": "It used to be necessary. Now, it's not. Just because humans have been doing this for thousands of years, do you think that justifies, doing it in today's society?"
+    },
+    {
+      "id": 12,
+      "name": "humans are animals",
+      "description": "Humans are animals too",
+      "response": "We have the ability to think and reason. We have the ability to make moral decisions. We have the ability to choose not to cause suffering. We have the ability to choose not to eat animals",
+      "socraticResponse": "Do you think we have the ability to think and reason? Do you think we have the ability to make moral decisions? Do you think we have the ability to choose not to cause suffering? Do you think we have the ability to choose not to eat animals?"
+    },
+    {
+      "id": 13,
+      "name": "hipocrisy",
+      "description": "You're a hypocrite. You bought an iPhone which was made by child labor",
+      "response": "Appeal to hipocrisy. Just because I did something wrong doesn't mean my point is invalid",
+      "socraticResponse": "Just because I did something wrong, does that mean my point is invalid?"
+    },
+    {
+      "id": 14,
+      "name": "your activism is not effective",
+      "description": "Your activism is not effective. You can't turn everyone vegan",
+      "response": "Appeal to futilism. Just because there is not perfect solution that will solve all the problems, doesn't mean we shouldn't try to solve the problems",
+      "socraticResponse": "What about you though? I'm not talking to everyone else righ now. I'm talking to you. Are you against animal abuse? Just because there is no perfect solution, do you think that means we should do nothing to solve the problem?"
+    },
+    {
+      "id": 15,
+      "name": "tradition",
+      "description": "This is an important tradition for me",
+      "response": "Just because something is part of your tradition does not mean it's moral",
+      "socraticResponse": "Do you think that tradition justifies the suffering you inflict on animals?"
+    },
+    {
+      "id": 16,
+      "name": "culture",
+      "description": "This is an important part of my culture",
+      "response": "Just because something is part of your culture does not mean it's moral",
+      "socraticResponse": "Do you think that culture justifies the suffering you inflict on animals?"
+    },
+    {
+      "id": 17,
+      "name": "religion",
+      "description": "God put animals here for us to eat",
+      "response": "Appeal to religion. Just because something is in the bible does not mean it's moral",
+      "socraticResponse": "If god put animals here for us to eat, why do you think he gave them the ability to feel pain and suffer?"
+    },
+    {
+      "id": 18,
+      "name": "other issues",
+      "description": "There are other issues that are more important",
+      "response": "You can care about other issues and still not eat animals",
+      "socraticResponse": "Do you think that just because there are other issues, it justifies the suffering you inflict on animals? Do you think we can care about other issues and still not eat animals?"
+    },
+    {
+      "id": 19,
+      "name": "canine teeth",
+      "description": "Humans have canine teeth. We are meant to eat meat",
+      "response": "Humans have: 1) small dull canine teeth, 2) short, soft fingernails, and 3) long and skinny intestines. All true carnivores have: 1) large canine teeth that are capable of tearing flesh without the help of knives and forks, 2) sharp claws, and 3) short and thick intestines meant to digest meat. We can eat meat, but we don't need to",
+      "socraticResponse": "Do you think that we can live a healthy life without eating meat? If meat is not necessary for us to live healthy, do you think that justifies the suffering you inflict on animals?"
+    },
+    {
+      "id": 20,
+      "name": "priveleged issue",
+      "description": "This is a priveleged issue to care about",
+      "response": "You can care about other issues and still not eat animals",
+      "socraticResponse": "Do you think that just because there are other issues, it justifies the suffering you inflict on animals? Do you think we can care about other issues and still not eat animals?"
+    },
+    {
+      "id": 21,
+      "name": "expensive",
+      "description": "Veganism is expensive",
+      "response": "If you eat whole foods, it's cheaper to be vegan than it is to eat meat. The cheapest foods at the supermarket are vegan, like potatoes, rice, beans, and bananas. If you eat junk food, it's more expensive to be vegan than it is to eat meat. The only reason why processed vegan foods are more expensive than processed meat foods is because the meat industry is heavily subsidized by the government. If the government stopped subsidizing the meat industry, processed vegan foods would be cheaper than processed meat foods",
+      "socraticResponse": "Do you think that plant based whole foods such as rice, beans, and potatoes is more expensive than meat? Do you think that that the reason why processed vegan foods are more expensive than processed meat foods is because the meat industry is heavily subsidized by the government? Do you think that if the government stopped subsidizing the meat industry, processed vegan foods would be cheaper than processed meat foods?"
+    },
+    {
+      "id": 22,
+      "name": "humane killing",
+      "description": "We kill animals humanely",
+      "response": "Humane means showing compassion or benevolence. You can't humanely kill someone who does not want to die. Also, they not only suffer when they are killed. They suffer their entire lives",
+      "socraticResponse": "What's your definition of the word 'humane'? Do you think that it's possible to humanely kill someone who does not want to die?"
+    },
+    {
+      "id": 23,
+      "name": "jobs",
+      "description": "If people stop eating animals, many people will lose their jobs.",
+      "response": "People can get other jobs. Animals only have one life.",
+      "socraticResponse": "Do you think people can get other jobs? Do you agree that animals only have one life? Do you think that because this is people's jobs it justifies causing immense suffering to animals?"
+    },
+    {
+      "id": 24,
+      "name": "it's hard",
+      "description": "It's hard to change my diet",
+      "response": "It's harder for the animals to live a life full of suffering than it is for you to be vegan",
+      "socraticResponse": "Who is it harder for? You or the animals in factory farms and slaughterhouses?"
+    },
+    {
+      "id": 25,
+      "name": "I'm vegetarian",
+      "description": "I'm vegetarian so I'm on your side",
+      "response": "I don't promote vegetarianism because vegetarians still cause immense suffering to animals",
+      "socraticResponse": "Do you think vegetarians cause animals to suffer by paying for animal products like dairy, eggs, and honey?"
+    },
+    {
+      "id": 26,
+      "name": "what will happen to the animals",
+      "description": "If everyone went vegan, what would happen to the animals in factory farms?",
+      "response": "The world won't go vegan overnight so this is a non issue. The transition to veganism will be a gradual process so less and less animals will be bred for food each year. The remaining animals will be given to sanctuaries where they will live out the rest of their lives in peace",
+      "socraticResponse": "Do you think that the world will go vegan overnight?"
+    },
+    {
+      "id": 27,
+      "name": "been eating less meat",
+      "description": "I've been eating less meat",
+      "response": "That's not good enough. You're still hurting animals. With any other injustice, you would not say 'I've been doing less of it'. You would say 'I've stopped doing it",
+      "socraticResponse": "Would you say the same thing about any other injustice? Would you do less of it or would you just stop doing it?"
+    },
+    {
       "name": "jesus ate meat",
-      "description": "Jesus ate meat so it's ok for us to eat meat",
-      "response": "When Jesus was alive, eating animals was necessary to survive. It's no longer necessary to eat animals because we have other options readily available. Therefore, it's not moral to eat animals.",
-      "socraticResponse": "Do you think that it was necessary for people back then to eat animals to survive? Do you think it's necessary for people today to eat animals to survive?",
-      "id": 5
+      "description": "Jesus ate meat tho",
+      "response": "Jesus didn't have the options we have",
+      "socraticResponse": "Do you agree Jesus didn't have the options we have?",
+      "id": 28
+    },
+    {
+      "name": "local farms",
+      "description": "local farms",
+      "response": "local farms",
+      "socraticResponse": "local farms\n",
+      "id": 39
+    },
+    {
+      "name": "morality is subjective",
+      "description": "Morality is subjective and I believe it's ok to eat animals.",
+      "response": "Morality is not subjective. There are things that are universally considered moral or immoral such as murder. All of us have an understanding of what is considered right and wrong. Conditioning might affect what you consider to be moral but all you need to do to decide if something is moral or not is to ask yourself if it's necessary and if it's not, look at it from the victim's point of view and decide if you would want it done to you.",
+      "socraticResponse": "If morality is subjective, then would it be justifiable for someone to murder you?",
+      "id": 40
+    },
+    {
+      "name": "food chain",
+      "description": "We're at the top of the food chain so we're supposed to eat animals",
+      "response": "Food chain is something that is a natural process that is meant to balance the population of each species. We're not breeding animals for that. We're breeding them for people's pleasure. Also, animals in the food chain eat other animals for survival. We don't.",
+      "socraticResponse": "What do you think the purpose of a food chain is?",
+      "id": 41
+    },
+    {
+      "name": "I can't give up cheese",
+      "description": "I can't give up cheese. I like it too much.",
+      "response": "Yes you can",
+      "socraticResponse": "Do you think taste justifies making animals suffer?",
+      "id": 42
     }
   ]
 }
