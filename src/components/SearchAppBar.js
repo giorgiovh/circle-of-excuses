@@ -102,15 +102,16 @@ export default function SearchAppBar() {
             }}
           > 
             <MenuItem component={NavLink} to="/" onClick={handleClose} selected={pathname === "/"}>Home</MenuItem>
-            <MenuItem component={NavLink} to="/about" onClick={handleClose} selected={pathname === "/about"}>About</MenuItem>
             <MenuItem component={NavLink} to="/create" onClick={handleClose} selected={pathname === "/create"}>Create</MenuItem>
-            <MenuItem component={NavLink} to="/contact" onClick={handleClose} selected={pathname === "/contact"}>Contact</MenuItem>
+            <MenuItem component={NavLink} to="/wheel" onClick={handleClose} selected={pathname === "/wheel"}>Wheel</MenuItem>
+            <MenuItem component={NavLink} to="/about" onClick={handleClose} selected={pathname === "/about"}>About</MenuItem>
           </Menu>
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            style={{ cursor: 'pointer' }}
             onClick={() => navigate('/')}
           >
             Circle of Excuses

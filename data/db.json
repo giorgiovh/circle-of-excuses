@@ -12,7 +12,7 @@
       "name": "#lions-tho",
       "description": "Lions eat gazelles",
       "response": "Lions eat other animals for survival. We don't do it for survival",
-      "socraticResponse": "Do you think lions need to eat other animals to survive? Do you think we need to eat animals to survive? Do you think we can live healthy lives without eating animals? If we don't need to eat animals to live a healthy life, why do you think we eat them? Do you think pleasure, tradition, and convenience are justify the suffering we inflict on animals? Why do you only copy that one behavior lions do? Lionesses sometimes eat their cubs when they're ill, lions kill other's cubs when they take over territory, and smell each other's ass."
+      "socraticResponse": "Do you think lions need to eat other animals to survive? Do you think we need to eat animals to survive? Do you think we can live healthy lives without eating animals? If we don't need to eat animals to live a healthy life, why do you think we eat them? Do you think pleasure, tradition, and convenience are justify the suffering we inflict on animals? Why do you only copy that one behavior lions do? Lionesses sometimes eat their cubs when they're ill and lions kill other's cubs when they take over territory."
     },
     {
       "id": 3,
@@ -197,46 +197,25 @@
       "id": 28
     },
     {
-      "name": "test",
-      "description": "test",
-      "response": "test",
-      "socraticResponse": "test",
-      "id": 29
-    },
-    {
       "name": "#local-farms-tho",
       "description": "local farms",
       "response": "local farms",
       "socraticResponse": "local farms\n",
-      "id": 30
+      "id": 39
     },
     {
-      "name": "test submit",
-      "description": "test submit",
-      "response": "test submit",
-      "socraticResponse": "test submit",
-      "id": 31
+      "name": "#morality-is-subjective-tho",
+      "description": "Morality is subjective and I believe it's ok to eat animals.",
+      "response": "Morality is not subjective. There are things that are universally considered moral or immoral such as murder. All of us have an understanding of what is considered right and wrong. Conditioning might affect what you consider to be moral but all you need to do to decide if something is moral or not is to ask yourself if it's necessary and if it's not, look at it from the victim's point of view and decide if you would want it done to you.",
+      "socraticResponse": "If morality is subjective, then would it be justifiable for someone to murder you?",
+      "id": 40
     },
     {
-      "name": "test mui text field",
-      "description": "test mui text field",
-      "response": "test mui text field",
-      "socraticResponse": "test mui text field",
-      "id": 32
-    },
-    {
-      "name": "test mui text field 2",
-      "description": "test mui text field 2",
-      "response": "test mui text field 2",
-      "socraticResponse": "test mui text field 2",
-      "id": 33
-    },
-    {
-      "name": "test all mui inputs",
-      "description": "test all mui inputs",
-      "response": "test all mui inputs",
-      "socraticResponse": "test all mui inputs",
-      "id": 34
+      "name": "#food-chain-tho",
+      "description": "We're at the top of the food chain so we're supposed to eat animals",
+      "response": "Food chain is something that is a natural process that is meant to balance the population of each species. We're not breeding animals for that. We're breeding them for people's pleasure. Also, animals in the food chain eat other animals for survival. We don't.",
+      "socraticResponse": "What do you think the purpose of a food chain is?",
+      "id": 41
     }
   ]
 }

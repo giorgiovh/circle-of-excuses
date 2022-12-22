@@ -39,7 +39,8 @@ export default function Create() {
           type="text"
           onChange={(e) => {setName(e.target.value)}}
           value={name}
-          required 
+          required
+          margin="normal" 
         />
 
         <TextField 
@@ -49,7 +50,11 @@ export default function Create() {
           type="text"
           onChange={(e) => setDescription(e.target.value)}
           value={description}
-          required 
+          required
+          fullWidth
+          multiline 
+          maxRows={4}
+          margin="normal"
         />
 
         <TextField 
@@ -59,7 +64,11 @@ export default function Create() {
           type="text"
           onChange={(e) => setResponse(e.target.value)}
           value={response}
-          required 
+          required
+          fullWidth
+          multiline
+          maxRows={4}
+          margin="normal"
         />
 
         <TextField 
@@ -69,10 +78,20 @@ export default function Create() {
           type="text"
           onChange={(e) => setSocraticResponse(e.target.value)}
           value={socraticResponse}
-          required 
+          required
+          fullWidth
+          multiline 
+          maxRows={4}
+          margin="normal"
         />
 
-        <Button variant="contained" type='submit'>Submit</Button>
+        <Button 
+          variant="contained" 
+          type='submit'
+          style={{ margin: '10px 0' }}
+        >
+          Submit
+        </Button>
       </form>
     </div>
   )
