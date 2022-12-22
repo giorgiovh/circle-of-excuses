@@ -44,7 +44,7 @@ export default function ImgMediaCard({ name, description, response, socraticResp
       </CardContent>
       <CardActions>
         <Button size="small">Share</Button>
-        <Button size="small">See Response</Button>
+        <Button size="small">See Excuse</Button>
       </CardActions>
     </Card>
   );

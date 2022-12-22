@@ -223,6 +223,13 @@
       "response": "Yes you can",
       "socraticResponse": "Do you think taste justifies making animals suffer?",
       "id": 42
+    },
+    {
+      "name": "I know it's wrong",
+      "description": "I already know it's wrong to eat animal",
+      "response": "Just because you know it's wrong doesn't give you the right to do it",
+      "socraticResponse": "How does it feel to know that you don't have compassion for others?",
+      "id": 43
     }
   ]
 }
