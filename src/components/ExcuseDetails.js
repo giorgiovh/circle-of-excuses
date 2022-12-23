@@ -4,9 +4,9 @@ export default function ExcuseDetails({ name, description, response, socraticRes
   return (
     <div>
       <h2>{addHashtagAndTho(name)}</h2>
-      <p>{description}</p>
-      <p>{response}</p>
-      <p>{socraticResponse}</p>
+      <p><strong>Excuse: </strong>{description}</p>
+      <p><strong>Response: </strong>{response}</p>
+      <p><strong>Socratic Response: </strong>{socraticResponse}</p>
     </div>
   )
 }
