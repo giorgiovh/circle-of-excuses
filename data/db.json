@@ -230,6 +230,20 @@
       "response": "Just because you know it's wrong doesn't give you the right to do it",
       "socraticResponse": "How does it feel to know that you don't have compassion for others?",
       "id": 43
+    },
+    {
+      "name": "test excuse",
+      "description": "test",
+      "response": "test",
+      "socraticResponse": "test?",
+      "id": 44
+    },
+    {
+      "name": "test excuse 2",
+      "description": "test",
+      "response": "test",
+      "socraticResponse": "test?",
+      "id": 45
     }
   ]
 }
