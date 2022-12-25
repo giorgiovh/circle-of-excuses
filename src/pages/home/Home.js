@@ -29,7 +29,7 @@ export default function Home() {
       setIsPending(false)
     })
 
-    // This "unsub" clean-up function allows us to stop listening to the changes (ie. it unsubscribes from the onSnapshot listener) once the component unmounts. It gets called automatically once the component unmounts
+    // This "unsub" clean-up function allows us to stop listening to the changes (ie. it unsubscribes from the onSnapshot listener) once the component unmounts. Since it's returned inside useEffect, it gets called automatically once the component unmounts
     return () => unsub()
   }, [])
 

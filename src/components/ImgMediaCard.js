@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { projectFirestore } from '../firebase/config'
 
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -7,6 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import { addHashtagAndTho, addUnderscores } from '../utils/utils';
 
@@ -17,6 +19,10 @@ export default function ImgMediaCard({ id, name, description, response, socratic
   const nameWithUnderscores = addUnderscores(name);
 
   const navigate = useNavigate();
+
+  const handleClick = (recipeId) => {
+    projectFirestore.collection('excuses').doc(recipeId).delete()
+  }
 
   useEffect(() => {
     // the below try-catch block is to handle the case where the image file does not exist
@@ -31,10 +37,10 @@ export default function ImgMediaCard({ id, name, description, response, socratic
   }, [nameWithUnderscores]);
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }} style={{ position: 'relative'}}>
       <CardMedia
         component="img"
-        alt="green iguana"
+        alt={`image for ${name}`}
         height="140"
         image={imageSource}
       />
@@ -50,6 +56,10 @@ export default function ImgMediaCard({ id, name, description, response, socratic
         <Button size="small">Share</Button>
         <Button size="small" onClick={() => navigate(`/excuses/${id}`)}>See Excuse</Button>
       </CardActions>
+      <DeleteIcon 
+        onClick={() => handleClick(id)}
+        style={{ position: 'absolute',top: '10px', right: '10px',cursor: 'pointer', filter: 'invert(60%)' }}
+      />
     </Card>
   );
 }
