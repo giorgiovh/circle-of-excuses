@@ -1,8 +1,8 @@
-import { useParams } from 'react-router-dom'
-import { projectFirestore } from '../../firebase/config'
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { projectFirestore } from '../../firebase/config';
 
 import ExcuseDetails from '../../components/ExcuseDetails';
-import { useState, useEffect } from 'react';
 
 export default function Excuse() {
   const [excuse, setExcuse] = useState(null);
@@ -32,10 +32,10 @@ export default function Excuse() {
   }, [id])
 
   return (
-    <div>
+    <>
       {error && <p>{error}</p>}
       {isPending && <p>Loading...</p>}
       {excuse && <ExcuseDetails name={excuse.name} description={excuse.description} response={excuse.response} socraticResponse={excuse.socraticResponse}/>}
-    </div>
+    </>
   )
 }
