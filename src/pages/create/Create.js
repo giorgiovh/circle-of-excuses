@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useFetch } from '../../hooks/useFetch';
 import { useNavigate } from 'react-router-dom';
+import { projectFirestore } from '../../firebase/config';
+
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+
 
 import './Create.css'
 
@@ -12,20 +14,19 @@ export default function Create() {
   const [response, setResponse] = useState('')
   const [socraticResponse, setSocraticResponse] = useState('')
 
-  const { postData, data, error } = useFetch("http://localhost:3000/excuses", "POST")
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    postData({name, description, response, socraticResponse})
-  }
-
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (data) {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const doc = { name, description, response, socraticResponse }
+
+    try {
+      await projectFirestore.collection('excuses').add(doc)
       navigate('/')
+    } catch (err) {
+      console.log(err);
     }
-  }, [data])
+  }
 
   return (
     <div>

@@ -1,12 +1,35 @@
 import { useParams } from 'react-router-dom'
-import { useFetch } from '../../hooks/useFetch'
+import { projectFirestore } from '../../firebase/config'
 
 import ExcuseDetails from '../../components/ExcuseDetails';
+import { useState, useEffect } from 'react';
 
 export default function Excuse() {
+  const [excuse, setExcuse] = useState(null);
+  const [isPending, setIsPending] = useState(false);
+  const [error, setError] = useState(false);
+
   const { id } = useParams()
-  const url = 'http://localhost:3000/excuses/' + id
-  const { error, isPending, data: excuse } = useFetch(url)
+
+  useEffect(() => {
+    setIsPending(true)
+
+    const unsub = projectFirestore.collection('excuses').doc(id).onSnapshot((doc) => {
+      if (doc.exists) {
+        setIsPending(false)
+        setExcuse(doc.data())
+      } else {
+        setIsPending(false)
+        setError('Could not find that excuse')
+      }
+    }, (err) => {
+      setError(err.message)
+      setIsPending(false)
+    })
+
+    return () => unsub()
+
+  }, [id])
 
   return (
     <div>
