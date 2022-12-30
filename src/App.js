@@ -1,4 +1,3 @@
-import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Home from './pages/home/Home';
@@ -7,9 +6,11 @@ import Create from './pages/create/Create';
 import Wheel from './pages/wheel/Wheel';
 import Search from './pages/search/Search';
 import Excuse from './pages/excuse/Excuse';
-
-import SearchAppBar from './components/SearchAppBar';
 import Login from './pages/login/Login';
+import SignUp from './pages/signup/Signup';
+import SearchAppBar from './components/SearchAppBar';
+
+import './App.css';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route exact path='/' element={<Home/>} />
             <Route path='/login'element={<Login/>} />
+            <Route path='/signup'element={<SignUp/>} />
             <Route path='/create' element={<div><Create/></div>} /> 
             <Route path='/wheel' element={<div><Wheel/></div>} />
             <Route path='/about' element={<div><About/></div>} />

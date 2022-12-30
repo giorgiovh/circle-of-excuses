@@ -133,6 +133,7 @@ export default function SearchAppBar() {
             </div>
           </Search>
           <Button color="inherit" onClick={() => navigate("/login")}>Login</Button>
+          <Button color="inherit" onClick={() => navigate("/signup")}>Signup</Button>
         </Toolbar>
       </AppBar>
     </Box>
