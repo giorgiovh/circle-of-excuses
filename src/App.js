@@ -9,6 +9,7 @@ import Search from './pages/search/Search';
 import Excuse from './pages/excuse/Excuse';
 
 import SearchAppBar from './components/SearchAppBar';
+import Login from './pages/login/Login';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <div className="pages">
           <Routes>
             <Route exact path='/' element={<Home/>} />
+            <Route path='/login'element={<Login/>} />
             <Route path='/create' element={<div><Create/></div>} /> 
             <Route path='/wheel' element={<div><Wheel/></div>} />
             <Route path='/about' element={<div><About/></div>} />

@@ -11,6 +11,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import Button from '@mui/material/Button';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -131,6 +132,7 @@ export default function SearchAppBar() {
               </form>
             </div>
           </Search>
+          <Button color="inherit" onClick={() => navigate("/login")}>Login</Button>
         </Toolbar>
       </AppBar>
     </Box>
