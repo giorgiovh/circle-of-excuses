@@ -11,6 +11,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useSignup } from '../../hooks/useSignup';
 
 function Copyright(props) {
   return (
@@ -32,9 +33,11 @@ export default function SignUp() {
   const [password, setPassword] = useState('')
   const [displayName, setDisplayName] = useState('')
 
+  const { error, isPending, signup } = useSignup()
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(email, password, displayName);
+    signup(email, password, displayName);
   };
 
   return (
@@ -65,6 +68,7 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  autoFocus
                   type="email"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
@@ -96,14 +100,27 @@ export default function SignUp() {
                 />
               </Grid>
             </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign Up
-            </Button>
+            {!isPending && 
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign Up
+              </Button>
+            }
+            {isPending && 
+              <Button
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                disabled
+              >
+                loading
+              </Button>
+            }
+            {error && <p>{error}</p>}
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/login" variant="body2">
