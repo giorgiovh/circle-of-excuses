@@ -100,7 +100,7 @@ export default function SignUp() {
                 />
               </Grid>
             </Grid>
-            {!isPending && 
+            {!isPending && (
               <Button
                 type="submit"
                 fullWidth
@@ -109,8 +109,8 @@ export default function SignUp() {
               >
                 Sign Up
               </Button>
-            }
-            {isPending && 
+            )}
+            {isPending && (
               <Button
                 fullWidth
                 variant="contained"
@@ -119,7 +119,7 @@ export default function SignUp() {
               >
                 loading
               </Button>
-            }
+            )}
             {error && <p>{error}</p>}
             <Grid container justifyContent="flex-end">
               <Grid item>

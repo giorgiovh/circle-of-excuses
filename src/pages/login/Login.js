@@ -89,7 +89,7 @@ export default function Login() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            {!isPending && 
+            {!isPending && (
               <Button
                 type="submit"
                 fullWidth
@@ -98,8 +98,8 @@ export default function Login() {
               >
                 Log In
               </Button>
-            }
-            {isPending && 
+            )}
+            {isPending && (
               <Button
                 fullWidth
                 variant="contained"
@@ -108,7 +108,7 @@ export default function Login() {
               >
                 loading
               </Button>
-            }
+            )}
             {error && <p>{error}</p>}
             <Grid container>
               <Grid item xs>

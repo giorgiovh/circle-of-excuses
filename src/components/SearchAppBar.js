@@ -13,6 +13,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import Button from '@mui/material/Button';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -61,6 +62,7 @@ export default function SearchAppBar() {
   const[term, setTerm] = useState('');
 
   const { logout } = useLogout()
+  const { user } = useAuthContext()
 
   const open = Boolean(anchorEl);
 
@@ -135,9 +137,18 @@ export default function SearchAppBar() {
               </form>
             </div>
           </Search>
-          <Button color="inherit" onClick={() => navigate("/login")}>Login</Button>
-          <Button color="inherit" onClick={() => navigate("/signup")}>Signup</Button>
-          <Button color="inherit" onClick={logout}>Logout</Button>
+          {!user && (
+            <>
+              <Button color="inherit" onClick={() => navigate("/login")}>Login</Button>
+              <Button color="inherit" onClick={() => navigate("/signup")}>Signup</Button>
+            </>
+          )}
+          {user && (
+            <>
+              <p>hello, {user.displayName}</p>
+              <Button color="inherit" onClick={logout}>Logout</Button>
+            </>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
