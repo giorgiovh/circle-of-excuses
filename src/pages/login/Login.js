@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLogin } from '../../hooks/useLogin';
 
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -33,9 +34,11 @@ export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(email, password);
+  const { error, isPending, login } = useLogin()
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    login(email, password);
   };
 
   return (
@@ -86,14 +89,27 @@ export default function Login() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Log In
-            </Button>
+            {!isPending && 
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Log In
+              </Button>
+            }
+            {isPending && 
+              <Button
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                disabled
+              >
+                loading
+              </Button>
+            }
+            {error && <p>{error}</p>}
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
