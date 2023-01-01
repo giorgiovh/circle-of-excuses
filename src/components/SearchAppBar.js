@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { useLogout } from '../hooks/useLogout';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -58,6 +59,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function SearchAppBar() {
   const [anchorEl, setAnchorEl] = useState(null);
   const[term, setTerm] = useState('');
+
+  const { logout } = useLogout()
 
   const open = Boolean(anchorEl);
 
@@ -134,6 +137,7 @@ export default function SearchAppBar() {
           </Search>
           <Button color="inherit" onClick={() => navigate("/login")}>Login</Button>
           <Button color="inherit" onClick={() => navigate("/signup")}>Signup</Button>
+          <Button color="inherit" onClick={logout}>Logout</Button>
         </Toolbar>
       </AppBar>
     </Box>
