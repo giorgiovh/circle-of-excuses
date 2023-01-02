@@ -139,14 +139,14 @@ export default function SearchAppBar() {
           </Search>
           {!user && (
             <>
-              <Button color="inherit" onClick={() => navigate("/login")}>Login</Button>
-              <Button color="inherit" onClick={() => navigate("/signup")}>Signup</Button>
+              <Button color="inherit" onClick={() => navigate("/login")}>Log in</Button>
+              <Button color="inherit" onClick={() => navigate("/signup")}>Sign up</Button>
             </>
           )}
           {user && (
             <>
               <p>hello, {user.displayName}</p>
-              <Button color="inherit" onClick={logout}>Logout</Button>
+              <Button color="inherit" onClick={logout}>Log out</Button>
             </>
           )}
         </Toolbar>
