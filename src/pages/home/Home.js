@@ -6,7 +6,10 @@ import './Home.css';
 
 export default function Home({ uid }) {
 
-  const { isPending, error, documents } = useCollection('excuses')
+  const { isPending, error, documents } = useCollection(
+    'excuses',
+    ["uid", "==", uid]
+  )
 
   return (
     <div className='home'>
