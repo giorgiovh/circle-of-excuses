@@ -2,8 +2,9 @@ import { useState, useEffect } from "react"
 import { projectFirestore } from "../firebase/config"
 
 export const useCollection = (collection) => {
-  const [documents, setDocuments] = useState(null)
+  const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null)
+  const [documents, setDocuments] = useState(null)
 
   useEffect(() => {
     let ref = projectFirestore.collection(collection)
@@ -17,15 +18,17 @@ export const useCollection = (collection) => {
       // update state
       setDocuments(results)
       setError(null)
+      setIsPending(false)
     }, (error) => {
-      console.log(error);
-      setError('could not fetch the data')
+      console.log(error.message);
+      setError(error.message)
+      setIsPending(false)
     })
 
-    // unsubscribe on unmount
+    // This "unsubscribe" clean-up function allows us to stop listening to the changes (ie. it unsubscribes from the onSnapshot listener) once the component unmounts. Since it's returned inside useEffect, it gets called automatically once the component unmounts
     return () => unsubscribe()
 
   }, [collection])
 
-  return { documents, error }
+  return { isPending, error, documents }
 }
