@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { projectFirestore } from '../firebase/config'
+
+import { useNavigate } from 'react-router-dom';
+import { useFirestore } from '../hooks/useFirestore';
 
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -13,16 +15,14 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { addHashtagAndTho, addUnderscores } from '../utils/utils';
 
 export default function ImgMediaCard({ id, name, description, response, socraticResponse }) {
-  const [imageSource, setImageSource] = useState('');
+  const [imageSource, setImageSource] = useState('')
+
+  const { deleteDocument } = useFirestore('excuses')
 
   const nameWithHashtagAndTho = addHashtagAndTho(name);
   const nameWithUnderscores = addUnderscores(name);
 
   const navigate = useNavigate();
-
-  const handleClick = (recipeId) => {
-    projectFirestore.collection('excuses').doc(recipeId).delete()
-  }
 
   useEffect(() => {
     // the below try-catch block is to handle the case where the image file does not exist
@@ -57,7 +57,7 @@ export default function ImgMediaCard({ id, name, description, response, socratic
         <Button size="small" onClick={() => navigate(`/excuses/${id}`)}>See Excuse</Button>
       </CardActions>
       <DeleteIcon 
-        onClick={() => handleClick(id)}
+        onClick={() => deleteDocument(id)}
         style={{ position: 'absolute',top: '10px', right: '10px',cursor: 'pointer', filter: 'invert(60%)' }}
       />
     </Card>

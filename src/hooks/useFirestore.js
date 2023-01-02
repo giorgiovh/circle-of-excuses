@@ -46,7 +46,7 @@ export const useFirestore = (collection) => {
 
   // add a document
   const addDocument = async (doc) => {
-    dispatchIfNotCancelled({ type: 'IS_PENDING' })
+    dispatch({ type: 'IS_PENDING' })
 
     try {
       const createdAt = timestamp.fromDate(new Date())
@@ -60,11 +60,13 @@ export const useFirestore = (collection) => {
 
   // delete a document
   const deleteDocument = async (id) => {
+    dispatch({ type: 'IS_PENDING' })
+
     try {
       await ref.doc(id).delete()
       dispatchIfNotCancelled({ type: 'DELETED_DOCUMENT' })
     } catch (err) {
-      dispatchIfNotCancelled({ action: 'ERROR', payload: err.message })
+      dispatchIfNotCancelled({ action: 'ERROR', payload: 'Could not delete' })
     }
   }
 
