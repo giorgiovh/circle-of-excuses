@@ -7,6 +7,8 @@ export const useCollection = (collection) => {
   const [documents, setDocuments] = useState(null)
 
   useEffect(() => {
+    setIsPending(true)
+    
     let ref = projectFirestore.collection(collection)
 
     const unsubscribe = ref.onSnapshot((snapshot) => {
