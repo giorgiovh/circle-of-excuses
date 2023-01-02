@@ -1,4 +1,5 @@
 import { useReducer, useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { projectFirestore, timestamp } from '../firebase/config'
 
 let initialState = {
@@ -28,8 +29,10 @@ const firestoreReducer = (state, action) => {
 }
 
 export const useFirestore = (collection) => {
-  const [response, dispatch] = useReducer(firestoreReducer, initialState)
+  const [firestoreResponse, dispatch] = useReducer(firestoreReducer, initialState)
   const [isCancelled, setIsCancelled] = useState(false)
+
+  const navigate = useNavigate()
 
   // collection ref
   const ref = projectFirestore.collection(collection)
@@ -49,6 +52,7 @@ export const useFirestore = (collection) => {
       const createdAt = timestamp.fromDate(new Date())
       const addedDocument = await ref.add({ ...doc, createdAt })
       dispatchIfNotCancelled({ type: 'ADDED_DOCUMENT', payload: addedDocument})
+      navigate('/')
     } catch (err) {
       dispatchIfNotCancelled({ action: 'ERROR', payload: err.message })
     }
@@ -68,5 +72,5 @@ export const useFirestore = (collection) => {
     return () => setIsCancelled(true)
   }, [])
 
-  return { addDocument, deleteDocument, response }
+  return { addDocument, deleteDocument, firestoreResponse }
 }

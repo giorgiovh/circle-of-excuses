@@ -1,31 +1,28 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { projectFirestore } from '../../firebase/config';
+import { useState } from 'react';
+import { useFirestore } from '../../hooks/useFirestore';
 
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-
 import './Create.css'
 
-export default function Create() {
+export default function Create({ uid }) {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [response, setResponse] = useState('')
   const [socraticResponse, setSocraticResponse] = useState('')
 
-  const navigate = useNavigate();
+  const { addDocument, firestoreResponse } = useFirestore('excuses')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const doc = { name, description, response, socraticResponse }
-
-    try {
-      await projectFirestore.collection('excuses').add(doc)
-      navigate('/')
-    } catch (err) {
-      console.log(err);
-    }
+    addDocument({ 
+      uid,
+      name, 
+      description, 
+      response, 
+      socraticResponse 
+    })
   }
 
   return (
@@ -41,7 +38,7 @@ export default function Create() {
           onChange={(e) => {setName(e.target.value)}}
           value={name}
           required
-          margin="normal" 
+          margin="normal"
         />
 
         <TextField 

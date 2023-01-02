@@ -4,7 +4,7 @@ import ExcuseList from '../../components/ExcuseList';
 
 import './Home.css';
 
-export default function Home() {
+export default function Home({ uid }) {
   const [excuses, setExcuses] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(false);

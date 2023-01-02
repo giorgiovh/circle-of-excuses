@@ -23,10 +23,10 @@ function App() {
           <SearchAppBar />
           <div className="pages">
             <Routes>
-              <Route exact path='/' element={user ? <Home/> : <Navigate to="/login"/>} />
+              <Route exact path='/' element={user ? <Home uid={user.uid}/> : <Navigate to="/login"/>} />
               <Route path='/login' element={user ? <Navigate to="/"/> : <Login/>} />
               <Route path='/signup'element={user ? <Navigate to="/"/> : <SignUp/>} />
-              <Route path='/create' element={user ? <Create/> : <Navigate to="/login"/>} /> 
+              <Route path='/create' element={user ? <Create uid={user.uid}/> : <Navigate to="/login"/>} /> 
               <Route path='/wheel' element={user ? <Wheel/> : <Navigate to="/login"/>} />
               <Route path='/about' element={<About/>} />
               <Route path='/search' element={user ? <Search /> : <Navigate to="/login"/>} />
