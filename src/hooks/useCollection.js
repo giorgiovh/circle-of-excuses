@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import { projectFirestore } from "../firebase/config"
 
-export const useCollection = (collection, _query) => {
+export const useCollection = (collection, _query, _orderBy) => {
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null)
   const [documents, setDocuments] = useState(null)
@@ -11,6 +11,7 @@ export const useCollection = (collection, _query) => {
   // if we don't use a ref --> infinite loop in useEffect
   // _query is an array and is "different" on every function call
   const query = useRef(_query).current
+  const orderBy = useRef(_orderBy).current
 
   useEffect(() => {
     setIsPending(true)
@@ -19,6 +20,10 @@ export const useCollection = (collection, _query) => {
 
     if (query) {
       ref = ref.where(...query)
+    }
+
+    if (orderBy) {
+      ref = ref.orderBy(...orderBy)
     }
 
     const unsubscribe = ref.onSnapshot((snapshot) => {
@@ -33,14 +38,14 @@ export const useCollection = (collection, _query) => {
       setIsPending(false)
     }, (error) => {
       console.log(error.message);
-      setError(error.message)
+      setError('Could not fetch the data')
       setIsPending(false)
     })
 
     // This "unsubscribe" clean-up function allows us to stop listening to the changes (ie. it unsubscribes from the onSnapshot listener) once the component unmounts. Since it's returned inside useEffect, it gets called automatically once the component unmounts
     return () => unsubscribe()
 
-  }, [collection, query])
+  }, [collection, query, orderBy])
 
   return { isPending, error, documents }
 }
