@@ -232,18 +232,18 @@
       "id": 43
     },
     {
-      "name": "test excuse",
-      "description": "test",
-      "response": "test",
-      "socraticResponse": "test?",
-      "id": 44
+      "id": 44,
+      "name": "I don't care about animals",
+      "description": "I don't care about animals",
+      "response": "Consider this: even if you don't particularly care for animals, it doesn't make it right to harm and consume them. Think about it in terms of humans. Would you intentionally cause harm to someone you don't particularly like or dislike? Most likely, the answer is no. The same principle applies to animals. You don't have to have a fondness for them to recognize that causing them harm is both unnecessary and cruel.",
+      "socraticResponse": "If you don't care about a human, would you harm them?"
     },
     {
-      "name": "test excuse 2",
-      "description": "test",
-      "response": "test",
-      "socraticResponse": "test?",
-      "id": 45
+      "id": 45,
+      "name": "Plants feel pain",
+      "description": "Plants feel pain",
+      "response": "If you actually care about plants, the best thing you can do for plants is to be vegans because we cut a lot more plants to feed to animals than if we were to them the plants ourselves",
+      "socraticResponse": "Why do you think plants feel pain? Do you think plants have a central nervous system or pain receptors?"
     }
   ]
 }
