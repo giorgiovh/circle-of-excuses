@@ -7,7 +7,7 @@ export default function Home({ uid }) {
 
   const { isPending, error, documents } = useCollection(
     'excuses',
-    uid ? ["uid", "in", ["presetExcusesCreatorUID", uid]] : ["uid", "==", "presetExcusesCreatorUID"],
+    uid ? ["uid", "in", ["presetExcuseUID", uid]] : ["uid", "==", "presetExcuseUID"],
     ["createdAt", "desc"]
   )
 

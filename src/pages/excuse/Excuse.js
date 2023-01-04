@@ -4,7 +4,7 @@ import { projectFirestore } from '../../firebase/config';
 
 import ExcuseDetails from '../../components/ExcuseDetails';
 
-export default function Excuse() {
+export default function Excuse({ uid }) {
   const [excuse, setExcuse] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(false);
@@ -32,10 +32,16 @@ export default function Excuse() {
   }, [id])
 
   return (
+    // TODO: if the uid of the excuse is equal to the uid of the current user (from the prop) or to "presetExcuseUID", show the ExcuseDetails. Else, show error saying they're not authorized to see the excuse
     <>
       {error && <p>{error}</p>}
       {isPending && <p>Loading...</p>}
-      {excuse && <ExcuseDetails name={excuse.name} description={excuse.description} response={excuse.response} socraticResponse={excuse.socraticResponse}/>}
+
+      {/* Move this auth check logic to the section above? */}
+      {excuse && (excuse.uid === uid || excuse.uid === "presetExcuseUID") && <ExcuseDetails name={excuse.name} description={excuse.description} response={excuse.response} socraticResponse={excuse.socraticResponse}/>}
+
+      {/* Move this auth check logic to the section above? */}
+      {excuse && (excuse.uid !== uid && excuse.uid !== "presetExcuseUID") && <p>Not authorized to view this excuse</p>}
     </>
   )
 }

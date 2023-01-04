@@ -23,6 +23,8 @@ export const useLogout = () => {
       setIsPending(false)
       setError(null)
 
+      // refresh page so that user only sees the pre-set excuses after log out
+      window.location.reload();
     } catch (err) {
       // update local state
       console.log(err.message);
