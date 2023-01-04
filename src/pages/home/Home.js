@@ -1,5 +1,4 @@
 import { useCollection } from '../../hooks/useCollection';
-
 import ExcuseList from '../../components/ExcuseList';
 
 import './Home.css';
@@ -8,7 +7,7 @@ export default function Home({ uid }) {
 
   const { isPending, error, documents } = useCollection(
     'excuses',
-    ["uid", "in", ["null", uid]],
+    uid ? ["uid", "in", ["presetExcusesCreatorUID", uid]] : ["uid", "==", "presetExcusesCreatorUID"],
     ["createdAt", "desc"]
   )
 

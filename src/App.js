@@ -23,7 +23,7 @@ function App() {
           <SearchAppBar />
           <div className="pages">
             <Routes>
-              <Route exact path='/' element={user ? <Home uid={user.uid}/> : <Navigate to="/login"/>} />
+              <Route exact path='/' element={<Home uid={user?.uid}/>} />
               <Route path='/login' element={user ? <Navigate to="/"/> : <Login/>} />
               <Route path='/signup'element={user ? <Navigate to="/"/> : <SignUp/>} />
               <Route path='/create' element={user ? <Create uid={user.uid}/> : <Navigate to="/login"/>} /> 
