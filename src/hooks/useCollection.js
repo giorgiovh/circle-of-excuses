@@ -38,7 +38,7 @@ export const useCollection = (collection, _query, _orderBy) => {
       setIsPending(false)
     }, (error) => {
       console.log(error.message);
-      setError(error.message)
+      setError('Could not fetch the data')
       setIsPending(false)
     })
 

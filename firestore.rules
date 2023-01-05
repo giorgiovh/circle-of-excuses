@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /excuses/{document=**} {
+      // only authenticated users are allowed to make new transaction documents
+      allow create: if request.auth != null;
+
+      // logged in user uid must match the document creator to read, update, and delete
+      allow read, update, delete: if request.auth.uid == resource.data.uid;
+      
+      // all users are allowed to see the pre-set excuses
+      allow read: if resource.data.uid == ""
+    }
+  }
+}
