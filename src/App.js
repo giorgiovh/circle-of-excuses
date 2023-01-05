@@ -19,7 +19,7 @@ function App() {
     <div className="App">
       {authIsReady && (
         <BrowserRouter>
-          <SearchAppBar />
+          <SearchAppBar user={user}/>
           <div className="pages">
             <Routes>
               <Route exact path='/' element={<Home uid={user?.uid}/>} />

@@ -2,7 +2,7 @@ import ImgMediaCard from './ImgMediaCard';
 
 import './ExcuseList.css'
 
-export default function ExcuseList({ excuses }) {
+export default function ExcuseList({ excuses, uid }) {
 
   if (excuses.length === 0) {
     return <div>No excuses to load...</div>
@@ -10,7 +10,7 @@ export default function ExcuseList({ excuses }) {
 
   return (
     <div className='card-grid'>
-      {excuses.map(excuse => (
+      {excuses.filter(excuse => uid || (!uid && excuse.uid === "")).map(excuse => (
         <ImgMediaCard key={excuse.id} id={excuse.id} name={excuse.name} description={excuse.description} response={excuse.response} socraticResponse={excuse.socraticResponse} />
       ))}
     </div>

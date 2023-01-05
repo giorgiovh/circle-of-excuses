@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { projectAuth } from '../firebase/config'
 import { useAuthContext } from './useAuthContext'
 
@@ -7,6 +8,8 @@ export const useLogout = () => {
   const [isPending, setIsPending] = useState(false)
   
   const { dispatch } = useAuthContext()
+
+  const navigate = useNavigate()
 
   const logout = async () => {
     setError(null)
@@ -22,9 +25,8 @@ export const useLogout = () => {
       // update local state
       setIsPending(false)
       setError(null)
-
-      // refresh page so that user only sees the pre-set excuses after log out
-      window.location.reload();
+      
+      navigate('/')
     } catch (err) {
       // update local state
       console.log(err.message);

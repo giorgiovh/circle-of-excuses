@@ -57,12 +57,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchAppBar() {
+export default function SearchAppBar({ user }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const[term, setTerm] = useState('');
 
   const { logout } = useLogout()
-  const { user } = useAuthContext()
 
   const open = Boolean(anchorEl);
 
@@ -108,7 +107,7 @@ export default function SearchAppBar() {
             }}
           > 
             <MenuItem component={NavLink} to="/" onClick={handleClose} selected={pathname === "/"}>Home</MenuItem>
-            <MenuItem component={NavLink} to="/create" onClick={handleClose} selected={pathname === "/create"}>Create</MenuItem>
+            {user && <MenuItem component={NavLink} to="/create" onClick={handleClose} selected={pathname === "/create"}>Create</MenuItem>}
             <MenuItem component={NavLink} to="/about" onClick={handleClose} selected={pathname === "/about"}>About</MenuItem>
           </Menu>
           <Typography
