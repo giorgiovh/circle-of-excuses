@@ -23,14 +23,14 @@ function App() {
           <SearchAppBar user={user}/>
           <div className="pages">
             <Routes>
-              <Route exact path='/' element={<Home uid={user?.uid}/>} />
-              <Route path='/login' element={user ? <Navigate to="/"/> : <Login/>} />
-              <Route path='/signup'element={user ? <Navigate to="/"/> : <SignUp/>} />
-              <Route path='/about' element={<About/>} />
-              <Route path='/create' element={user ? <Create uid={user.uid}/> : <Navigate to="/login"/>} /> 
+              <Route exact path='/' element={<Home uid={user?.uid} />} />
+              <Route path='/login' element={user ? <Navigate to="/" /> : <Login />} />
+              <Route path='/signup'element={user ? <Navigate to="/" /> : <SignUp />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/create' element={user ? <Create uid={user.uid}/> : <Navigate to="/login" />} /> 
               <Route path='/search' element={<Search />} />
-              <Route path='/excuses/:id' element={<ExcuseDetails uid={user?.uid}/>}/>
-              <Route path='/excuses/:id/edit' element={user ? <Edit uid={user.uid}/> : <Navigate to="/login"/>}/>
+              <Route path='/excuses/:id' element={<ExcuseDetails uid={user?.uid} />} />
+              <Route path='/excuses/:id/edit' element={user ? <Edit uid={user.uid} /> : <Navigate to="/login" />} />
             </Routes>
           </div>
         </BrowserRouter>

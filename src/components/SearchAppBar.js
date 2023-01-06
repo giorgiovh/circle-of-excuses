@@ -13,7 +13,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import Button from '@mui/material/Button';
-import { useAuthContext } from '../hooks/useAuthContext';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',

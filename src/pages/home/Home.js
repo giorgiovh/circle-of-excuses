@@ -7,6 +7,7 @@ export default function Home({ uid }) {
 
   const { isPending, error, documents } = useCollection(
     'excuses',
+    // if a user is logged in, query the pre-set excuses and the user-created excuses. Else, just query the pre-set excuses
     uid ? ["uid", "in", ["", uid]] : ["uid", "==", ""],
     ["createdAt", "desc"]
   )
