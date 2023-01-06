@@ -1,15 +1,18 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import Button from '@mui/material/Button';
 import { projectFirestore } from '../../firebase/config';
 
-import ExcuseDetails from '../../components/ExcuseDetails';
+import { addHashtagAndTho, addUnderscores } from '../../utils/utils';
 
-export default function Excuse({ uid }) {
+export default function ExcuseDetails({ uid }) {
   const [excuse, setExcuse] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(false);
 
   const { id } = useParams()
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     setIsPending(true)
@@ -36,7 +39,15 @@ export default function Excuse({ uid }) {
     <>
       {isPending && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      {excuse && <ExcuseDetails name={excuse.name} description={excuse.description} response={excuse.response} socraticResponse={excuse.socraticResponse}/>}
+      {excuse && (
+        <>
+          <h2>{addHashtagAndTho(excuse.name)}</h2>
+          <p><strong>Description: </strong>{excuse.description}</p>
+          <p><strong>Response: </strong>{excuse.response}</p>
+          <p><strong>Socratic Response: </strong>{excuse.socraticResponse}</p>
+          <Button onClick={() => navigate(`/excuses/${id}/edit`)}>Edit</Button>
+        </>
+      )}
     </>
   )
 }

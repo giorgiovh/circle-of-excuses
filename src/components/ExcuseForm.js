@@ -10,12 +10,12 @@ export const ExcuseForm = ({ uid, id, excuse = {} }) => {
   const [response, setResponse] = useState(excuse.response ?? '')
   const [socraticResponse, setSocraticResponse] = useState(excuse.socraticResponse ?? '')
 
-  const { addDocument, updateDocument, firestoreResponse } = useFirestore('excuses')
+  const { addDocument, updateDocument } = useFirestore('excuses')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     const excuseToAddOrEdit = { uid, name, description, response, socraticResponse }
-    // if we don't receive an excuse as a prop, we're adding a new excuse. Else, we're updating an existing excuse
+    // if we don't receive an excuse as a prop (ie. the excuse object is empty), we're adding a new excuse. Else, we're updating an existing excuse
     if (Object.keys(excuse).length === 0) {   
       addDocument(excuseToAddOrEdit)
     } else {
