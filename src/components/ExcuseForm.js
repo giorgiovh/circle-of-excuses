@@ -1,34 +1,30 @@
 import { useState } from 'react';
-import { useFirestore } from '../../hooks/useFirestore';
+import { useFirestore } from '../hooks/useFirestore'
 
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-import './Create.css'
-
-export default function Create({ uid }) {
-  const [name, setName] = useState('')
-  const [description, setDescription] = useState('')
-  const [response, setResponse] = useState('')
-  const [socraticResponse, setSocraticResponse] = useState('')
+export const ExcuseForm = ({ uid, id, excuse = {} }) => {
+  const [name, setName] = useState(excuse.name ?? '')
+  const [description, setDescription] = useState(excuse.description ?? '')
+  const [response, setResponse] = useState(excuse.response ?? '')
+  const [socraticResponse, setSocraticResponse] = useState(excuse.socraticResponse ?? '')
 
   const { addDocument, updateDocument, firestoreResponse } = useFirestore('excuses')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    addDocument({ 
-      uid,
-      name, 
-      description, 
-      response, 
-      socraticResponse 
-    })
+    const excuseToAddOrEdit = { uid, name, description, response, socraticResponse }
+    // if we don't receive an excuse as a prop, we're adding a new excuse. Else, we're updating an existing excuse
+    if (Object.keys(excuse).length === 0) {   
+      addDocument(excuseToAddOrEdit)
+    } else {
+      updateDocument(id, excuseToAddOrEdit)
+    }
   }
 
   return (
     <div>
-      <h2>Create excuse</h2>
-
       <form onSubmit={handleSubmit}>
         <TextField 
           id="outlined-basic" 

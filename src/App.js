@@ -4,6 +4,7 @@ import { useAuthContext } from './hooks/useAuthContext';
 import Home from './pages/home/Home';
 import About from './pages/about/About';
 import Create from './pages/create/Create';
+import Edit from './pages/edit/Edit';
 import Search from './pages/search/Search';
 import Excuse from './pages/excuse/Excuse';
 import Login from './pages/login/Login';
@@ -29,6 +30,7 @@ function App() {
               <Route path='/about' element={<About/>} />
               <Route path='/search' element={user ? <Search /> : <Navigate to="/login"/>} />
               <Route path='/excuses/:id' element={<Excuse uid={user?.uid}/>}/>
+              <Route path='/excuses/:id/edit' element={user ? <Edit uid={user.uid}/> : <Navigate to="/login"/>}/>
             </Routes>
           </div>
         </BrowserRouter>

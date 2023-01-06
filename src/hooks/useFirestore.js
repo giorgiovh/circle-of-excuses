@@ -80,6 +80,7 @@ export const useFirestore = (collection) => {
     try {
       const updatedDocument = await ref.doc(id).update(updates)
       dispatchIfNotCancelled({ type: 'UPDATED_DOCUMENT', payload: updatedDocument })
+      navigate(`/excuses/${id}`)
       return updatedDocument
     } catch (err) {
       dispatchIfNotCancelled({ type: 'ERROR', payload: err.message })

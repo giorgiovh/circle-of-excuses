@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { projectFirestore } from '../../firebase/config';
 
-import ExcuseDetails from '../../components/ExcuseDetails';
+import { ExcuseForm } from '../../components/ExcuseForm'
 
-export default function Excuse({ uid }) {
+export default function Edit({ uid }) {
   const [excuse, setExcuse] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(false);
@@ -34,9 +34,10 @@ export default function Excuse({ uid }) {
 
   return (
     <>
-      {isPending && <p>Loading...</p>}
+      <h2>Edit excuse</h2>
       {error && <p>{error}</p>}
-      {excuse && <ExcuseDetails name={excuse.name} description={excuse.description} response={excuse.response} socraticResponse={excuse.socraticResponse}/>}
+      {isPending && <p>Loading...</p>}
+      {excuse && <ExcuseForm uid={uid} id={id} excuse={excuse}/>}
     </>
   )
 }
