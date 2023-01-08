@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { projectFirestore } from '../firebase/config'
 
 import { useNavigate } from 'react-router-dom';
 import { useFirestore } from '../hooks/useFirestore';
@@ -40,7 +39,7 @@ export default function ImgMediaCard({ id, uid, name, description, response, soc
     <Card sx={{ maxWidth: 345 }} style={{ position: 'relative'}}>
       <CardMedia
         component="img"
-        alt={`image for ${name}`}
+        alt={name}
         height="140"
         image={imageSource}
       />
