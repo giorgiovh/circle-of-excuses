@@ -7,7 +7,7 @@ import { addHashtagAndTho, addUnderscores } from '../../utils/utils';
 
 export default function ExcuseDetails({ uid }) {
   const { id } = useParams()
-  const { isPending, error, document } = useDocument('excuses', id)
+  const { isPending, error, document: excuse } = useDocument('excuses', id)
 
   const navigate = useNavigate()
 
@@ -15,13 +15,14 @@ export default function ExcuseDetails({ uid }) {
     <>
       {isPending && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      {document && (
+      {excuse && (
         <>
-          <h2>{addHashtagAndTho(document.name)}</h2>
-          <p><strong>Description: </strong>{document.description}</p>
-          <p><strong>Response: </strong>{document.response}</p>
-          <p><strong>Socratic Response: </strong>{document.socraticResponse}</p>
-          <Button onClick={() => navigate(`/excuses/${id}/edit`)}>Edit</Button>
+          <h2>{addHashtagAndTho(excuse.name)}</h2>
+          <p><strong>Description: </strong>{excuse.description}</p>
+          <p><strong>Response: </strong>{excuse.response}</p>
+          <p><strong>Socratic Response: </strong>{excuse.socraticResponse}</p>
+          {/* Don't show the edit button for the pre-set excuses */}
+          {excuse.uid !== '' && <Button onClick={() => navigate(`/excuses/${id}/edit`)}>Edit</Button>}
         </>
       )}
     </>

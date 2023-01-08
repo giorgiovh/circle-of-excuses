@@ -14,7 +14,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import { addHashtagAndTho, addUnderscores } from '../utils/utils';
 
-export default function ImgMediaCard({ id, name, description, response, socraticResponse }) {
+export default function ImgMediaCard({ id, uid, name, description, response, socraticResponse }) {
   const [imageSource, setImageSource] = useState('')
 
   const { deleteDocument } = useFirestore('excuses')
@@ -56,10 +56,13 @@ export default function ImgMediaCard({ id, name, description, response, socratic
         <Button size="small">Share</Button>
         <Button size="small" onClick={() => navigate(`/excuses/${id}`)}>See Excuse</Button>
       </CardActions>
-      <DeleteIcon 
+      {/* Don't show the delete button for the pre-set excuses*/}
+      {uid !== '' && (
+        <DeleteIcon 
         onClick={() => deleteDocument(id)}
         style={{ position: 'absolute',top: '10px', right: '10px',cursor: 'pointer', filter: 'invert(60%)' }}
       />
+      )}
     </Card>
   );
 }

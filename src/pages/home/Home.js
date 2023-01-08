@@ -17,7 +17,7 @@ export default function Home({ uid }) {
       {isPending && <div>Loading...</div>}
       {error && <div>{error}</div>}
       {!uid && <p>Sign up or log in to create your own excuses and build your personal collection</p>}
-      {documents && <ExcuseList excuses={documents} uid={uid} />}
+      {documents && <ExcuseList uid={uid} excuses={documents} />}
     </div>
   )
 }
