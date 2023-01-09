@@ -35,6 +35,7 @@ export const ExcuseForm = ({ uid, id, excuse = {} }) => {
           value={name}
           required
           margin="normal"
+          helperText="No need to add the hashtag, hyphens, or 'tho' to your excuse name. We'll add it for ya (⌐■_■)"
         />
 
         <TextField 
