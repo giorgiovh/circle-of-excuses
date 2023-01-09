@@ -9,7 +9,7 @@ import Search from './pages/search/Search';
 import ExcuseDetails from './pages/excuse-details/ExcuseDetails';
 import Login from './pages/login/Login';
 import SignUp from './pages/signup/Signup';
-import SearchAppBar from './components/SearchAppBar';
+import Navbar from './components/Navbar';
 
 import './App.css';
 
@@ -20,7 +20,7 @@ function App() {
     <div className="App">
       {authIsReady && (
         <BrowserRouter>
-          <SearchAppBar user={user}/>
+          <Navbar user={user}/>
           <div className="pages">
             <Routes>
               <Route exact path='/' element={<Home uid={user?.uid} />} />

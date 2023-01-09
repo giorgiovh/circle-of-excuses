@@ -8,10 +8,10 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
 
 const Search = styled('div')(({ theme }) => ({
@@ -21,10 +21,11 @@ const Search = styled('div')(({ theme }) => ({
   '&:hover': {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
+  marginRight: theme.spacing(2),
   marginLeft: 0,
   width: '100%',
   [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
+    marginLeft: theme.spacing(3),
     width: 'auto',
   },
 }));
@@ -47,16 +48,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
     },
   },
 }));
 
-export default function SearchAppBar({ user }) {
+export default function Navbar({ user }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const[term, setTerm] = useState('');
 
@@ -81,7 +79,7 @@ export default function SearchAppBar({ user }) {
     navigate(`/search?q=${term}`);
     setTerm('');
   }
-  
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -113,7 +111,7 @@ export default function SearchAppBar({ user }) {
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            sx={{ display: { xs: 'none', sm: 'block' } }}
             style={{ cursor: 'pointer' }}
             onClick={() => navigate('/')}
           >
@@ -123,29 +121,34 @@ export default function SearchAppBar({ user }) {
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
-            <div>
-              <form onSubmit={handleSubmit}>
-                <StyledInputBase
-                  placeholder="Search…"
-                  inputProps={{ 'aria-label': 'search' }}
-                  onChange={(e) => setTerm(e.target.value)}
-                  value={term}
-                />
-              </form>
-            </div>
+            <form onSubmit={handleSubmit}>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+                onChange={(e) => setTerm(e.target.value)}
+                value={term}
+              />
+            </form>
           </Search>
-          {!user && (
-            <>
-              <Button color="inherit" onClick={() => navigate("/login")}>Log in</Button>
-              <Button color="inherit" onClick={() => navigate("/signup")}>Sign up</Button>
-            </>
-          )}
-          {user && (
-            <>
-              <p>hello, {user.displayName}</p>
-              <Button color="inherit" onClick={logout}>Log out</Button>
-            </>
-          )}
+          <Box sx={{ flexGrow: 1 }} />
+          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            {!user && (
+              <>
+                <Button color="inherit" onClick={() => navigate("/login")}>
+                  Log in
+                </Button>
+                <Button color="inherit" onClick={() => navigate("/signup")}>
+                  Sign up
+                </Button>
+              </>
+            )}
+            {user && (
+              <>
+                <p>hello, {user.displayName}</p>
+                <Button color="inherit" onClick={logout}>Log out</Button>
+              </>
+            )}
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>

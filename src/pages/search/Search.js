@@ -28,7 +28,7 @@ export default function Search({ uid }) {
 
   return (
     <div>
-      <h2>Excuses including "{query}"</h2>
+      <h2>Excuses with the name "{query}"</h2>
       {/* {isPending && <p>Loading...</p>} */}
       {error && <p>{error}</p>}
       {documents && <ExcuseList uid={uid} excuses={documents}/>}
