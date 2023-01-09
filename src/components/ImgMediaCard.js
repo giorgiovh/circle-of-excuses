@@ -10,6 +10,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 
@@ -54,19 +55,29 @@ export default function ImgMediaCard({ id, uid, name, description, response, soc
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
+        {/* <Button size="small">Share</Button> */}
         <Button size="small" onClick={() => navigate(`/excuses/${id}`)}>See Excuse</Button>
       </CardActions>
       {/* Don't show the delete button for the pre-set excuses*/}
       {uid !== '' && (
-        <Tooltip title="Delete Excuse">
-          <IconButton 
-            onClick={() => deleteDocument(id)}
-            style={{ position: 'absolute',top: '10px', right: '10px',cursor: 'pointer', filter: 'invert(70%)' }}
-          >
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
+        <>
+          <Tooltip title="Delete Excuse">
+            <IconButton 
+              onClick={() => deleteDocument(id)}
+              style={{ position: 'absolute',top: '10px', right: '10px',cursor: 'pointer', filter: 'invert(70%)' }}
+            >
+              <DeleteIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Edit Excuse">
+            <IconButton 
+              onClick={() => navigate(`/excuses/${id}/edit`)}
+              style={{ position: 'absolute',top: '10px', right: '45px',cursor: 'pointer', filter: 'invert(70%)' }}
+            >
+              <EditIcon />
+            </IconButton>
+          </Tooltip>
+        </>
       )}
     </Card>
   );

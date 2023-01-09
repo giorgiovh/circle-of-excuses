@@ -34,7 +34,7 @@ export default function Edit({ uid }) {
 
   return (
     <>
-      <h2>Edit excuse</h2>
+      <h2>Edit Excuse</h2>
       {error && <p>{error}</p>}
       {isPending && <p>Loading...</p>}
       {excuse && <ExcuseForm uid={uid} id={id} excuse={excuse}/>}
