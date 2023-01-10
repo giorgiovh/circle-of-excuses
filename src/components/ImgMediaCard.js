@@ -13,13 +13,27 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 import { addHashtagAndTho, addUnderscores } from '../utils/utils';
 
 export default function ImgMediaCard({ id, uid, name, description, response, socraticResponse }) {
   const [imageSource, setImageSource] = useState('')
+  const [isDeleteDialogOpen, setisDeleteDialogOpen] = useState(false);
 
   const { deleteDocument } = useFirestore('excuses')
+
+  const handleClickOpen = () => {
+    setisDeleteDialogOpen(true);
+  };
+
+  const handleClose = () => {
+    setisDeleteDialogOpen(false);
+  };
 
   const nameWithHashtagAndTho = addHashtagAndTho(name);
   const nameWithUnderscores = addUnderscores(name);
@@ -39,7 +53,7 @@ export default function ImgMediaCard({ id, uid, name, description, response, soc
   }, [nameWithUnderscores]);
 
   return (
-    <Card sx={{ maxWidth: 345 }} style={{ position: 'relative'}}>
+    <Card sx={{ maxWidth: 345 }} style={{ position: 'relative' }}>
       <CardMedia
         component="img"
         alt={name}
@@ -62,17 +76,39 @@ export default function ImgMediaCard({ id, uid, name, description, response, soc
       {uid !== '' && (
         <>
           <Tooltip title="Delete Excuse">
-            <IconButton 
-              onClick={() => deleteDocument(id)}
-              style={{ position: 'absolute',top: '10px', right: '10px',cursor: 'pointer', filter: 'invert(70%)' }}
+            <IconButton
+              // onClick={() => deleteDocument(id)}
+              onClick={() => handleClickOpen()}
+              style={{ position: 'absolute', top: '10px', right: '10px', cursor: 'pointer', filter: 'invert(70%)' }}
             >
               <DeleteIcon />
             </IconButton>
           </Tooltip>
+          <Dialog
+            open={isDeleteDialogOpen}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {`Delete the ${nameWithHashtagAndTho} excuse?`}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                This action cannot be undone.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose}>Cancel</Button>
+              <Button onClick={() => deleteDocument(id)} autoFocus>
+                Delete
+              </Button>
+            </DialogActions>
+          </Dialog>
           <Tooltip title="Edit Excuse">
-            <IconButton 
+            <IconButton
               onClick={() => navigate(`/excuses/${id}/edit`)}
-              style={{ position: 'absolute',top: '10px', right: '45px',cursor: 'pointer', filter: 'invert(70%)' }}
+              style={{ position: 'absolute', top: '10px', right: '45px', cursor: 'pointer', filter: 'invert(70%)' }}
             >
               <EditIcon />
             </IconButton>
