@@ -77,7 +77,6 @@ export default function ImgMediaCard({ id, uid, name, description, response, soc
         <>
           <Tooltip title="Delete Excuse">
             <IconButton
-              // onClick={() => deleteDocument(id)}
               onClick={() => handleClickOpen()}
               style={{ position: 'absolute', top: '10px', right: '10px', cursor: 'pointer', filter: 'invert(70%)' }}
             >
