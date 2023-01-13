@@ -28,8 +28,8 @@ export const ExcuseForm = ({ uid, id, excuse = {} }) => {
       <form onSubmit={handleSubmit}>
         <TextField 
           id="outlined-basic" 
-          label="Excuse" 
-          variant="outlined"
+          label="Name" 
+          variant="standard"
           type="text"
           onChange={(e) => {setName(e.target.value)}}
           value={name}
@@ -41,7 +41,7 @@ export const ExcuseForm = ({ uid, id, excuse = {} }) => {
         <TextField 
           id="outlined-basic" 
           label="Description" 
-          variant="outlined"
+          variant="standard"
           type="text"
           onChange={(e) => setDescription(e.target.value)}
           value={description}
@@ -55,7 +55,7 @@ export const ExcuseForm = ({ uid, id, excuse = {} }) => {
         <TextField 
           id="outlined-basic" 
           label="Response" 
-          variant="outlined"
+          variant="standard"
           type="text"
           onChange={(e) => setResponse(e.target.value)}
           value={response}
@@ -69,7 +69,7 @@ export const ExcuseForm = ({ uid, id, excuse = {} }) => {
         <TextField 
           id="outlined-basic" 
           label="Socratic Response" 
-          variant="outlined"
+          variant="standard"
           type="text"
           onChange={(e) => setSocraticResponse(e.target.value)}
           value={socraticResponse}
