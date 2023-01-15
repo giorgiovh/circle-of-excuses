@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { useCollection } from '../../hooks/useCollection';
 import ExcuseList from '../../components/ExcuseList';
 
 import './Home.css';
 
 export default function Home({ uid }) {
+  const [publicExcuses, setPublicExcuses] = useState([]);
+  const [userExcuses, setUserExcuses] = useState([]);
 
   const { isPending, error, documents } = useCollection(
     'excuses',
