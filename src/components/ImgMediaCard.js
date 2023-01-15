@@ -90,16 +90,16 @@ export default function ImgMediaCard({ excuse }) {
             aria-describedby="alert-dialog-description"
           >
             <DialogTitle id="alert-dialog-title">
-              {`Delete the ${nameWithHashtagAndTho} excuse?`}
+              {`Delete the excuse ${nameWithHashtagAndTho}?`}
             </DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
                 This action cannot be undone.
               </DialogContentText>
             </DialogContent>
-            <DialogActions>
+            <DialogActions> 
               <Button onClick={handleClose}>Cancel</Button>
-              <Button onClick={() => deleteDocument(excuse.id)} autoFocus>
+              <Button onClick={() => deleteDocument(excuse.id)} variant="contained" autoFocus>
                 Delete
               </Button>
             </DialogActions>

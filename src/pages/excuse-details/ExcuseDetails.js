@@ -84,7 +84,7 @@ export default function ExcuseDetails({ uid }) {
                 aria-describedby="alert-dialog-description"
               >
                 <DialogTitle id="alert-dialog-title">
-                  {`Delete the ${nameWithHashtagAndTho} excuse?`}
+                  {`Delete the excuse ${nameWithHashtagAndTho}?`}
                 </DialogTitle>
                 <DialogContent>
                   <DialogContentText id="alert-dialog-description">
@@ -93,7 +93,7 @@ export default function ExcuseDetails({ uid }) {
                 </DialogContent>
                 <DialogActions>
                   <Button onClick={handleClose}>Cancel</Button>
-                  <Button onClick={() => { deleteDocument(id); navigate('/') }} autoFocus>
+                  <Button onClick={() => { deleteDocument(id); navigate('/') }} variant="contained" autoFocus>
                     Delete
                   </Button>
                 </DialogActions>
