@@ -21,7 +21,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 import { addHashtagAndTho, addUnderscores } from '../utils/utils';
 
-export default function ImgMediaCard({ id, uid, name, description, response, socraticResponse }) {
+export default function ImgMediaCard({ excuse }) {
   const [imageSource, setImageSource] = useState('')
   const [isDeleteDialogOpen, setisDeleteDialogOpen] = useState(false);
 
@@ -35,8 +35,8 @@ export default function ImgMediaCard({ id, uid, name, description, response, soc
     setisDeleteDialogOpen(false);
   };
 
-  const nameWithHashtagAndTho = addHashtagAndTho(name);
-  const nameWithUnderscores = addUnderscores(name);
+  const nameWithHashtagAndTho = addHashtagAndTho(excuse.name);
+  const nameWithUnderscores = addUnderscores(excuse.name);
 
   const navigate = useNavigate();
 
@@ -56,7 +56,7 @@ export default function ImgMediaCard({ id, uid, name, description, response, soc
     <Card sx={{ maxWidth: 345 }} style={{ position: 'relative' }}>
       <CardMedia
         component="img"
-        alt={name}
+        alt={excuse.name}
         height="140"
         image={imageSource}
       />
@@ -65,15 +65,15 @@ export default function ImgMediaCard({ id, uid, name, description, response, soc
           {nameWithHashtagAndTho}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {description.length > 100 ? description.substring(0, 100) + '...' : description}
+          {excuse.description.length > 100 ? excuse.description.substring(0, 100) + '...' : excuse.description}
         </Typography>
       </CardContent>
       <CardActions>
         {/* <Button size="small">Share</Button> */}
-        <Button size="small" onClick={() => navigate(`/excuses/${id}`)}>See Excuse</Button>
+        <Button size="small" onClick={() => navigate(`/excuses/${excuse.id}`)}>See Excuse</Button>
       </CardActions>
       {/* Don't show the delete button for the pre-set excuses*/}
-      {uid !== '' && (
+      {excuse.uid !== '' && (
         <>
           <Tooltip title="Delete Excuse">
             <IconButton
@@ -99,14 +99,14 @@ export default function ImgMediaCard({ id, uid, name, description, response, soc
             </DialogContent>
             <DialogActions>
               <Button onClick={handleClose}>Cancel</Button>
-              <Button onClick={() => deleteDocument(id)} autoFocus>
+              <Button onClick={() => deleteDocument(excuse.id)} autoFocus>
                 Delete
               </Button>
             </DialogActions>
           </Dialog>
           <Tooltip title="Edit Excuse">
             <IconButton
-              onClick={() => navigate(`/excuses/${id}/edit`)}
+              onClick={() => navigate(`/excuses/${excuse.id}/edit`)}
               style={{ position: 'absolute', top: '10px', right: '45px', cursor: 'pointer', filter: 'invert(70%)' }}
             >
               <EditIcon />
