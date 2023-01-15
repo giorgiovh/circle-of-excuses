@@ -5,16 +5,14 @@ import ExcuseList from '../../components/ExcuseList';
 import './Home.css';
 
 export default function Home({ uid }) {
-  const [publicExcuses, setPublicExcuses] = useState([]);
-  const [userExcuses, setUserExcuses] = useState([]);
 
   const { isPending, error, documents } = useCollection(
     'excuses',
     // if a user is logged in, query the pre-set excuses and the user-created excuses. Else, just query the pre-set excuses
-    uid ? ["uid", "in", ["", uid]] : ["uid", "==", ""],
+    uid ? ["uid", "==", uid] : null,
     ["createdAt", "desc"]
   )
-
+  
   return (
     <div className='home'>
       {isPending && <div>Loading...</div>}
