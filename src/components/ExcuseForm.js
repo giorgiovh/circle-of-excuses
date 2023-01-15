@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import { useFirestore } from '../hooks/useFirestore'
+import { useNavigate } from 'react-router-dom'
 
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
 
 export const ExcuseForm = ({ uid, id, excuse = {} }) => {
   const [name, setName] = useState(excuse.name ?? '')
@@ -11,6 +12,8 @@ export const ExcuseForm = ({ uid, id, excuse = {} }) => {
   const [socraticResponse, setSocraticResponse] = useState(excuse.socraticResponse ?? '')
 
   const { addDocument, updateDocument } = useFirestore('excuses')
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -80,10 +83,10 @@ export const ExcuseForm = ({ uid, id, excuse = {} }) => {
           margin="normal"
         />
 
-        <Button 
-          variant="contained" 
+        <Button onClick={() => navigate(-1)}>Cancel</Button>
+        <Button  
           type='submit'
-          style={{ margin: '10px 0' }}
+          autoFocus
         >
           Submit
         </Button>
