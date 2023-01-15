@@ -5,38 +5,45 @@ import ExcuseList from '../../components/ExcuseList';
 import './Home.css';
 
 export default function Home({ uid }) {
-  const [publicExcuses, setPublicExcuses] = useState([]);
+  const [presetExcuses, setPresetExcuses] = useState([]);
   const [userExcuses, setUserExcuses] = useState([]);
 
-  const { isPending: isPublicPending, error: publicError, documents: publicDocuments } = useCollection("preset_excuses");
+  // fetch preset excuses
+  const { isPending: isPresetPending, error: presetError, documents: presetDocuments } = useCollection("preset_excuses");
+
+  // fetch user excuses
+  // TODO: Figure out how to only call useCollection('excuses') if a user is logged in (ie. if there is a uid). Otherwise, I get an error saying "Missing or insufficient permissions."
   const { isPending: isUserPending, error: userError, documents: userDocuments } = useCollection(
     'excuses',
-    // if a user is logged in, query the pre-set excuses and the user-created excuses. Else, just query the pre-set excuses
     uid ? ["uid", "==", uid] : null,
     ["createdAt", "desc"]
   )
 
   useEffect(() => {
-    if (!publicError && !userError && publicDocuments && userDocuments) {
-        setPublicExcuses(publicDocuments);
+    if (!presetError && presetDocuments) {
+        setPresetExcuses(presetDocuments);
+    }
+  }, [presetDocuments, presetError]);
+
+  useEffect(() => {
+    if (!userError && userDocuments) {
         setUserExcuses(userDocuments);
     }
-  }, [publicDocuments, userDocuments, publicError, userError]);
+  }, [userDocuments, userError]);
   
-  let allExcuses = []
-  if (!uid && publicExcuses) {
-    allExcuses = publicExcuses
-  } else if (uid && publicExcuses && userExcuses) {
-    allExcuses = [...publicExcuses, ...userExcuses]
+  let excusesToDisplay = []
+  if (!uid && presetExcuses) {
+    excusesToDisplay = presetExcuses
+  } else if (uid && presetExcuses && userExcuses) {
+    excusesToDisplay = [...presetExcuses, ...userExcuses]
   }
-  // allExcuses = publicExcuses && userExcuses ? [...publicExcuses, ...userExcuses] : [];
 
   return (
     <div className='home'>
-      {(isPublicPending || isUserPending) && <div>Loading...</div>}
+      {(isPresetPending || isUserPending) && <div>Loading...</div>}
       {userError && <div>{userError}</div>}
       {!uid && <p>Sign up or log in to create your own excuses and build your personal collection</p>}
-      {allExcuses.length > 0 && <ExcuseList uid={uid} excuses={allExcuses} />}
+      {excusesToDisplay.length > 0 && <ExcuseList uid={uid} excuses={excusesToDisplay} />}
     </div>
   )
 }
