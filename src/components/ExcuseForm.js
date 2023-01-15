@@ -87,6 +87,7 @@ export const ExcuseForm = ({ uid, id, excuse = {} }) => {
         <Button  
           type='submit'
           autoFocus
+          variant="contained"
         >
           Submit
         </Button>
