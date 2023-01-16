@@ -16,23 +16,12 @@ export default function Home({ uid }) {
 
   // fetch user excuses
   // TODO: Figure out how to only call useCollection('excuses') if a user is logged in (ie. if there is a uid). Otherwise, I get an error saying "Missing or insufficient permissions."
-  // const { isPending: isUserPending, error: userError, documents: userDocuments } = useCollection(
-  //   'excuses',
-  //   uid ? ["uid", "==", uid] : null,
-  //   ["createdAt", "desc"]
-  // )
 
   useEffect(() => {
     if (!presetError && presetDocuments) {
         setPresetExcuses(presetDocuments);
     }
   }, [presetDocuments, presetError]);
-
-  // useEffect(() => {
-  //   if (!userError && userDocuments) {
-  //       setUserExcuses(userDocuments);
-  //   }
-  // }, [userDocuments, userError]);
   
   let excusesToDisplay = []
   if (!uid && presetExcuses) {
@@ -48,7 +37,7 @@ export default function Home({ uid }) {
       {(isPresetPending || isUserPending) && <div>Loading...</div>}
       {userError && <div>{userError}</div>}
       {!uid && <p>Sign up or log in to create your own excuses and build your personal collection</p>}
-      {/* The below wrapper component is used to conditionally use the useCollection('excuses') hook only when there is a user logged in. React doesn't allow using a hook conditionally so this is the workaround*/}
+      {/* The below "wrapper" component is used to conditionally call the useCollection('excuses') hook only when there is a user logged in. React doesn't allow conditionally calling a hook so this is the workaround*/}
       {uid && <WrapperForUseCollectionUser uid={uid} setUserExcuses={setUserExcuses} setUserError={setUserError} setIsUserPending={setIsUserPending}/>}
       {excusesToDisplay.length > 0 && <ExcuseList uid={uid} excuses={excusesToDisplay} />}
     </div>
