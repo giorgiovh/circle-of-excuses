@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom';
 
 import { projectFirestore } from "../../firebase/config"
@@ -12,26 +12,42 @@ export default function Search({ uid }) {
   const queryParams = new URLSearchParams(queryString);
   const query = queryParams.get('q')
 
-  // const url = 'http://localhost:3000/excuses?q=' + query
-  // const { error, isPending, data } = useFetch(url)
+  // search for excuses with the name "query" in the "preset_excuses" collection first and if "uid" is not null, also search in the "excuses" collection. Then combine the results from both searches and set the documents state equal to the results from both searches.
 
-  projectFirestore.collection('excuses').where('uid', 'in', uid ? ["", uid] : [""]).where('name', '==', query).get()
-    .then((snapshot) => {
-      let results = []
-      snapshot.forEach((doc) => {
-        results.push({...doc.data(), id: doc.id})
-      })
-      setDocuments(results)
-    })
-    .catch((err) => setError(err.message))
+  useEffect(() => {
+    let presetExcuses = [];
+    let excuses = [];
+      projectFirestore.collection("preset_excuses").where("name", "==", query).get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            presetExcuses.push(doc.data());
+          });
+          setDocuments([...presetExcuses])
+        })
+        .catch((error) => {
+          console.log("Error getting documents: ", error);
+        });
+      if (uid) {
+        projectFirestore.collection("excuses").where("name", "==", query).where("uid", "==", uid).get()
+          .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              excuses.push(doc.data());
+            });
+            setDocuments([...presetExcuses, ...excuses])
+          })
+          .catch((error) => {
+            console.log("Error getting documents: ", error);
+          });
+      }
+  }, [query, uid])
 
+  console.log(documents);
 
   return (
     <div>
       <h2>Excuses with the name "{query}"</h2>
-      {/* {isPending && <p>Loading...</p>} */}
       {error && <p>{error}</p>}
-      {documents && <ExcuseList uid={uid} excuses={documents}/>}
+      {documents && <ExcuseList uid={uid} excuses={documents} />}
     </div>
   )
 }
