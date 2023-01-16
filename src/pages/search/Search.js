@@ -25,11 +25,11 @@ export default function Search({ uid }) {
         setDocuments([...presetExcuses])
       })
       .catch((error) => {
-        console.log('Could not fetch the data');
+        console.log('Could not fetch the data', error);
         setError(error.message)
       });
     if (uid) {
-      projectFirestore.collection("excuses").where("name", "==", query).where("uid", "==", uid).get()
+      projectFirestore.collection("excuses").where("uid", "==", uid).where("name", "==", query).get()
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             excuses.push({...doc.data(), id: doc.id});
