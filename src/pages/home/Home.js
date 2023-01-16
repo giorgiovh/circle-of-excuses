@@ -12,7 +12,11 @@ export default function Home({ uid }) {
   const [isUserPending, setIsUserPending] = useState(false);
 
   // fetch preset excuses
-  const { isPending: isPresetPending, error: presetError, documents: presetDocuments } = useCollection("preset_excuses");
+  const { isPending: isPresetPending, error: presetError, documents: presetDocuments } = useCollection(
+    "preset_excuses",
+    null,
+    ["createdAt", "desc"]
+  )
 
   useEffect(() => {
     if (!presetError && presetDocuments) {
