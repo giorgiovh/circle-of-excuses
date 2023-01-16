@@ -17,9 +17,12 @@ import { addHashtagAndTho, addUnderscores } from '../../utils/utils';
 export default function ExcuseDetails({ uid }) {
   const [imageSource, setImageSource] = useState('')
   const [isDeleteDialogOpen, setisDeleteDialogOpen] = useState(false);
-
   const { id } = useParams()
+
+  // look for the document in the preset_excuses collection
   const { isPending: isPresetPending, error: presetError, document: presetExcuse } = useDocument('preset_excuses', id)
+
+  // look for the document in the user created excuses collection
   const { isPending: isUserPending, error: userError, document: userExcuse } = useDocument('excuses', id)
 
   let excuseToDisplay
@@ -41,14 +44,12 @@ export default function ExcuseDetails({ uid }) {
     setisDeleteDialogOpen(false);
   };
 
-  
   // logic to format the excuse name so that:
-    //1) it matches its corresponding image's file name
-    // 2) the title is displayed with a hashtag and a "tho
+  //    1) it matches its corresponding image file's name
+  //    2) the title is displayed with a hashtag and a "tho
   let nameWithUnderscores = ""
   let nameWithHashtagAndTho = ""
   
-  // console.log('excuseToDisplay.name', excuseToDisplay.name);
   if (excuseToDisplay) {
     nameWithUnderscores = addUnderscores(excuseToDisplay.name)
     nameWithHashtagAndTho = addHashtagAndTho(excuseToDisplay.name)
