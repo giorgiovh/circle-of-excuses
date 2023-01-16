@@ -19,18 +19,7 @@ export default function ExcuseDetails({ uid }) {
   const [isDeleteDialogOpen, setisDeleteDialogOpen] = useState(false);
   const { id } = useParams()
 
-  // look for the document in the preset_excuses collection
-  const { isPending: isPresetPending, error: presetError, document: presetExcuse } = useDocument('preset_excuses', id)
-
-  // look for the document in the user created excuses collection
-  const { isPending: isUserPending, error: userError, document: userExcuse } = useDocument('excuses', id)
-
-  let excuseToDisplay
-  if (presetExcuse) {
-    excuseToDisplay = presetExcuse
-  } else if (userExcuse) {
-    excuseToDisplay = userExcuse
-  }
+  const { error, document: excuse } = useDocument('preset_excuses', 'excuses', id)
 
   const navigate = useNavigate()
 
@@ -49,9 +38,9 @@ export default function ExcuseDetails({ uid }) {
   //    2) the title is displayed with a hashtag and a "tho"
   let nameWithUnderscores = ""
   let nameWithHashtagAndTho = ""
-  if (excuseToDisplay) {
-    nameWithUnderscores = addUnderscores(excuseToDisplay.name)
-    nameWithHashtagAndTho = addHashtagAndTho(excuseToDisplay.name)
+  if (excuse) {
+    nameWithUnderscores = addUnderscores(excuse.name)
+    nameWithHashtagAndTho = addHashtagAndTho(excuse.name)
   }
 
   useEffect(() => {
@@ -68,18 +57,16 @@ export default function ExcuseDetails({ uid }) {
 
   return (
     <>
-      {(isPresetPending || isUserPending) && <p>Loading...</p>}
-      {userError && <p>{userError}</p>}
-      {presetError && <p>{presetError}</p>}
-      {excuseToDisplay && (
+      {error && <p>{error}</p>}
+      {excuse && (
         <>
-          <img src={imageSource} alt={excuseToDisplay.name} />
+          <img src={imageSource} alt={excuse.name} />
           <h2>{nameWithHashtagAndTho}</h2>
-          <p><strong>Description: </strong>{excuseToDisplay.description}</p>
-          <p><strong>Response: </strong>{excuseToDisplay.response}</p>
-          <p><strong>Socratic Response: </strong>{excuseToDisplay.socraticResponse}</p>
+          <p><strong>Description: </strong>{excuse.description}</p>
+          <p><strong>Response: </strong>{excuse.response}</p>
+          <p><strong>Socratic Response: </strong>{excuse.socraticResponse}</p>
           {/* Only show the edit and delete buttons for the user-created excuses */}
-          {checkIfUserExcuse(excuseToDisplay) && (
+          {checkIfUserExcuse(excuse) && (
             <>
               <Button onClick={() => navigate(`/excuses/${id}/edit`)} startIcon={<EditIcon />}>Edit</Button>
               <Button 

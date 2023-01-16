@@ -18,5 +18,5 @@ export const addUnderscores = (str) => {
 
 // function that checks if the excuse is a user created excuse or a preset excuse. Returns true if it's a user created excuse and false if it's a preset excuse
 export const checkIfUserExcuse = (excuse) => {
-  excuse.hasOwnProperty("uid")
+  return excuse.hasOwnProperty("uid")
 }
