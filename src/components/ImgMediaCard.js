@@ -72,8 +72,8 @@ export default function ImgMediaCard({ excuse }) {
         {/* <Button size="small">Share</Button> */}
         <Button size="small" onClick={() => navigate(`/excuses/${excuse.id}`)}>See Excuse</Button>
       </CardActions>
-      {/* Don't show the delete button for the pre-set excuses*/}
-      {excuse.uid !== '' && (
+      {/* Only show the delete and edit buttons for the user-created excuses (ie. the excuses that have a "uid" property)*/}
+      {excuse.hasOwnProperty("uid") && (
         <>
           <Tooltip title="Delete Excuse">
             <IconButton

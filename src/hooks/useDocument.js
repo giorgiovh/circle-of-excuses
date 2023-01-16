@@ -10,7 +10,7 @@ export const useDocument = (collection, id) => {
     setIsPending(true)
     let ref = projectFirestore.collection(collection).doc(id)
 
-  console.log('path:', projectFirestore.collection(collection).doc(id).path);
+    console.log('path:', projectFirestore.collection(collection).doc(id).path);
 
     const unsubscribe = ref.onSnapshot((doc) => {
       if (doc.exists) {
