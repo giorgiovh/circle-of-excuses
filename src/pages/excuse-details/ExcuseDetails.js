@@ -22,7 +22,7 @@ export default function ExcuseDetails({ uid }) {
   const { isPending: isPresetPending, error: presetError, document: presetExcuse } = useDocument('preset_excuses', id)
   const { isPending: isUserPending, error: userError, document: userExcuse } = useDocument('excuses', id)
 
-  let excuseToDisplay = {}
+  let excuseToDisplay
   if (presetExcuse) {
     excuseToDisplay = presetExcuse
   } else if (userExcuse) {
@@ -45,33 +45,36 @@ export default function ExcuseDetails({ uid }) {
   // logic to format the excuse name so that:
     //1) it matches its corresponding image's file name
     // 2) the title is displayed with a hashtag and a "tho
-  // let nameWithUnderscores = ""
-  // let nameWithHashtagAndTho = ""
-  // if (excuseToDisplay) {
-  //   nameWithUnderscores = addUnderscores(excuseToDisplay.name)
-  //   nameWithHashtagAndTho = addHashtagAndTho(excuseToDisplay.name)
-  // }
+  let nameWithUnderscores = ""
+  let nameWithHashtagAndTho = ""
+  
+  // console.log('excuseToDisplay.name', excuseToDisplay.name);
+  if (excuseToDisplay) {
+    nameWithUnderscores = addUnderscores(excuseToDisplay.name)
+    nameWithHashtagAndTho = addHashtagAndTho(excuseToDisplay.name)
+  }
 
-  // useEffect(() => {
-  //   // the below try-catch block is to handle the case where the image file does not exist
-  //   try {
-  //     // Use the require function to import the image
-  //     const image = require(`../../images/${nameWithUnderscores}.png`);
-  //     setImageSource(image);
-  //   } catch (error) {
-  //     // If the image file does not exist, set the image source to a generic image
-  //     setImageSource(require('../../images/generic.png'));
-  //   }
-  // }, [nameWithUnderscores]);
+  useEffect(() => {
+    // the below try-catch block is to handle the case where the image file does not exist
+    try {
+      // Use the require function to import the image
+      const image = require(`../../images/${nameWithUnderscores}.png`);
+      setImageSource(image);
+    } catch (error) {
+      // If the image file does not exist, set the image source to a generic image
+      setImageSource(require('../../images/generic.png'));
+    }
+  }, [nameWithUnderscores]);
 
   return (
     <>
       {(isPresetPending || isUserPending) && <p>Loading...</p>}
-      {/* {error && <p>{error}</p>} */}
+      {userError && <p>{userError}</p>}
+      {presetError && <p>{presetError}</p>}
       {excuseToDisplay && (
         <>
           <img src={imageSource} alt={excuseToDisplay.name} />
-          {/* <h2>{nameWithHashtagAndTho}</h2> */}
+          <h2>{nameWithHashtagAndTho}</h2>
           <p><strong>Description: </strong>{excuseToDisplay.description}</p>
           <p><strong>Response: </strong>{excuseToDisplay.response}</p>
           <p><strong>Socratic Response: </strong>{excuseToDisplay.socraticResponse}</p>
@@ -92,7 +95,7 @@ export default function ExcuseDetails({ uid }) {
                 aria-describedby="alert-dialog-description"
               >
                 <DialogTitle id="alert-dialog-title">
-                  {/* {`Delete the excuse ${nameWithHashtagAndTho}?`} */}
+                  {`Delete the excuse ${nameWithHashtagAndTho}?`}
                 </DialogTitle>
                 <DialogContent>
                   <DialogContentText id="alert-dialog-description">
