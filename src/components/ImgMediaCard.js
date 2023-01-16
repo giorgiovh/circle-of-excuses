@@ -23,22 +23,28 @@ import { addHashtagAndTho, addUnderscores, checkIfUserExcuse } from '../utils/ut
 
 export default function ImgMediaCard({ excuse }) {
   const [imageSource, setImageSource] = useState('')
-  const [isDeleteDialogOpen, setisDeleteDialogOpen] = useState(false);
-
+  const [isDeleteDialogOpen, setisDeleteDialogOpen] = useState(false)
+  
   const { deleteDocument } = useFirestore('excuses')
+  
+  const navigate = useNavigate()
 
   const handleClickOpen = () => {
-    setisDeleteDialogOpen(true);
+    setisDeleteDialogOpen(true)
   };
 
   const handleClose = () => {
-    setisDeleteDialogOpen(false);
-  };
+    setisDeleteDialogOpen(false)
+  }
+
+  const handleDelete = () => {
+    deleteDocument(excuse.id)
+    navigate('/')
+  } 
 
   const nameWithHashtagAndTho = addHashtagAndTho(excuse.name);
   const nameWithUnderscores = addUnderscores(excuse.name);
 
-  const navigate = useNavigate();
 
   useEffect(() => {
     // the below try-catch block is to handle the case where the image file does not exist
@@ -99,7 +105,7 @@ export default function ImgMediaCard({ excuse }) {
             </DialogContent>
             <DialogActions> 
               <Button onClick={handleClose}>Cancel</Button>
-              <Button onClick={() => deleteDocument(excuse.id)} variant="contained" autoFocus>
+              <Button onClick={handleDelete} variant="contained" autoFocus>
                 Delete
               </Button>
             </DialogActions>

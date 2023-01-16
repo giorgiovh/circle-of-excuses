@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 import { projectFirestore } from "../firebase/config"
 
 export const useDocument = (collection1, collection2, id) => {
-  // const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null)
   const [document, setDocument] = useState(null)
 
