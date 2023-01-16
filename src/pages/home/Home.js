@@ -41,7 +41,7 @@ export default function Home({ uid }) {
       
       {(isPresetPending || isUserPending) && <div>Loading...</div>}
       {userError && <div>{userError}</div>}
-      {!uid && <p>Sign up or log in to create your own excuses and build your personal collection</p>}
+      {!uid && <p className='welcome-message'>Sign up or log in to create your own excuses and build your personal collection</p>}
       {excusesToDisplay.length > 0 && <ExcuseList uid={uid} excuses={excusesToDisplay} />}
     </div>
   )
