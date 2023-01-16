@@ -15,3 +15,8 @@ export const addHashtagAndTho = (str) => {
 export const addUnderscores = (str) => {
   return str.split(' ').join('_');
 }
+
+// function that checks if the excuse is a user created excuse or a preset excuse. Returns true if it's a user created excuse and false if it's a preset excuse
+export const checkIfUserExcuse = (excuse) => {
+  excuse.hasOwnProperty("uid")
+}

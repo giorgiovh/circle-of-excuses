@@ -12,7 +12,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 import { useDocument } from '../../hooks/useDocument'
 
-import { addHashtagAndTho, addUnderscores } from '../../utils/utils';
+import { addHashtagAndTho, addUnderscores, checkIfUserExcuse } from '../../utils/utils';
 
 export default function ExcuseDetails({ uid }) {
   const [imageSource, setImageSource] = useState('')
@@ -46,10 +46,9 @@ export default function ExcuseDetails({ uid }) {
 
   // logic to format the excuse name so that:
   //    1) it matches its corresponding image file's name
-  //    2) the title is displayed with a hashtag and a "tho
+  //    2) the title is displayed with a hashtag and a "tho"
   let nameWithUnderscores = ""
   let nameWithHashtagAndTho = ""
-  
   if (excuseToDisplay) {
     nameWithUnderscores = addUnderscores(excuseToDisplay.name)
     nameWithHashtagAndTho = addHashtagAndTho(excuseToDisplay.name)
@@ -80,7 +79,7 @@ export default function ExcuseDetails({ uid }) {
           <p><strong>Response: </strong>{excuseToDisplay.response}</p>
           <p><strong>Socratic Response: </strong>{excuseToDisplay.socraticResponse}</p>
           {/* Only show the edit and delete buttons for the user-created excuses */}
-          {excuseToDisplay.hasOwnProperty("uid") && (
+          {checkIfUserExcuse(excuseToDisplay) && (
             <>
               <Button onClick={() => navigate(`/excuses/${id}/edit`)} startIcon={<EditIcon />}>Edit</Button>
               <Button 

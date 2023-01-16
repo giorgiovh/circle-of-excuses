@@ -19,7 +19,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-import { addHashtagAndTho, addUnderscores } from '../utils/utils';
+import { addHashtagAndTho, addUnderscores, checkIfUserExcuse } from '../utils/utils';
 
 export default function ImgMediaCard({ excuse }) {
   const [imageSource, setImageSource] = useState('')
@@ -73,7 +73,7 @@ export default function ImgMediaCard({ excuse }) {
         <Button size="small" onClick={() => navigate(`/excuses/${excuse.id}`)}>See Excuse</Button>
       </CardActions>
       {/* Only show the delete and edit buttons for the user-created excuses (ie. the excuses that have a "uid" property)*/}
-      {excuse.hasOwnProperty("uid") && (
+      {checkIfUserExcuse(excuse) && (
         <>
           <Tooltip title="Delete Excuse">
             <IconButton
