@@ -22,7 +22,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { addHashtagAndTho, addUnderscores } from '../utils/utils';
 
 export default function ImgMediaCard({ excuse }) {
-  console.log('excuse', excuse);
   const [imageSource, setImageSource] = useState('')
   const [isDeleteDialogOpen, setisDeleteDialogOpen] = useState(false);
 
