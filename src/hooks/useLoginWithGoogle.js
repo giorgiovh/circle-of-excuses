@@ -1,20 +1,23 @@
 import { useState } from "react"
-import { projectAuth } from '../firebase/config'
 import { useAuthContext } from './useAuthContext'
+import { signInWithGoogle } from '../firebase/config'
+import { useNavigate } from "react-router-dom"
 
-export const useLogin = () => {
+export const useLoginWithGoogle = () => {
   const [error, setError] = useState(null)
   const [isPending, setIsPending] = useState(false)
 
   const { dispatch } = useAuthContext()
+
+  const navigate = useNavigate()
   
-  const login = async (email, password) => {
+  const loginWithGoogle = async () => {
     setError(null)
     setIsPending(true)
 
     // sign the user in
     try {
-      const res = await projectAuth.signInWithEmailAndPassword(email, password)
+      const res = await signInWithGoogle()
 
       // dispatch login action to update global state
       dispatch({ type:'LOGIN', payload: res.user })
@@ -22,6 +25,7 @@ export const useLogin = () => {
       // update local state
       setIsPending(false)
       setError(null)
+
     } catch (err) {
       // update local state
       console.log(err.message);
@@ -30,5 +34,5 @@ export const useLogin = () => {
     }
   }
 
-  return { error, isPending, login}
+  return { error, isPending, loginWithGoogle}
 }

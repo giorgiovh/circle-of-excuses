@@ -13,6 +13,7 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
+import { useLoginWithGoogle } from '../hooks/useLoginWithGoogle'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -80,6 +81,8 @@ export default function Navbar({ user }) {
     setTerm('');
   }
 
+  const { loginWithGoogle } = useLoginWithGoogle() 
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -135,10 +138,13 @@ export default function Navbar({ user }) {
             {!user && (
               <>
                 <Button color="inherit" onClick={() => navigate("/login")}>
-                  Log in
+                  Log in with Email
                 </Button>
                 <Button color="inherit" onClick={() => navigate("/signup")}>
-                  Sign up
+                  Sign up with Email
+                </Button>
+                <Button color="inherit" onClick={loginWithGoogle}>
+                  Log in with Google
                 </Button>
               </>
             )}
