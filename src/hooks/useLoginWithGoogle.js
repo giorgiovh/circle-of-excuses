@@ -1,15 +1,12 @@
 import { useState } from "react"
 import { useAuthContext } from './useAuthContext'
-import { signInWithGoogle } from '../firebase/config'
-import { useNavigate } from "react-router-dom"
+import { projectAuth, provider } from '../firebase/config'
 
 export const useLoginWithGoogle = () => {
   const [error, setError] = useState(null)
   const [isPending, setIsPending] = useState(false)
 
   const { dispatch } = useAuthContext()
-
-  const navigate = useNavigate()
   
   const loginWithGoogle = async () => {
     setError(null)
@@ -17,7 +14,7 @@ export const useLoginWithGoogle = () => {
 
     // sign the user in
     try {
-      const res = await signInWithGoogle()
+      const res = await projectAuth.signInWithPopup(provider)
 
       // dispatch login action to update global state
       dispatch({ type:'LOGIN', payload: res.user })
@@ -34,5 +31,5 @@ export const useLoginWithGoogle = () => {
     }
   }
 
-  return { error, isPending, loginWithGoogle}
+  return { error, isPending, loginWithGoogle }
 }

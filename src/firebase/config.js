@@ -21,11 +21,7 @@ const projectAuth = firebase.auth()
 // timestamp
 const timestamp = firebase.firestore.Timestamp
 
+// Google auth provider
 const provider = new firebase.auth.GoogleAuthProvider();
 
-const signInWithGoogle = () => {
-  firebase.auth()
-  .signInWithPopup(provider)
-}
-
-export { projectFirestore, projectAuth, timestamp, signInWithGoogle }
+export { projectFirestore, projectAuth, timestamp, provider }
