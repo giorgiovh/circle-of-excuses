@@ -1,7 +1,5 @@
 import { ExcuseForm } from '../../components/ExcuseForm';
 
-import './Create.css'
-
 export default function Create({ uid }) {
   return (
     <div>
