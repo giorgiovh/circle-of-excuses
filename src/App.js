@@ -21,7 +21,7 @@ function App() {
       {authIsReady && (
         <BrowserRouter>
           <Navbar user={user}/>
-          <div className="pages">
+          <main>
             <Routes>
               <Route exact path='/' element={<Home uid={user?.uid} />} />
               <Route path='/login' element={user ? <Navigate to="/" /> : <Login />} />
@@ -32,7 +32,7 @@ function App() {
               <Route path='/excuses/:id' element={<ExcuseDetails uid={user?.uid} />} />
               <Route path='/excuses/:id/edit' element={user ? <Edit uid={user.uid} /> : <Navigate to="/login" />} />
             </Routes>
-          </div>
+          </main>
         </BrowserRouter>
       )}
     </div>
