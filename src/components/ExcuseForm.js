@@ -93,7 +93,12 @@ export const ExcuseForm = ({ uid, id, excuse = {} }) => {
           type='submit'
           autoFocus
           variant="contained"
-          sx={{ backgroundColor: '#048c04' }}
+          sx={{ 
+            backgroundColor: '#048c04',
+            '&:hover': {
+              backgroundColor: '#036b03'
+            }
+          }}
         >
           Submit
         </Button>
