@@ -1,18 +1,22 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
 
+// pages
 import Home from './pages/home/Home';
 import About from './pages/about/About';
 import Create from './pages/create/Create';
+import CreatePresetExcuse from './pages/create-preset-excuse/CreatePresetExcuse';
 import Edit from './pages/edit/Edit';
 import Search from './pages/search/Search';
 import ExcuseDetails from './pages/excuse-details/ExcuseDetails';
 import Login from './pages/login/Login';
 import SignUp from './pages/signup/Signup';
+
+// components
 import Navbar from './components/Navbar';
 
+// styles
 import './App.css';
-import CreatePresetExcuse from './pages/create-preset-excuse/Create';
 
 function App() {
   const { authIsReady, user } = useAuthContext()
