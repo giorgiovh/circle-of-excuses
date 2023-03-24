@@ -66,7 +66,7 @@ export default function ImgMediaCard({ excuse }) {
         height="140"
         image={imageSource}
       />
-      <CardContent>
+      <CardContent style={{ height: '100px', overflow: 'hidden' }}>
         <Typography gutterBottom variant="h5" component="div">
           {nameWithHashtagAndTho}
         </Typography>
@@ -74,6 +74,7 @@ export default function ImgMediaCard({ excuse }) {
           {excuse.description.length > 100 ? excuse.description.substring(0, 100) + '...' : excuse.description}
         </Typography>
       </CardContent>
+
       <CardActions>
         {/* <Button size="small">Share</Button> */}
         <Button size="small" onClick={() => navigate(`/excuses/${excuse.id}`)}>See Excuse</Button>

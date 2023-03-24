@@ -35,7 +35,7 @@ export default function Home({ uid }) {
   console.log('excusesToDisplay', excusesToDisplay);
 
   return (
-    <div className='home'>
+    <div className='page'>
       {/* fetch the user-created excuses: The below "wrapper" component is used to conditionally call the useCollection('excuses') hook only when there is a user logged in. React doesn't allow conditionally calling a hook so this is the workaround*/}
       {uid && <WrapperForUseCollectionUser uid={uid} setUserExcuses={setUserExcuses} setUserError={setUserError} setIsUserPending={setIsUserPending}/>}
       

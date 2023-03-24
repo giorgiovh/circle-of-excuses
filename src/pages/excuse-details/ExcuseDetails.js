@@ -56,7 +56,7 @@ export default function ExcuseDetails({ uid }) {
   }, [nameWithUnderscores]);
 
   return (
-    <>
+    <div className='page'>
       {error && <p>{error}</p>}
       {excuse && (
         <>
@@ -100,6 +100,6 @@ export default function ExcuseDetails({ uid }) {
           )}
         </>
       )}
-    </>
+    </div>
   )
 }

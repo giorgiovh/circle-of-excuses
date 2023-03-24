@@ -33,11 +33,11 @@ export default function Edit({ uid }) {
   }, [id])
 
   return (
-    <>
+    <div className='page'>
       <h2>Edit Excuse</h2>
       {error && <p>{error}</p>}
       {isPending && <p>Loading...</p>}
       {excuse && <ExcuseForm uid={uid} id={id} excuse={excuse}/>}
-    </>
+    </div>
   )
 }
