@@ -5,6 +5,7 @@ import { useFirestore } from '../hooks/useFirestore';
 
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
+import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
@@ -21,7 +22,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 import { addHashtagAndTho, addUnderscores, checkIfUserExcuse } from '../utils/utils';
 
-export default function ImgMediaCard({ excuse }) {
+export default function ExcuseCard({ excuse }) {
   const [imageSource, setImageSource] = useState('')
   const [isDeleteDialogOpen, setisDeleteDialogOpen] = useState(false)
   
@@ -59,68 +60,66 @@ export default function ImgMediaCard({ excuse }) {
   }, [nameWithUnderscores]);
 
   return (
-    <Card sx={{ maxWidth: 345 }} style={{ position: 'relative' }}>
-      <CardMedia
-        component="img"
-        alt={excuse.name}
-        height="140"
-        image={imageSource}
-      />
-      <CardContent style={{ height: '100px', overflow: 'hidden' }}>
-        <Typography gutterBottom variant="h5" component="div">
-          {nameWithHashtagAndTho}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {excuse.description.length > 100 ? excuse.description.substring(0, 100) + '...' : excuse.description}
-        </Typography>
-      </CardContent>
-
+    <Card sx={{ maxWidth: 345 }}>
+      <CardActionArea onClick={() => navigate(`/excuses/${excuse.id}`)}>
+        <CardMedia
+          component="img"
+          height="140"
+          image={imageSource}
+          alt={excuse.name}
+        />
+        <CardContent style={{ height: '100px', overflow: 'hidden' }}>
+          <Typography gutterBottom variant="h5" component="div">
+            {nameWithHashtagAndTho}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {excuse.description.length > 100 ? excuse.description.substring(0, 100) + '...' : excuse.description}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
       <CardActions>
-        {/* <Button size="small">Share</Button> */}
-        <Button size="small" onClick={() => navigate(`/excuses/${excuse.id}`)}>See Excuse</Button>
-      </CardActions>
-      {/* Only show the delete and edit buttons for the user-created excuses (ie. the excuses that have a "uid" property)*/}
-      {checkIfUserExcuse(excuse) && (
-        <>
-          <Tooltip title="Delete Excuse">
-            <IconButton
+        {checkIfUserExcuse(excuse) && (
+          <>
+            <Button 
               onClick={() => handleClickOpen()}
-              style={{ position: 'absolute', top: '10px', right: '10px', cursor: 'pointer', filter: 'invert(70%)' }}
+              startIcon={<DeleteIcon />} 
+              size="small" 
+              color="primary"
             >
-              <DeleteIcon />
-            </IconButton>
-          </Tooltip>
-          <Dialog
-            open={isDeleteDialogOpen}
-            onClose={handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogTitle id="alert-dialog-title">
-              {`Delete the excuse ${nameWithHashtagAndTho}?`}
-            </DialogTitle>
-            <DialogContent>
-              <DialogContentText id="alert-dialog-description">
-                This action cannot be undone.
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions> 
-              <Button onClick={handleClose}>Cancel</Button>
-              <Button onClick={handleDelete} variant="contained" autoFocus>
-                Delete
-              </Button>
-            </DialogActions>
-          </Dialog>
-          <Tooltip title="Edit Excuse">
-            <IconButton
-              onClick={() => navigate(`/excuses/${excuse.id}/edit`)}
-              style={{ position: 'absolute', top: '10px', right: '45px', cursor: 'pointer', filter: 'invert(70%)' }}
+              Delete
+            </Button>
+            <Dialog
+              open={isDeleteDialogOpen}
+              onClose={handleClose}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
             >
-              <EditIcon />
-            </IconButton>
-          </Tooltip>
-        </>
-      )}
+              <DialogTitle id="alert-dialog-title">
+                {`Delete the excuse ${nameWithHashtagAndTho}?`}
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  This action cannot be undone.
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions> 
+                <Button onClick={handleClose}>Cancel</Button>
+                <Button onClick={handleDelete} variant="contained" autoFocus>
+                  Delete
+                </Button>
+              </DialogActions>
+            </Dialog>
+            <Button 
+              onClick={() => navigate(`/excuses/${excuse.id}/edit`)} 
+              startIcon={<EditIcon />}
+              size="small" 
+              color="primary"
+            >
+              Edit
+            </Button>
+          </>
+        )}
+      </CardActions>
     </Card>
   );
 }

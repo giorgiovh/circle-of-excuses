@@ -68,7 +68,12 @@ export default function ExcuseDetails({ uid }) {
           {/* Only show the edit and delete buttons for the user-created excuses */}
           {checkIfUserExcuse(excuse) && (
             <>
-              <Button onClick={() => navigate(`/excuses/${id}/edit`)} startIcon={<EditIcon />}>Edit</Button>
+              <Button 
+                onClick={() => navigate(`/excuses/${id}/edit`)} 
+                startIcon={<EditIcon />}
+              >
+                Edit
+              </Button>
               <Button 
                 startIcon={<DeleteIcon />}
                 onClick={() => handleClickOpen()}
