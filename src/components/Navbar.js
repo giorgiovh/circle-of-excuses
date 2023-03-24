@@ -108,6 +108,7 @@ export default function Navbar({ user }) {
           > 
             <MenuItem component={NavLink} to="/" onClick={handleClose} selected={pathname === "/"}>Home</MenuItem>
             {user && <MenuItem component={NavLink} to="/create" onClick={handleClose} selected={pathname === "/create"}>Create</MenuItem>}
+            {user && <MenuItem component={NavLink} to="/create-preset-excuse" onClick={handleClose} selected={pathname === "/create-preset-excuse"}>Create Preset Excuse</MenuItem>}
             <MenuItem component={NavLink} to="/about" onClick={handleClose} selected={pathname === "/about"}>About</MenuItem>
           </Menu>
           <Typography

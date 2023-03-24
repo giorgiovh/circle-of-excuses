@@ -111,7 +111,12 @@ export default function ExcuseCard({ excuse }) {
                   onClick={handleDelete} 
                   variant="contained" 
                   autoFocus
-                  sx={{ backgroundColor: '#048c04' }}
+                  sx={{ 
+                    backgroundColor: '#048c04',
+                    '&:hover': {
+                      backgroundColor: '#036b03'
+                    }
+                  }}
                 >
                   Delete
                 </Button>
