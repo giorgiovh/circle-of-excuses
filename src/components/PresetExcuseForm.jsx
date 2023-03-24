@@ -15,30 +15,14 @@ export const PresetExcuseForm = ({ id, excuse = {} }) => {
 
   const navigate = useNavigate();
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault()
-  //   const excuseToAddOrEdit = { name, description, response, socraticResponse }
-  //   // if we don't receive an excuse as a prop (ie. the excuse object is empty), we're adding a new excuse. Else, we're updating an existing excuse
-  //   if (Object.keys(excuse).length === 0) {   
-  //     await addDocument(excuseToAddOrEdit)
-  //   } else {
-  //     await updateDocument(id, excuseToAddOrEdit)
-  //   }
-  // }
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     const excuseToAddOrEdit = { name, description, response, socraticResponse }
-    console.log(excuseToAddOrEdit);
-    try {
-      if (Object.keys(excuse).length === 0) {   
-        addDocument(excuseToAddOrEdit)
-      } else {
-        updateDocument(id, excuseToAddOrEdit)
-      }
-    } catch (error) {
-      console.log("Error adding document: ")
-      // handle the error, such as showing an error message to the user
+    // if we don't receive an excuse as a prop (ie. the excuse object is empty), we're adding a new excuse. Else, we're updating an existing excuse
+    if (Object.keys(excuse).length === 0) {   
+      await addDocument(excuseToAddOrEdit)
+    } else {
+      await updateDocument(id, excuseToAddOrEdit)
     }
   }
 
