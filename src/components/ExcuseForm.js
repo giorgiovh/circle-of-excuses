@@ -83,11 +83,17 @@ export const ExcuseForm = ({ uid, id, excuse = {} }) => {
           margin="normal"
         />
 
-        <Button onClick={() => navigate(-1)}>Cancel</Button>
+        <Button 
+          onClick={() => navigate(-1)}
+          sx={{ color: '#048c04' }}
+        >
+          Cancel
+        </Button>
         <Button  
           type='submit'
           autoFocus
           variant="contained"
+          sx={{ backgroundColor: '#048c04' }}
         >
           Submit
         </Button>

@@ -12,8 +12,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -84,7 +82,7 @@ export default function ExcuseCard({ excuse }) {
               onClick={() => handleClickOpen()}
               startIcon={<DeleteIcon />} 
               size="small" 
-              color="primary"
+              sx={{ color: '#048c04' }}
             >
               Delete
             </Button>
@@ -103,8 +101,18 @@ export default function ExcuseCard({ excuse }) {
                 </DialogContentText>
               </DialogContent>
               <DialogActions> 
-                <Button onClick={handleClose}>Cancel</Button>
-                <Button onClick={handleDelete} variant="contained" autoFocus>
+                <Button 
+                  onClick={handleClose}
+                  sx={{ color: '#048c04' }}
+                >
+                  Cancel
+                </Button>
+                <Button 
+                  onClick={handleDelete} 
+                  variant="contained" 
+                  autoFocus
+                  sx={{ backgroundColor: '#048c04' }}
+                >
                   Delete
                 </Button>
               </DialogActions>
@@ -113,7 +121,7 @@ export default function ExcuseCard({ excuse }) {
               onClick={() => navigate(`/excuses/${excuse.id}/edit`)} 
               startIcon={<EditIcon />}
               size="small" 
-              color="primary"
+              sx={{ color: '#048c04' }}
             >
               Edit
             </Button>

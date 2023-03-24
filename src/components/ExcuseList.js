@@ -1,4 +1,4 @@
-import ExcuseCard from './ImgMediaCard';
+import ExcuseCard from './ExcuseCard';
 import { Grid } from '@mui/material';
 import './ExcuseList.css';
 

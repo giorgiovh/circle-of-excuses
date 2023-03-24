@@ -71,12 +71,14 @@ export default function ExcuseDetails({ uid }) {
               <Button 
                 onClick={() => navigate(`/excuses/${id}/edit`)} 
                 startIcon={<EditIcon />}
+                sx={{ color: '#048c04' }}
               >
                 Edit
               </Button>
               <Button 
                 startIcon={<DeleteIcon />}
                 onClick={() => handleClickOpen()}
+                sx={{ color: '#048c04' }}
               >
                 Delete
               </Button>
@@ -95,8 +97,18 @@ export default function ExcuseDetails({ uid }) {
                   </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                  <Button onClick={handleClose}>Cancel</Button>
-                  <Button onClick={() => { deleteDocument(id); navigate('/') }} variant="contained" autoFocus>
+                  <Button 
+                    onClick={handleClose}
+                    sx={{ color: '#048c04' }}
+                  >
+                    Cancel
+                  </Button>
+                  <Button 
+                    onClick={() => { deleteDocument(id); navigate('/') }} 
+                    variant="contained" 
+                    autoFocus
+                    sx={{ backgroundColor: '#048c04' }}
+                  >
                     Delete
                   </Button>
                 </DialogActions>
