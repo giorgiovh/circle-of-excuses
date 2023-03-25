@@ -70,13 +70,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function PrimarySearchAppBar({ user }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const[term, setTerm] = useState('');
+  const [term, setTerm] = useState('');
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
   const { logout } = useLogout()
 
   const pathname = useLocation().pathname;
-  
+
   const navigate = useNavigate();
 
   const isMenuOpen = Boolean(anchorEl);
@@ -138,20 +138,31 @@ export default function PrimarySearchAppBar({ user }) {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem 
-        component={NavLink} 
-        to="/login" 
-        selected={pathname === "/login"}
-      >
-        Log in
-      </MenuItem>
-      <MenuItem 
-        component={NavLink} 
-        to="/signup" 
-        selected={pathname === "/signup"}
-      >
-        Sign up
-      </MenuItem>
+      {!user && (
+        <>
+          <MenuItem
+            component={NavLink}
+            to="/login"
+            selected={pathname === "/login"}
+          >
+            Log in
+          </MenuItem>
+          <MenuItem
+            component={NavLink}
+            to="/signup"
+            selected={pathname === "/signup"}
+          >
+            Sign up
+          </MenuItem>
+        </>
+      )}
+      {user && (
+        <MenuItem
+          onClick={logout}
+        >
+          Log out
+        </MenuItem>
+      )}
     </Menu>
   );
 
@@ -160,8 +171,6 @@ export default function PrimarySearchAppBar({ user }) {
     navigate(`/search?q=${term}`);
     setTerm('');
   }
-
-  const { loginWithGoogle } = useLoginWithGoogle() 
 
   return (
     <Box sx={{ flexGrow: 1 }}>
