@@ -24,6 +24,7 @@ import { checkIfUserIsAdmin } from './utils/utils';
 
 // styles
 import './App.css';
+import OGPrimarySearchAppBar from './components/OGPrimarySearchAppBar';
 
 function App() {
   const { authIsReady, user } = useAuthContext()
@@ -33,6 +34,7 @@ function App() {
       {authIsReady && (
         <BrowserRouter>
           {/* <Navbar user={user}/> */}
+          {/* <OGPrimarySearchAppBar user={user}/> */}
           <PrimarySearchAppBar user={user}/>
           <Routes>
             <Route exact path='/' element={<Home uid={user?.uid} />} />
