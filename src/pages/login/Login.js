@@ -1,6 +1,10 @@
 import { useState } from 'react'
-import { useLogin } from '../../hooks/useLogin';
 
+// hooks
+import { useLogin } from '../../hooks/useLogin';
+import { useLoginWithGoogle } from '../../hooks/useLoginWithGoogle';
+
+// mui
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -21,10 +25,14 @@ export default function Login() {
 
   const { error, isPending, login } = useLogin()
 
+  useLoginWithGoogle()
+
   const handleSubmit = (e) => {
     e.preventDefault();
     login(email, password);
-  };
+  }
+
+  const { loginWithGoogle } = useLoginWithGoogle()
 
   return (
     <ThemeProvider theme={theme}>
@@ -75,7 +83,14 @@ export default function Login() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ 
+                  mt: 3, 
+                  mb: 2, 
+                  backgroundColor: '#048c04', 
+                  '&:hover': {
+                    backgroundColor: '#036b03'
+                  }
+                }}
               >
                 Log In
               </Button>
@@ -84,26 +99,49 @@ export default function Login() {
               <Button
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ 
+                  mt: 3, 
+                  mb: 2, 
+                  backgroundColor: '#048c04', 
+                  '&:hover': {
+                    backgroundColor: '#036b03'
+                  }
+                }}
                 disabled
               >
                 loading
               </Button>
             )}
             {error && <p>{error}</p>}
-            <Grid container justifyContent="flex-end">
-              {/* <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid> */}
-              <Grid item>
-                <Link href="/signup" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
           </Box>
+          <div style={{"text-align":"center"}}>OR</div>
+          <Button
+            onClick={loginWithGoogle}
+            fullWidth
+            variant="contained"
+            sx={{ 
+              mt: 3, 
+              mb: 2, 
+              backgroundColor: '#048c04', 
+              '&:hover': {
+                backgroundColor: '#036b03'
+              }
+            }}
+          >
+            Log In with Google
+          </Button>
+          <Grid container justifyContent="flex-end">
+            {/* <Grid item xs>
+              <Link href="#" variant="body2">
+                Forgot password?
+              </Link>
+            </Grid> */}
+            <Grid item>
+              <Link href="/signup" variant="body2">
+                {"Don't have an account? Sign Up"}
+              </Link>
+            </Grid>
+          </Grid>
         </Box>
       </Container>
     </ThemeProvider>

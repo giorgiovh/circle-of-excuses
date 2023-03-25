@@ -146,13 +146,10 @@ export default function Navbar({ user }) {
             {!user && (
               <>
                 <Button color="inherit" onClick={() => navigate("/login")}>
-                  Log in with Email
+                  Log in
                 </Button>
                 <Button color="inherit" onClick={() => navigate("/signup")}>
-                  Sign up with Email
-                </Button>
-                <Button color="inherit" onClick={loginWithGoogle}>
-                  Log in with Google
+                  Sign up
                 </Button>
               </>
             )}

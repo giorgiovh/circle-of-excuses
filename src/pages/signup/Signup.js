@@ -1,5 +1,9 @@
 import { useState } from 'react'
 
+// hooks
+import { useLoginWithGoogle } from '../../hooks/useLoginWithGoogle';
+
+// mui
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -25,7 +29,9 @@ export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
     signup(email, password, displayName);
-  };
+  }
+
+  const { loginWithGoogle } = useLoginWithGoogle()
 
   return (
     <ThemeProvider theme={theme}>
@@ -92,7 +98,14 @@ export default function SignUp() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ 
+                  mt: 3, 
+                  mb: 2, 
+                  backgroundColor: '#048c04', 
+                  '&:hover': {
+                    backgroundColor: '#036b03'
+                  }
+                }}
               >
                 Sign Up
               </Button>
@@ -101,21 +114,44 @@ export default function SignUp() {
               <Button
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ 
+                  mt: 3, 
+                  mb: 2, 
+                  backgroundColor: '#048c04', 
+                  '&:hover': {
+                    backgroundColor: '#036b03'
+                  }
+                }}
                 disabled
               >
                 loading
               </Button>
             )}
             {error && <p>{error}</p>}
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link href="/login" variant="body2">
-                  Already have an account? Log in
-                </Link>
-              </Grid>
-            </Grid>
           </Box>
+          <div style={{"text-align":"center"}}>OR</div>
+          <Button
+            onClick={loginWithGoogle}
+            fullWidth
+            variant="contained"
+            sx={{ 
+              mt: 3, 
+              mb: 2, 
+              backgroundColor: '#048c04', 
+              '&:hover': {
+                backgroundColor: '#036b03'
+              }
+            }}
+          >
+            Sign Up with Google
+          </Button>
+          <Grid container justifyContent="flex-end">
+            <Grid item>
+              <Link href="/login" variant="body2">
+                Already have an account? Log in
+              </Link>
+            </Grid>
+          </Grid>
         </Box>
       </Container>
     </ThemeProvider>
