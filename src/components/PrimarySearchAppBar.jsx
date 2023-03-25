@@ -23,6 +23,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { Button } from '@mui/material';
 
 // functions
 import { checkIfUserIsAdmin } from '../utils/utils';
@@ -218,31 +219,22 @@ export default function PrimarySearchAppBar({ user }) {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+            {!user && (
+              <>
+                <Button color="inherit" onClick={() => navigate("/login")}>
+                  Log in
+                </Button>
+                <Button color="inherit" onClick={() => navigate("/signup")}>
+                  Sign up
+                </Button>
+              </>
+            )}
+            {user && (
+              <>
+                <p>hello, {user.displayName}</p>
+                <Button color="inherit" onClick={logout}>Log out</Button>
+              </>
+            )}
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
