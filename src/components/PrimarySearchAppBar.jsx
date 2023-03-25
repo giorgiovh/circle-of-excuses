@@ -82,10 +82,6 @@ export default function PrimarySearchAppBar({ user }) {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
@@ -98,6 +94,11 @@ export default function PrimarySearchAppBar({ user }) {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  const handleLogoutFromMobileMenu = () => {
+    logout()
+    handleMobileMenuClose()
+  }
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -136,7 +137,7 @@ export default function PrimarySearchAppBar({ user }) {
         horizontal: 'right',
       }}
       open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
+      onClose={handleMenuClose}
     >
       {!user && (
         <>
@@ -144,6 +145,7 @@ export default function PrimarySearchAppBar({ user }) {
             component={NavLink}
             to="/login"
             selected={pathname === "/login"}
+            onClick={handleMobileMenuClose}
           >
             Log in
           </MenuItem>
@@ -151,6 +153,7 @@ export default function PrimarySearchAppBar({ user }) {
             component={NavLink}
             to="/signup"
             selected={pathname === "/signup"}
+            onClick={handleMobileMenuClose}
           >
             Sign up
           </MenuItem>
@@ -158,7 +161,7 @@ export default function PrimarySearchAppBar({ user }) {
       )}
       {user && (
         <MenuItem
-          onClick={logout}
+          onClick={handleLogoutFromMobileMenu}
         >
           Log out
         </MenuItem>
