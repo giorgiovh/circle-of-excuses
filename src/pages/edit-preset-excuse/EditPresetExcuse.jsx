@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { projectFirestore } from '../../firebase/config';
 
-import { ExcuseForm } from '../../components/ExcuseForm'
+// components
+import { PresetExcuseForm } from '../../components/PresetExcuseForm'
 
 export default function EditPresetExcuse({ uid }) {
   const [excuse, setExcuse] = useState(null);
@@ -37,7 +38,7 @@ export default function EditPresetExcuse({ uid }) {
       <h2>Edit Preset Excuse</h2>
       {error && <p>{error}</p>}
       {isPending && <p>Loading...</p>}
-      {excuse && <ExcuseForm uid={uid} id={id} excuse={excuse}/>}
+      {excuse && <PresetExcuseForm id={id} excuse={excuse}/>}
     </div>
   )
 }

@@ -15,11 +15,13 @@ export const PresetExcuseForm = ({ id, excuse = {} }) => {
 
   const navigate = useNavigate();
 
+  // if we don't receive an excuse as a prop (ie. the excuse object is empty), it will be a new excuse. Else, it will be an existing excuse
+  const isNewExcuse = Object.keys(excuse).length === 0
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const excuseToAddOrEdit = { name, description, response, socraticResponse }
-    // if we don't receive an excuse as a prop (ie. the excuse object is empty), we're adding a new excuse. Else, we're updating an existing excuse
-    if (Object.keys(excuse).length === 0) {   
+    if (isNewExcuse) {   
       await addDocument(excuseToAddOrEdit)
     } else {
       await updateDocument(id, excuseToAddOrEdit)

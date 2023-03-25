@@ -38,7 +38,7 @@ function App() {
             <Route path='/signup'element={user ? <Navigate to="/" /> : <SignUp />} />
             <Route path='/about' element={<About />} />
             <Route path='/create' element={user ? <Create uid={user.uid}/> : <Navigate to="/login" />} /> 
-            <Route path='/create-preset-excuse' element={user && checkIfUserIsAdmin(user) ? <CreatePresetExcuse uid={user.uid}/> : <Navigate to="/login" />} /> 
+            <Route path='/create-preset-excuse' element={user && checkIfUserIsAdmin(user) ? <CreatePresetExcuse /> : <Navigate to="/login" />} /> 
             <Route path='/search' element={<Search uid={user?.uid}/>} />
             <Route path='/excuses/:id' element={<ExcuseDetails uid={user?.uid} />} />
             <Route path='/excuses/:id/edit' element={user ? <Edit uid={user.uid} /> : <Navigate to="/login" />} />
