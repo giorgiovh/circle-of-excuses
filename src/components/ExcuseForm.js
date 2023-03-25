@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
+import { checkIfUserExcuse } from '../utils/utils'
 
 export const ExcuseForm = ({ uid, id, excuse = {} }) => {
   const [name, setName] = useState(excuse.name ?? '')
@@ -11,18 +12,29 @@ export const ExcuseForm = ({ uid, id, excuse = {} }) => {
   const [response, setResponse] = useState(excuse.response ?? '')
   const [socraticResponse, setSocraticResponse] = useState(excuse.socraticResponse ?? '')
 
-  const { addDocument, updateDocument } = useFirestore('excuses')
+  const { addDocument: addExcuse, updateDocument: updateExcuse } = useFirestore('excuses')
+  const { addDocument: addPresetExcuse, updateDocument: updatePresetExcuse } = useFirestore('preset_excuses')
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     const excuseToAddOrEdit = { uid, name, description, response, socraticResponse }
+    const presetExcuseToAddOrEdit = { name, description, response, socraticResponse }
+
     // if we don't receive an excuse as a prop (ie. the excuse object is empty), we're adding a new excuse. Else, we're updating an existing excuse
-    if (Object.keys(excuse).length === 0) {   
-      addDocument(excuseToAddOrEdit)
+    if (Object.keys(excuse).length === 0) {
+      if (checkIfUserExcuse(excuse)) {
+        addExcuse(excuseToAddOrEdit)
+      } else {
+        addPresetExcuse(presetExcuseToAddOrEdit)
+      }  
     } else {
-      updateDocument(id, excuseToAddOrEdit)
+        if (checkIfUserExcuse(excuse)) {
+          updateExcuse(id, excuseToAddOrEdit)
+        } else {
+          updatePresetExcuse(id, presetExcuseToAddOrEdit)
+        }
     }
   }
 

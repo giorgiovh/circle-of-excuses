@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+
+// hooks
+import { useLoginWithGoogle } from '../hooks/useLoginWithGoogle'
 import { useLogout } from '../hooks/useLogout';
+
+// mui
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -13,7 +18,9 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
-import { useLoginWithGoogle } from '../hooks/useLoginWithGoogle'
+
+// functions
+import { checkIfUserIsAdmin } from '../utils/utils';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -108,7 +115,7 @@ export default function Navbar({ user }) {
           > 
             <MenuItem component={NavLink} to="/" onClick={handleClose} selected={pathname === "/"}>Home</MenuItem>
             {user && <MenuItem component={NavLink} to="/create" onClick={handleClose} selected={pathname === "/create"}>Create</MenuItem>}
-            {user && user.uid === process.env.REACT_APP_ADMIN_UID && <MenuItem component={NavLink} to="/create-preset-excuse" onClick={handleClose} selected={pathname === "/create-preset-excuse"}>Create Preset Excuse</MenuItem>}
+            {user && checkIfUserIsAdmin(user) && <MenuItem component={NavLink} to="/create-preset-excuse" onClick={handleClose} selected={pathname === "/create-preset-excuse"}>Create Preset Excuse</MenuItem>}
             <MenuItem component={NavLink} to="/about" onClick={handleClose} selected={pathname === "/about"}>About</MenuItem>
           </Menu>
           <Typography

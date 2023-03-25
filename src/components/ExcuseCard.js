@@ -22,7 +22,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 // functions
-import { addHashtagAndTho, addUnderscores, checkIfUserExcuse } from '../utils/utils';
+import { addHashtagAndTho, addUnderscores, checkIfUserExcuse, checkIfUserIsAdmin } from '../utils/utils';
 
 export default function ExcuseCard({ excuse }) {
   const [imageSource, setImageSource] = useState('')
@@ -54,6 +54,8 @@ export default function ExcuseCard({ excuse }) {
 
   const nameWithHashtagAndTho = addHashtagAndTho(excuse.name);
   const nameWithUnderscores = addUnderscores(excuse.name);
+  const isUserExcuse = checkIfUserExcuse(excuse)
+  const isUserAdmin = user && checkIfUserIsAdmin(user)
 
 
   useEffect(() => {
@@ -87,7 +89,8 @@ export default function ExcuseCard({ excuse }) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        {(checkIfUserExcuse(excuse) || user.uid === process.env.REACT_APP_ADMIN_UID) && (
+        {/* if the excuse is a user-created excuse or if the logged-in user is the admin, the Delete and Edit buttons should be rendered on the card */}
+        {(isUserExcuse || isUserAdmin) && (
           <>
             <Button 
               onClick={() => handleClickOpen()}
@@ -134,7 +137,7 @@ export default function ExcuseCard({ excuse }) {
               </DialogActions>
             </Dialog>
             <Button 
-              onClick={() => navigate(`/excuses/${excuse.id}/edit`)} 
+              onClick={() => navigate(isUserExcuse ? `/excuses/${excuse.id}/edit` : `/preset-excuses/${excuse.id}/edit`)} 
               startIcon={<EditIcon />}
               size="small" 
               sx={{ color: '#048c04' }}
