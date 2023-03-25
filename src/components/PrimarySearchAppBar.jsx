@@ -82,6 +82,10 @@ export default function PrimarySearchAppBar({ user }) {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
@@ -117,8 +121,10 @@ export default function PrimarySearchAppBar({ user }) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem component={NavLink} to="/" onClick={handleMenuClose} selected={pathname === "/"}>Home</MenuItem>
+      {user && <MenuItem component={NavLink} to="/create" onClick={handleMenuClose} selected={pathname === "/create"}>Create</MenuItem>}
+      {user && checkIfUserIsAdmin(user) && <MenuItem component={NavLink} to="/create-preset-excuse" onClick={handleMenuClose} selected={pathname === "/create-preset-excuse"}>Create Preset Excuse</MenuItem>}
+      <MenuItem component={NavLink} to="/about" onClick={handleMenuClose} selected={pathname === "/about"}>About</MenuItem>
     </Menu>
   );
 
@@ -177,7 +183,7 @@ export default function PrimarySearchAppBar({ user }) {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ backgroundColor: '#048c04' }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -185,6 +191,7 @@ export default function PrimarySearchAppBar({ user }) {
             color="inherit"
             aria-label="open drawer"
             sx={{ mr: 2 }}
+            onClick={handleClick}
           >
             <MenuIcon />
           </IconButton>
