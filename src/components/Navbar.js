@@ -79,7 +79,7 @@ export default function Navbar({ user }) {
   };
 
   const pathname = useLocation().pathname;
-
+  
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {

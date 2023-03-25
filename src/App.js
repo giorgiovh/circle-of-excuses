@@ -17,6 +17,7 @@ import SignUp from './pages/signup/Signup';
 
 // components
 import Navbar from './components/Navbar';
+import PrimarySearchAppBar from './components/PrimarySearchAppBar';
 
 // functions
 import { checkIfUserIsAdmin } from './utils/utils';
@@ -31,7 +32,8 @@ function App() {
     <div className="App">
       {authIsReady && (
         <BrowserRouter>
-          <Navbar user={user}/>
+          {/* <Navbar user={user}/> */}
+          <PrimarySearchAppBar user={user}/>
           <Routes>
             <Route exact path='/' element={<Home uid={user?.uid} />} />
             <Route path='/login' element={user ? <Navigate to="/" /> : <Login />} />
