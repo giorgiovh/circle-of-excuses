@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 
+// hooks
 import { useNavigate } from 'react-router-dom';
 import { useFirestore } from '../hooks/useFirestore';
+import { useAuthContext } from '../hooks/useAuthContext';
 
+// mui components
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardActionArea from '@mui/material/CardActionArea';
@@ -18,13 +21,17 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
+// functions
 import { addHashtagAndTho, addUnderscores, checkIfUserExcuse } from '../utils/utils';
 
 export default function ExcuseCard({ excuse }) {
   const [imageSource, setImageSource] = useState('')
   const [isDeleteDialogOpen, setisDeleteDialogOpen] = useState(false)
+
+  const { user } = useAuthContext()
   
-  const { deleteDocument } = useFirestore('excuses')
+  const { deleteDocument: deleteUserExcuse } = useFirestore('excuses')
+  const { deleteDocument: deletePresetExcuse } = useFirestore('preset_excuses')
   
   const navigate = useNavigate()
 
@@ -37,7 +44,11 @@ export default function ExcuseCard({ excuse }) {
   }
 
   const handleDelete = () => {
-    deleteDocument(excuse.id)
+    if (checkIfUserExcuse(excuse)) {
+      deleteUserExcuse(excuse.id)
+    } else {
+      deletePresetExcuse(excuse.id)
+    }
     navigate('/')
   } 
 
@@ -76,7 +87,7 @@ export default function ExcuseCard({ excuse }) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        {checkIfUserExcuse(excuse) && (
+        {(checkIfUserExcuse(excuse) || user.uid === process.env.REACT_APP_ADMIN_UID) && (
           <>
             <Button 
               onClick={() => handleClickOpen()}

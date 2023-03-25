@@ -20,3 +20,4 @@ export const addUnderscores = (str) => {
 export const checkIfUserExcuse = (excuse) => {
   return excuse.hasOwnProperty("uid")
 }
+
