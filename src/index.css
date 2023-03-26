@@ -29,10 +29,10 @@ nav a.active {
   text-decoration: none;
 }
 
-img {
+/* img {
   width: 500px;
   height: 300px;
-}
+} */
 
 .page {
   max-width: 960px;
