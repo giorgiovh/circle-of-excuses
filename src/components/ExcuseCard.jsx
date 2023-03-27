@@ -62,13 +62,12 @@ export default function ExcuseCard({ excuse }) {
     // the below try-catch block is to handle the case where the image file does not exist
     try {
       // Use the require function to import the image
-      const image = require(`./../images/${nameWithUnderscores}.png`);
-      setImageSource(image);
+      setImageSource(excuse.imageUrl);
     } catch (error) {
       // If the image file does not exist, set the image source to a generic image
       setImageSource(require('./../images/generic.png'));
     }
-  }, [nameWithUnderscores]);
+  }, [excuse.imageUrl]);
 
   return (
     <Card sx={{ maxWidth: 345 }}>

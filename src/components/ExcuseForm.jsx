@@ -58,7 +58,6 @@ export const ExcuseForm = ({ uid, id, excuse = {} }) => {
           <Button component="label">
             Choose File
             <input
-              required
               hidden
               accept="image/*"
               type="file"

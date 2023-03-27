@@ -68,7 +68,7 @@ export default function ExcuseDetails({ uid }) {
       {error && <p>{error}</p>}
       {excuse && (
         <>
-          <img src={imageSource} alt={excuse.name} className="excuse-image" />
+          <img src={excuse.imageUrl} alt={excuse.name} className="excuse-image" />
           <h2>{nameWithHashtagAndTho}</h2>
           <p><strong>Description: </strong>{excuse.description}</p>
           <p><strong>Response: </strong>{excuse.response}</p>
