@@ -29,10 +29,10 @@ export default function ExcuseCard({ excuse }) {
   const [isDeleteDialogOpen, setisDeleteDialogOpen] = useState(false)
 
   const { user } = useAuthContext()
-  
+
   const { deleteDocument: deleteUserExcuse } = useFirestore('excuses')
   const { deleteDocument: deletePresetExcuse } = useFirestore('preset_excuses')
-  
+
   const navigate = useNavigate()
 
   const handleClickOpen = () => {
@@ -50,7 +50,7 @@ export default function ExcuseCard({ excuse }) {
       deletePresetExcuse(excuse.id)
     }
     navigate('/')
-  } 
+  }
 
   const nameWithHashtagAndTho = addHashtagAndTho(excuse.name);
   const nameWithUnderscores = addUnderscores(excuse.name);
@@ -73,11 +73,17 @@ export default function ExcuseCard({ excuse }) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea onClick={() => navigate(`/excuses/${excuse.id}`)}>
-        <CardMedia
+        {/* <CardMedia
           component="img"
           height="140"
           image={imageSource}
           alt={excuse.name}
+        /> */}
+        <CardMedia
+          component="img"
+          image={imageSource}
+          alt={excuse.name}
+          style={{ objectFit: 'contain', height: '200px' }}
         />
         <CardContent style={{ height: '100px', overflow: 'hidden' }}>
           <Typography gutterBottom variant="h5" component="div">
@@ -92,10 +98,10 @@ export default function ExcuseCard({ excuse }) {
         {/* if the excuse is a user-created excuse or if the logged-in user is the admin, the Delete and Edit buttons should be rendered on the card */}
         {(isUserExcuse || isUserAdmin) && (
           <>
-            <Button 
+            <Button
               onClick={() => handleClickOpen()}
-              startIcon={<DeleteIcon />} 
-              size="small" 
+              startIcon={<DeleteIcon />}
+              size="small"
               sx={{ color: '#048c04' }}
             >
               Delete
@@ -114,18 +120,18 @@ export default function ExcuseCard({ excuse }) {
                   This action cannot be undone.
                 </DialogContentText>
               </DialogContent>
-              <DialogActions> 
-                <Button 
+              <DialogActions>
+                <Button
                   onClick={handleClose}
                   sx={{ color: '#048c04' }}
                 >
                   Cancel
                 </Button>
-                <Button 
-                  onClick={handleDelete} 
-                  variant="contained" 
+                <Button
+                  onClick={handleDelete}
+                  variant="contained"
                   autoFocus
-                  sx={{ 
+                  sx={{
                     backgroundColor: '#048c04',
                     '&:hover': {
                       backgroundColor: '#036b03'
@@ -136,10 +142,10 @@ export default function ExcuseCard({ excuse }) {
                 </Button>
               </DialogActions>
             </Dialog>
-            <Button 
-              onClick={() => navigate(isUserExcuse ? `/excuses/${excuse.id}/edit` : `/preset-excuses/${excuse.id}/edit`)} 
+            <Button
+              onClick={() => navigate(isUserExcuse ? `/excuses/${excuse.id}/edit` : `/preset-excuses/${excuse.id}/edit`)}
               startIcon={<EditIcon />}
-              size="small" 
+              size="small"
               sx={{ color: '#048c04' }}
             >
               Edit
