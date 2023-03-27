@@ -53,9 +53,8 @@ export default function ExcuseCard({ excuse }) {
   }
 
   const nameWithHashtagAndTho = addHashtagAndTho(excuse.name);
-  const isUserExcuse = checkIfUserExcuse(excuse)
+  const isUserExcuse = excuse && checkIfUserExcuse(excuse)
   const isUserAdmin = user && checkIfUserIsAdmin(user)
-
 
   useEffect(() => {
     // the below try-catch block is to handle the case where the image file does not exist
@@ -87,7 +86,7 @@ export default function ExcuseCard({ excuse }) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        {/* if the excuse is a user-created excuse or if the logged-in user is the admin, the Delete and Edit buttons should be rendered on the card */}
+        {/* if the excuse is a user-created excuse or if the logged-in user is the admin, the Delete and Edit buttons should be rendered */}
         {(isUserExcuse || isUserAdmin) && (
           <>
             <Button

@@ -15,23 +15,27 @@ import DialogTitle from '@mui/material/DialogTitle';
 // hooks
 import { useFirestore } from '../../hooks/useFirestore';
 import { useDocument } from '../../hooks/useDocument'
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 // functions
-import { addHashtagAndTho, checkIfUserExcuse } from '../../utils/utils';
+import { addHashtagAndTho, checkIfUserExcuse, checkIfUserIsAdmin } from '../../utils/utils';
 
 // styles
 import './ExcuseDetails.css'
 
 export default function ExcuseDetails({ uid }) {
-  const [imageSource, setImageSource] = useState('')
-  const [isDeleteDialogOpen, setisDeleteDialogOpen] = useState(false);
+  const [isDeleteDialogOpen, setisDeleteDialogOpen] = useState(false)
+
   const { id } = useParams()
+
+  const { user } = useAuthContext()
 
   const { error, document: excuse } = useDocument('preset_excuses', 'excuses', id)
 
   const navigate = useNavigate()
 
-  const { deleteDocument } = useFirestore('excuses')
+  const { deleteDocument: deleteUserExcuse } = useFirestore('excuses')
+  const { deleteDocument: deletePresetExcuse } = useFirestore('preset_excuses')
 
   const handleClickOpen = () => {
     setisDeleteDialogOpen(true);
@@ -46,6 +50,18 @@ export default function ExcuseDetails({ uid }) {
   if (excuse) {
     nameWithHashtagAndTho = addHashtagAndTho(excuse.name)
   }
+  
+  const isUserExcuse = excuse && checkIfUserExcuse(excuse)
+  const isUserAdmin = user && checkIfUserIsAdmin(user)
+
+  const handleDelete = () => {
+    if (isUserExcuse) {
+      deleteUserExcuse(id)
+    } else {
+      deletePresetExcuse(id)
+    }
+    navigate('/')
+  }
 
   return (
     <div className='page'>
@@ -57,11 +73,11 @@ export default function ExcuseDetails({ uid }) {
           <p><strong>Description: </strong>{excuse.description}</p>
           <p><strong>Response: </strong>{excuse.response}</p>
           <p><strong>Socratic Response: </strong>{excuse.socraticResponse}</p>
-          {/* Only show the edit and delete buttons for the user-created excuses */}
-          {checkIfUserExcuse(excuse) && (
+          {/* if the excuse is a user-created excuse or if the logged-in user is the admin, the Delete and Edit buttons should be rendered */}
+          {(isUserExcuse || isUserAdmin) && (
             <>
               <Button 
-                onClick={() => navigate(`/excuses/${id}/edit`)} 
+                onClick={() => navigate(isUserExcuse ? `/excuses/${id}/edit` : `/preset-excuses/${id}/edit`)} 
                 startIcon={<EditIcon />}
                 sx={{ color: '#048c04' }}
               >
@@ -96,7 +112,7 @@ export default function ExcuseDetails({ uid }) {
                     Cancel
                   </Button>
                   <Button 
-                    onClick={() => { deleteDocument(id); navigate('/') }} 
+                    onClick={handleDelete} 
                     variant="contained" 
                     autoFocus
                     sx={{ backgroundColor: '#048c04' }}
