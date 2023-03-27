@@ -1,6 +1,8 @@
+// react
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
-import { useFirestore } from '../../hooks/useFirestore';
+
+// mui
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -10,9 +12,15 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
+// hooks
+import { useFirestore } from '../../hooks/useFirestore';
 import { useDocument } from '../../hooks/useDocument'
 
+// functions
 import { addHashtagAndTho, addUnderscores, checkIfUserExcuse } from '../../utils/utils';
+
+// styles
+import './ExcuseDetails.css'
 
 export default function ExcuseDetails({ uid }) {
   const [imageSource, setImageSource] = useState('')
@@ -60,7 +68,7 @@ export default function ExcuseDetails({ uid }) {
       {error && <p>{error}</p>}
       {excuse && (
         <>
-          <img src={imageSource} alt={excuse.name} style={{ maxWidth: '100%', maxHeight: '50vh' }} />
+          <img src={imageSource} alt={excuse.name} className="excuse-image" />
           <h2>{nameWithHashtagAndTho}</h2>
           <p><strong>Description: </strong>{excuse.description}</p>
           <p><strong>Response: </strong>{excuse.response}</p>
