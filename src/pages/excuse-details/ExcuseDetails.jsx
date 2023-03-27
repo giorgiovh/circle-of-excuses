@@ -17,7 +17,7 @@ import { useFirestore } from '../../hooks/useFirestore';
 import { useDocument } from '../../hooks/useDocument'
 
 // functions
-import { addHashtagAndTho, addUnderscores, checkIfUserExcuse } from '../../utils/utils';
+import { addHashtagAndTho, checkIfUserExcuse } from '../../utils/utils';
 
 // styles
 import './ExcuseDetails.css'
@@ -41,27 +41,11 @@ export default function ExcuseDetails({ uid }) {
     setisDeleteDialogOpen(false);
   };
 
-  // logic to format the excuse name so that:
-  //    1) it matches its corresponding image file's name
-  //    2) the title is displayed with a hashtag and a "tho"
-  let nameWithUnderscores = ""
+  // logic to format the excuse name so that the title is displayed with a hashtag and a "tho"
   let nameWithHashtagAndTho = ""
   if (excuse) {
-    nameWithUnderscores = addUnderscores(excuse.name)
     nameWithHashtagAndTho = addHashtagAndTho(excuse.name)
   }
-
-  useEffect(() => {
-    // the below try-catch block is to handle the case where the image file does not exist
-    try {
-      // Use the require function to import the image
-      const image = require(`../../images/${nameWithUnderscores}.png`);
-      setImageSource(image);
-    } catch (error) {
-      // If the image file does not exist, set the image source to a generic image
-      setImageSource(require('../../images/generic.png'));
-    }
-  }, [nameWithUnderscores]);
 
   return (
     <div className='page'>

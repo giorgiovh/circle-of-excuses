@@ -30,9 +30,6 @@ export default function Home({ uid }) {
   } else if (uid && presetExcuses && userExcuses) {
     excusesToDisplay = [...presetExcuses, ...userExcuses]
   }
-  console.log('presetExcuses', presetExcuses);
-  console.log('userExcuses', userExcuses);
-  console.log('excusesToDisplay', excusesToDisplay);
 
   return (
     <div className='page'>

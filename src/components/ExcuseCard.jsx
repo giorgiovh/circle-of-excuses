@@ -22,7 +22,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 // functions
-import { addHashtagAndTho, addUnderscores, checkIfUserExcuse, checkIfUserIsAdmin } from '../utils/utils';
+import { addHashtagAndTho, checkIfUserExcuse, checkIfUserIsAdmin } from '../utils/utils';
 
 export default function ExcuseCard({ excuse }) {
   const [imageSource, setImageSource] = useState('')
@@ -53,7 +53,6 @@ export default function ExcuseCard({ excuse }) {
   }
 
   const nameWithHashtagAndTho = addHashtagAndTho(excuse.name);
-  const nameWithUnderscores = addUnderscores(excuse.name);
   const isUserExcuse = checkIfUserExcuse(excuse)
   const isUserAdmin = user && checkIfUserIsAdmin(user)
 

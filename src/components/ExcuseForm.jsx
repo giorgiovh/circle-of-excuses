@@ -31,7 +31,12 @@ export const ExcuseForm = ({ uid, id, excuse = {} }) => {
     const excuseToAddOrEdit = { uid, name, description, response, socraticResponse }
 
     if (isNewExcuse) {
-      const imageUrl = await uploadImage(image)
+      let imageUrl;
+      if (image) {
+        imageUrl = await uploadImage(image)
+      } else {
+        imageUrl = 'https://firebasestorage.googleapis.com/v0/b/circle-of-excuses-site.appspot.com/o/images%2Fgeneric%2Fvegan_logo.png?alt=media&token=d9d2640d-142c-4261-ae1c-6c602fb5aebb'
+      }
       addDocument({ ...excuseToAddOrEdit, imageUrl })
     } else {
       updateDocument(id, excuseToAddOrEdit)
