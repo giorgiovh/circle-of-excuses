@@ -29,20 +29,20 @@ export const PresetExcuseForm = ({ id, excuse = {} }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const excuseToAddOrEdit = { name, description, response, socraticResponse }
-
+  
     let imageUrl;
     if (image) {
       imageUrl = await uploadImage(image)
     } else {
-      imageUrl = 'https://firebasestorage.googleapis.com/v0/b/circle-of-excuses-site.appspot.com/o/images%2Fgeneric%2Fvegan_logo.png?alt=media&token=d9d2640d-142c-4261-ae1c-6c602fb5aebb'
+      imageUrl = excuse.imageUrl || 'https://firebasestorage.googleapis.com/v0/b/circle-of-excuses-site.appspot.com/o/images%2Fgeneric%2Fvegan_logo.png?alt=media&token=d9d2640d-142c-4261-ae1c-6c602fb5aebb'
     }
-
+  
     if (isNewExcuse) {
       addDocument({ ...excuseToAddOrEdit, imageUrl })
     } else {
       updateDocument(id, { ...excuseToAddOrEdit, imageUrl })
     }
-  }
+  }  
 
   const handleFileChange = (e) => {
     setImage(null)
