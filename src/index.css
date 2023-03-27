@@ -29,10 +29,14 @@ nav a.active {
   text-decoration: none;
 }
 
-/* img {
-  width: 500px;
-  height: 300px;
-} */
+.error {
+  color: red;
+  background: pink;
+  border: 1px solid red;
+  border-radius: 4px;
+  padding: 8px;
+  margin: 10px 0;
+}
 
 .page {
   max-width: 960px;

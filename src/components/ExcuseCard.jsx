@@ -73,12 +73,6 @@ export default function ExcuseCard({ excuse }) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea onClick={() => navigate(`/excuses/${excuse.id}`)}>
-        {/* <CardMedia
-          component="img"
-          height="140"
-          image={imageSource}
-          alt={excuse.name}
-        /> */}
         <CardMedia
           component="img"
           image={imageSource}
