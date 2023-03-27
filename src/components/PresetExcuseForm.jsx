@@ -2,14 +2,22 @@ import { useState } from 'react'
 import { useFirestore } from '../hooks/useFirestore'
 import { useNavigate } from 'react-router-dom'
 
+// mui
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 
+// hooks
+import { useStorage } from '../hooks/useStorage'
+
 export const PresetExcuseForm = ({ id, excuse = {} }) => {
+  const [image, setImage] = useState(null)
   const [name, setName] = useState(excuse.name ?? '')
   const [description, setDescription] = useState(excuse.description ?? '')
   const [response, setResponse] = useState(excuse.response ?? '')
   const [socraticResponse, setSocraticResponse] = useState(excuse.socraticResponse ?? '')
+  const [error, setError] = useState(null)
+
+  const { uploadImage, isPending: imageIsPending, error: imageUploadError } = useStorage()
 
   const { addDocument, updateDocument } = useFirestore('preset_excuses')
 
@@ -21,16 +29,50 @@ export const PresetExcuseForm = ({ id, excuse = {} }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const excuseToAddOrEdit = { name, description, response, socraticResponse }
-    if (isNewExcuse) {   
-      await addDocument(excuseToAddOrEdit)
+
+    let imageUrl;
+    if (image) {
+      imageUrl = await uploadImage(image)
     } else {
-      await updateDocument(id, excuseToAddOrEdit)
+      imageUrl = 'https://firebasestorage.googleapis.com/v0/b/circle-of-excuses-site.appspot.com/o/images%2Fgeneric%2Fvegan_logo.png?alt=media&token=d9d2640d-142c-4261-ae1c-6c602fb5aebb'
     }
+
+    if (isNewExcuse) {
+      addDocument({ ...excuseToAddOrEdit, imageUrl })
+    } else {
+      updateDocument(id, { ...excuseToAddOrEdit, imageUrl })
+    }
+  }
+
+  const handleFileChange = (e) => {
+    setImage(null)
+    let selected = e.target.files[0]
+
+    if (!selected) {
+      setError('Please select a file')
+      return
+    }
+
+    setError(null)
+    setImage(selected)
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
+      <div style={{ display: "flex" }}>
+          <Button component="label">
+            Choose File
+            <input
+              hidden
+              accept="image/*"
+              type="file"
+              onChange={handleFileChange}
+            />
+          </Button>
+          <p>{image ? image.name : "No file chosen"}</p>
+        </div>
+        {error && <div className='error'>{error}</div>}
         <TextField 
           id="outlined-basic" 
           label="Name" 
