@@ -16,6 +16,7 @@ export const PresetExcuseForm = ({ id, excuse = {} }) => {
   const [response, setResponse] = useState(excuse.response ?? '')
   const [socraticResponse, setSocraticResponse] = useState(excuse.socraticResponse ?? '')
   const [error, setError] = useState(null)
+  const [imageUrl, setImageUrl] = useState(excuse.imageUrl || 'https://firebasestorage.googleapis.com/v0/b/circle-of-excuses-site.appspot.com/o/images%2Fgeneric%2Fvegan_logo.png?alt=media&token=d9d2640d-142c-4261-ae1c-6c602fb5aebb')
 
   const { uploadImage, isPending: imageIsPending, error: imageUploadError } = useStorage()
 
@@ -30,35 +31,40 @@ export const PresetExcuseForm = ({ id, excuse = {} }) => {
     e.preventDefault()
     const excuseToAddOrEdit = { name, description, response, socraticResponse }
   
-    let imageUrl;
     if (newImage) {
-      imageUrl = await uploadImage(newImage)
+      const newImageUrl = await uploadImage(newImage)
+      setImageUrl(newImageUrl)
+      excuseToAddOrEdit.imageUrl = newImageUrl
+    } else if (!newImage && !imageUrl) {
+      excuseToAddOrEdit.imageUrl = 'https://firebasestorage.googleapis.com/v0/b/circle-of-excuses-site.appspot.com/o/images%2Fgeneric%2Fvegan_logo.png?alt=media&token=d9d2640d-142c-4261-ae1c-6c602fb5aebb'
     } else {
-      imageUrl = excuse.imageUrl || 'https://firebasestorage.googleapis.com/v0/b/circle-of-excuses-site.appspot.com/o/images%2Fgeneric%2Fvegan_logo.png?alt=media&token=d9d2640d-142c-4261-ae1c-6c602fb5aebb'
+      excuseToAddOrEdit.imageUrl = imageUrl
     }
   
     if (isNewExcuse) {
-      addDocument({ ...excuseToAddOrEdit, imageUrl })
+      addDocument(excuseToAddOrEdit)
     } else {
-      updateDocument(id, { ...excuseToAddOrEdit, imageUrl })
+      updateDocument(id, excuseToAddOrEdit)
     }
   }  
 
   const handleFileChange = (e) => {
-    setNewImage(null)
-    let selected = e.target.files[0]
-
-    if (!selected) {
-      setError('Please select a file')
-      return
-    }
-
+    setNewImage(e.target.files[0])
     setError(null)
-    setNewImage(selected)
+    setImageUrl(URL.createObjectURL(e.target.files[0]))
+  }
+
+  const handleRemoveImage = (e) => {
+    e.preventDefault()
+    setNewImage(null)
+    setImageUrl(null)
   }
 
   return (
     <div>
+      {imageUrl &&
+        <img src={imageUrl} className="excuse-image" alt="current" style={{ maxWidth: "100%" }} />
+      }
       <form onSubmit={handleSubmit}>
       <div style={{ display: "flex" }}>
           <Button component="label">
@@ -71,6 +77,9 @@ export const PresetExcuseForm = ({ id, excuse = {} }) => {
             />
           </Button>
           <p>{newImage ? newImage.name : "No file chosen"}</p>
+          {imageUrl &&
+            <Button onClick={handleRemoveImage}>Remove</Button>
+          }
         </div>
         {error && <div className='error'>{error}</div>}
         <TextField 
