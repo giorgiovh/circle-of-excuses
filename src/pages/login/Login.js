@@ -114,7 +114,7 @@ export default function Login() {
             )}
             {error && <p>{error}</p>}
           </Box>
-          <div style={{"text-align":"center"}}>OR</div>
+          <div style={{"textAlign":"center"}}>OR</div>
           <Button
             onClick={loginWithGoogle}
             fullWidth

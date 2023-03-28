@@ -41,6 +41,7 @@ function App() {
             <Route path='/create-preset-excuse' element={user && checkIfUserIsAdmin(user) ? <CreatePresetExcuse /> : <Navigate to="/login" />} /> 
             <Route path='/search' element={<Search uid={user?.uid}/>} />
             <Route path='/excuses/:id' element={<ExcuseDetails uid={user?.uid} />} />
+            <Route path='/preset-excuses/:id' element={<ExcuseDetails uid={user?.uid} />} />
             <Route path='/excuses/:id/edit' element={user ? <Edit uid={user.uid} /> : <Navigate to="/login" />} />
             <Route path='/preset-excuses/:id/edit' element={user && checkIfUserIsAdmin(user) ? <EditPresetExcuse uid={user.uid} /> : <Navigate to="/login" />} />
           </Routes>

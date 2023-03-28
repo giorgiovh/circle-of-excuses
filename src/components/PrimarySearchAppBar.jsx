@@ -146,24 +146,24 @@ export default function PrimarySearchAppBar({ user }) {
       onClose={handleMenuClose}
     >
       {!user && (
-        <>
-          <MenuItem
-            component={NavLink}
-            to="/login"
-            selected={pathname === "/login"}
-            onClick={handleMobileMenuClose}
-          >
-            Log in
-          </MenuItem>
-          <MenuItem
-            component={NavLink}
-            to="/signup"
-            selected={pathname === "/signup"}
-            onClick={handleMobileMenuClose}
-          >
-            Sign up
-          </MenuItem>
-        </>
+        [<MenuItem
+          key="login"
+          component={NavLink}
+          to="/login"
+          selected={pathname === "/login"}
+          onClick={handleMobileMenuClose}
+        >
+          Log in
+        </MenuItem>,
+        <MenuItem
+          key="signup"
+          component={NavLink}
+          to="/signup"
+          selected={pathname === "/signup"}
+          onClick={handleMobileMenuClose}
+        >
+          Sign up
+        </MenuItem>]
       )}
       {user && (
         <MenuItem

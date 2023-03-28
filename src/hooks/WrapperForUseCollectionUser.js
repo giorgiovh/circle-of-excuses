@@ -2,7 +2,6 @@ import { useEffect } from "react"
 import { useCollection } from "./useCollection"
 
 export default function WrapperForUseCollectionUser({ uid, setIsUserPending, setUserError, setUserExcuses}) {
-  console.log('wrapper got called');
 
   const { isPending, error, documents } = useCollection(
     'excuses',
