@@ -90,6 +90,14 @@ export default function ExcuseCard({ excuse }) {
         {(isUserExcuse || isUserAdmin) && (
           <>
             <Button
+              onClick={() => navigate(isUserExcuse ? `/excuses/${excuse.id}/edit` : `/preset-excuses/${excuse.id}/edit`)}
+              startIcon={<EditIcon />}
+              size="small"
+              sx={{ color: '#048c04' }}
+            >
+              Edit
+            </Button>
+            <Button
               onClick={() => handleClickOpen()}
               startIcon={<DeleteIcon />}
               size="small"
@@ -133,14 +141,6 @@ export default function ExcuseCard({ excuse }) {
                 </Button>
               </DialogActions>
             </Dialog>
-            <Button
-              onClick={() => navigate(isUserExcuse ? `/excuses/${excuse.id}/edit` : `/preset-excuses/${excuse.id}/edit`)}
-              startIcon={<EditIcon />}
-              size="small"
-              sx={{ color: '#048c04' }}
-            >
-              Edit
-            </Button>
           </>
         )}
       </CardActions>
