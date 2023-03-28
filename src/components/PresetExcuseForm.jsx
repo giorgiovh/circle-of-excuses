@@ -10,7 +10,7 @@ import TextField from '@mui/material/TextField'
 import { useStorage } from '../hooks/useStorage'
 
 export const PresetExcuseForm = ({ id, excuse = {} }) => {
-  const [image, setImage] = useState(null)
+  const [newImage, setNewImage] = useState(null)
   const [name, setName] = useState(excuse.name ?? '')
   const [description, setDescription] = useState(excuse.description ?? '')
   const [response, setResponse] = useState(excuse.response ?? '')
@@ -31,8 +31,8 @@ export const PresetExcuseForm = ({ id, excuse = {} }) => {
     const excuseToAddOrEdit = { name, description, response, socraticResponse }
   
     let imageUrl;
-    if (image) {
-      imageUrl = await uploadImage(image)
+    if (newImage) {
+      imageUrl = await uploadImage(newImage)
     } else {
       imageUrl = excuse.imageUrl || 'https://firebasestorage.googleapis.com/v0/b/circle-of-excuses-site.appspot.com/o/images%2Fgeneric%2Fvegan_logo.png?alt=media&token=d9d2640d-142c-4261-ae1c-6c602fb5aebb'
     }
@@ -45,7 +45,7 @@ export const PresetExcuseForm = ({ id, excuse = {} }) => {
   }  
 
   const handleFileChange = (e) => {
-    setImage(null)
+    setNewImage(null)
     let selected = e.target.files[0]
 
     if (!selected) {
@@ -54,7 +54,7 @@ export const PresetExcuseForm = ({ id, excuse = {} }) => {
     }
 
     setError(null)
-    setImage(selected)
+    setNewImage(selected)
   }
 
   return (
@@ -70,7 +70,7 @@ export const PresetExcuseForm = ({ id, excuse = {} }) => {
               onChange={handleFileChange}
             />
           </Button>
-          <p>{image ? image.name : "No file chosen"}</p>
+          <p>{newImage ? newImage.name : "No file chosen"}</p>
         </div>
         {error && <div className='error'>{error}</div>}
         <TextField 

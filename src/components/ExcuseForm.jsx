@@ -10,14 +10,13 @@ import TextField from '@mui/material/TextField'
 import { useStorage } from '../hooks/useStorage'
 
 export const ExcuseForm = ({ uid, id, excuse = {} }) => {
-  const [image, setImage] = useState(null)
+  const [newImage, setNewImage] = useState(null)
   const [name, setName] = useState(excuse.name ?? '')
   const [description, setDescription] = useState(excuse.description ?? '')
   const [response, setResponse] = useState(excuse.response ?? '')
   const [socraticResponse, setSocraticResponse] = useState(excuse.socraticResponse ?? '')
   const [error, setError] = useState(null)
-
-  console.log('excuse.imageUrl', excuse.imageUrl);
+  const [imageUrl, setImageUrl] = useState(excuse.imageUrl || 'https://firebasestorage.googleapis.com/v0/b/circle-of-excuses-site.appspot.com/o/images%2Fgeneric%2Fvegan_logo.png?alt=media&token=d9d2640d-142c-4261-ae1c-6c602fb5aebb')
 
   const { uploadImage, isPending: imageIsPending, error: imageUploadError } = useStorage()
 
@@ -31,31 +30,41 @@ export const ExcuseForm = ({ uid, id, excuse = {} }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const excuseToAddOrEdit = { uid, name, description, response, socraticResponse }
-  
-    let imageUrl;
-    if (image) {
-      imageUrl = await uploadImage(image)
+
+    if (newImage) {
+      const newImageUrl = await uploadImage(newImage)
+      setImageUrl(newImageUrl)
+      excuseToAddOrEdit.imageUrl = newImageUrl
+    } else if (!newImage && !imageUrl) {
+      excuseToAddOrEdit.imageUrl = 'https://firebasestorage.googleapis.com/v0/b/circle-of-excuses-site.appspot.com/o/images%2Fgeneric%2Fvegan_logo.png?alt=media&token=d9d2640d-142c-4261-ae1c-6c602fb5aebb'
     } else {
-      imageUrl = excuse.imageUrl || 'https://firebasestorage.googleapis.com/v0/b/circle-of-excuses-site.appspot.com/o/images%2Fgeneric%2Fvegan_logo.png?alt=media&token=d9d2640d-142c-4261-ae1c-6c602fb5aebb'
+      excuseToAddOrEdit.imageUrl = imageUrl
     }
-  
+
     if (isNewExcuse) {
-      addDocument({ ...excuseToAddOrEdit, imageUrl })
+      addDocument(excuseToAddOrEdit)
     } else {
-      updateDocument(id, { ...excuseToAddOrEdit, imageUrl })
+      updateDocument(id, excuseToAddOrEdit)
     }
-  }  
+  }
 
   const handleFileChange = (e) => {
-    setImage(null)
-    let selected = e.target.files[0]
-
+    setNewImage(e.target.files[0])
     setError(null)
-    setImage(selected)
+    setImageUrl(URL.createObjectURL(e.target.files[0]))
+  }
+
+  const handleRemoveImage = (e) => {
+    e.preventDefault()
+    setNewImage(null)
+    setImageUrl(null)
   }
 
   return (
     <div>
+      {imageUrl &&
+        <img src={imageUrl} className="excuse-image" alt="current" style={{ maxWidth: "100%" }} />
+      }
       <form onSubmit={handleSubmit}>
         <div style={{ display: "flex" }}>
           <Button component="label">
@@ -67,7 +76,10 @@ export const ExcuseForm = ({ uid, id, excuse = {} }) => {
               onChange={handleFileChange}
             />
           </Button>
-          <p>{image ? image.name : "No file chosen"}</p>
+          <p>{newImage ? newImage.name : "No file chosen"}</p>
+          {imageUrl &&
+            <Button onClick={handleRemoveImage}>Remove</Button>
+          }
         </div>
         {error && <div className='error'>{error}</div>}
         <TextField
