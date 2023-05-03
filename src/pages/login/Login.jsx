@@ -25,8 +25,6 @@ export default function Login() {
 
   const { error, isPending, login } = useLogin()
 
-  useLoginWithGoogle()
-
   const handleSubmit = (e) => {
     e.preventDefault();
     login(email, password);
