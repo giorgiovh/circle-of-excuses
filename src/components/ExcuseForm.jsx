@@ -129,7 +129,6 @@ export const ExcuseForm = ({ uid, id, excuse = {} }) => {
           type="text"
           onChange={(e) => setSocraticResponse(e.target.value)}
           value={socraticResponse}
-          required
           fullWidth
           multiline
           maxRows={4}
